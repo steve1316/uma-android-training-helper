@@ -55,7 +55,7 @@ class CharacterData {
 				"新年の抱負" to arrayListOf("Guts +10", "Energy +20", "Skill points +20"),
 			),
 			"Special Week" to mapOf(
-				"食堂でお腹いっぱい" to arrayListOf("Energy +10\n Skill points +5", "Energy +30\nSkill points +10\n(random) Get Overweight status"),
+				"食堂でお腹いっぱい" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Get Overweight status"),
 				"あなたと行きたい場所" to arrayListOf("Intelligence +10", "Stamina +10"),
 				"もう少しだけ" to arrayListOf("末脚 hint +1", "コーナー巧者○ hint +1"),
 				"想い、服に託して" to arrayListOf("Stamina +20", "Guts +20"),
@@ -67,7 +67,7 @@ class CharacterData {
 				"研究熱心" to arrayListOf("東京レース場○ hint +1", "中山レース場○ hint +1"),
 				"青春のテニス日和" to arrayListOf("Speed +10", "Stamina +10"),
 				"ダンスレッスン" to arrayListOf("Guts +10", "Stamina +10"),
-				"新年の抱負" to arrayListOf("Guts +10", "Energy +20", "Skill points +20"),
+				"新年の抱負" to arrayListOf("Stamina +10", "Energy +20", "Skill points +20"),
 			),
 			"Oguri Cap" to mapOf(
 				"畑でビルドアップ" to arrayListOf("Guts +10", "Power +10"),
