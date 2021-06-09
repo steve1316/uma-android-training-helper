@@ -10,7 +10,7 @@ Then head on over to the respective Data class and under their category, copy an
 
 ![Formatted String Event of Example 1 from GameTora](https://raw.githubusercontent.com/steve1316/uma-android-training-helper/main/app/src/main/assets/readme/example1_formatted.png)
 
-- Line Breaks are denoted by "\n".
+- Line Breaks are denoted by ```\n```.
 - The 1st Option as the first element of the array, the 2nd Option as the second element, etc.
 
 When you encounter an event like this:
@@ -21,9 +21,9 @@ You format the event text like so:
 
 ![Formatted String Event of Example 2 from GameTora](https://raw.githubusercontent.com/steve1316/uma-android-training-helper/main/app/src/main/assets/readme/example2_formatted.png)
 
-- The lines to break up each potential reward within one option is denoted by "\n----------\n".
+- The lines to break up each potential reward within one option is denoted by ```\n----------\n```.
 
 ## Step 3
-Finally, update the array.xml inside the app/src/main/res/values/array.xml with a new <item> in the correct category to have it show up as selectable in the UI:
+Finally, update the ```array.xml``` inside the app/src/main/res/values/array.xml with a new ```<item>``` in the correct category to have it show up as selectable in the UI:
 
 ![Final Step](https://raw.githubusercontent.com/steve1316/uma-android-training-helper/main/app/src/main/assets/readme/example3.png)
