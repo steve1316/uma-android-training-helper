@@ -30,7 +30,7 @@ android {
                 variant.outputs.all { output ->
                     def versionName = defaultConfig.versionName
                     def architecture = output.filters[0].identifier
-                    outputFileName = "v${versionName}-Example-${architecture}.apk"
+                    outputFileName = "v${versionName}-UmaAndroidTrainingHelper-${architecture}.apk"
                 }
             }
         }
@@ -48,8 +48,8 @@ android {
         abi {
             enable true
             reset()
-            include "armeabi","armeabi-v7a",'arm64-v8a',"mips","x86","x86_64",'arm64-v8a'
-            // include "arm64-v8a"
+            // include "armeabi","armeabi-v7a",'arm64-v8a',"mips","x86","x86_64",'arm64-v8a'
+            include "arm64-v8a"
             universalApk false
         }
     }
