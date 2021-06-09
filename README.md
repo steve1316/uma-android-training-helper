@@ -1,6 +1,8 @@
 # Uma Musume Training Event Helper For Android using MediaProjection, AccessibilityService, OpenCV, and Tesseract
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/steve1316/uma-android-training-helper?logo=GitHub) ![GitHub last commit](https://img.shields.io/github/last-commit/steve1316/uma-android-training-helper?logo=GitHub) ![GitHub issues](https://img.shields.io/github/issues/steve1316/uma-android-training-helper?logo=GitHub) ![GitHub pull requests](https://img.shields.io/github/issues-pr/steve1316/uma-android-training-helper?logo=GitHub) ![GitHub](https://img.shields.io/github/license/steve1316/uma-android-training-helper?logo=GitHub)
 
+Inspiration from @amate for their work on [UmaUmaCruise](https://github.com/amate/UmaUmaCruise) and @gertasik for [GameTora's Training Event Helper](https://gametora.com/umamusume/training-event-helper).
+
 This Android application written in Kotlin is designed to assist Uma Musume players with selecting the right training options in the same vein as amate's UmaCruise and GameTora's Training Event Helper.
 
 It accomplishes this by taking a screenshot via the MediaProjection and OpenCV performs image processing. Finally, Tesseract will perform OCR text recognition on it and will determine if there is a similar string to it in the data and will display it as a Notification that you can view the training event's option rewards.
@@ -28,4 +30,9 @@ WIP
 7. Whenever you want to stop, just press ```STOP PROCESS``` on the Notification in your Notification Drawer.
 
 # Technologies Used
-WIP
+1. [jpn.traineddata from UmaUmaCruise by @amate](https://github.com/amate/UmaUmaCruise)
+2. [MediaProjection - Used to obtain full screenshots](https://developer.android.com/reference/android/media/projection/MediaProjection)
+3. [AccessibilityService - Used to dispatch gestures like tapping and scrolling](https://developer.android.com/reference/android/accessibilityservice/AccessibilityService)
+4. [OpenCV Android 4.5.1 - Used to template match](https://opencv.org/releases/)
+5. [Tesseract4Android 2.1.1](https://github.com/adaptech-cz/Tesseract4Android)
+6. [string-similarity 1.0.0](https://github.com/rrice/java-string-similarity)
