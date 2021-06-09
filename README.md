@@ -7,6 +7,8 @@ This Android application written in Kotlin is designed to assist Uma Musume play
 
 It accomplishes this by taking a screenshot via the MediaProjection and OpenCV performs image processing. Finally, Tesseract will perform OCR text recognition on it and will determine if there is a similar string to it in the data and will display it as a Notification that you can view the training event's option rewards.
 
+https://user-images.githubusercontent.com/18709555/121310298-13673280-c8b8-11eb-9f94-dab7fb7fc3e2.mp4
+
 # Features
 - [x] Perform OCR text detection on the fly for Uma Musume's training events.
 - [ ] Add support for all characters. (IN-PROGRESS)
