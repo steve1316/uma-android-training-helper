@@ -3,7 +3,7 @@
 
 Inspiration from @amate for their work on [UmaUmaCruise](https://github.com/amate/UmaUmaCruise) and @gertasik for [GameTora's Training Event Helper](https://gametora.com/umamusume/training-event-helper).
 
-This Android application written in Kotlin is designed to assist Uma Musume players with selecting the right training options in the same vein as amate's UmaCruise and GameTora's Training Event Helper.
+This Android application written in Kotlin is designed to assist Uma Musume Pretty Derby players with selecting the right training options in the same vein as amate's UmaCruise and GameTora's Training Event Helper.
 
 It accomplishes this by taking a screenshot via the MediaProjection and OpenCV performs image processing. Finally, Tesseract will perform OCR text recognition on it and will determine if there is a similar string to it in the data and will display it as a Notification that you can view the training event's option rewards.
 
