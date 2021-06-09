@@ -57,15 +57,26 @@ class CharacterData {
 			
 			// Shared, as in these options are all the exact same with the same results for all characters.
 			"Shared" to mapOf(
+				// "Failed Training"
 				"お大事に！" to arrayListOf(
 					"Motivation -1\nLast trained stat -5\n(random) Get Bad Practice status", "One of these will be selected at random\n----------\nMotivation -1\nLast trained stat -10\n" +
 							"(random) Get Bad Practice status\n----------\nGet Good Practice ○ status"),
+				
+				// The other "Failed Training"
 				"無茶は厳禁！" to arrayListOf(
 					"Energy +10\nMotivation -1\nLast trained stat -10\n2 random stats -10\n(random) Get Bad Practice status", "One of these will be selected at random\n----------\nMotivation -1" +
 							"\nLast trained stat -10\n2 random stats -10\nGet Bad Practice status\n----------\nEnergy +10\nGet Good Practice ○ status"),
+				
+				// "Extra Training"
 				"追加の自主トレ" to arrayListOf("Energy -5\nLast trained stat +5\nYayoi Akikawa bond +5", "Energy +5"),
+				
+				// "First Summer"
 				"夏合宿（2年目）にて" to arrayListOf("Power +10", "Guts +10"),
+				
+				// "Shrine visit"
 				"初詣" to arrayListOf("Energy +30", "All stats +5", "Skill points +35"),
+				
+				// Events with Etsuko Otonashi, the President, and the weird Wrestler doctor lady.
 				"愉快ッ！密着取材！" to arrayListOf("Stamina +10\nEtsuko Otonashi bond +5", "Guts +10\nEtsuko Otonashi bond +5"),
 				"トレーナー並の知識" to arrayListOf("Power +10\nEtsuko Otonashi bond +5", "Speed +10\nEtsuko Otonashi bond +5"),
 				"上々の面構えッ！" to arrayListOf("Energy -10\nPower +20\nGuts +20\nハヤテ一文字 hint +1", "Energy +30\nStamina +20\n好転一息 hint +1"),
