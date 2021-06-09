@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="empty_list">
+    </string-array>
+
+    <string-array name="character_list">
+        <item>Daiwa Scarlet</item>
+        <item>Tokai Teio (Non-Anime ver.)</item>
+    </string-array>
+
+    <string-array name="support_list_r">
+        <item>El Condor Pasa</item>
+        <item>Kitasan Black</item>
+        <item>Mejiro Dober</item>
+        <item>Silence Suzuka</item>
+        <item>Twin Turbo</item>
+        <item>Yaeno Muteki</item>
+    </string-array>
+
+    <string-array name="support_list_sr">
+        <item>Mejiro Dober</item>
+        <item>Zenno Rob Roy</item>
+    </string-array>
+
+    <string-array name="support_list_ssr">
+        <item>El Condor Pasa</item>
+        <item>Kitasan Black</item>
+        <item>Mejiro Dober</item>
+        <item>Silence Suzuka</item>
+        <item>Twin Turbo</item>
+        <item>Yaeno Muteki</item>
+    </string-array>
+</resources>

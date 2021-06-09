@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory app:title="Character Selection" app:summary="Options marked with * are required">
+        <ListPreference
+            app:entries="@array/character_list"
+            app:entryValues="@array/character_list"
+            app:key="characterPicker"
+            app:title="Select your Uma Musume Character *"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Support Card(s) Selection">
+        <Preference
+            app:key="supportRPicker"
+            app:title="Select R Support Card(s)"
+            app:summary="Select your chosen R Support Card(s)." />
+
+        <Preference
+            app:key="supportSRPicker"
+            app:title="Select SR Support Card(s)"
+            app:summary="Select your chosen SR Support Card(s)." />
+
+        <Preference
+            app:key="supportSSRPicker"
+            app:title="Select SSR Support Card(s)"
+            app:summary="Select your chosen SSR Support Card(s)." />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="Misc">
+        <CheckBoxPreference
+            app:key="debugModeCheckBox"
+            app:title="Enable Debug Mode"
+            app:summary="Allows debugging messages to be shown in the log to reveal diagnostic information and potential errors." />
+
+    </PreferenceCategory>
+</PreferenceScreen>

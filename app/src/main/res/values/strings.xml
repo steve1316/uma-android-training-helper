@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">ウマ娘 Training Helper</string>
+
+    <string name="title_activity_main">ウマ娘 Training Helper</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_settings">Settings</string>
+
+    <string name="nav_header_title">ウマ娘 Training Helper</string>
+    <string name="nav_header_subtitle">Provides Training Event assistance like amate\'s UmaUmaCruise and GameTora\'s Training Event Helper</string>
+
+    <string name="start">Start</string>
+    <string name="stop">Stop</string>
+
+    <string name="stop_process">Stop Process</string>
+
+    <string name="go_to_settings">Go to Settings</string>
+
+    <string name="overlay_disabled">Missing Overlay Permission</string>
+    <string name="overlay_disabled_message">This app requires that it is granted Overlay Permission to display the START/STOP Floating Action
+    Button.</string>
+</resources>
