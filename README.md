@@ -12,6 +12,11 @@ https://user-images.githubusercontent.com/18709555/121310298-13673280-c8b8-11eb-
 # Disclaimer
 Due to the notoriously difficult nature of Kanji, this tool will fail when it encounters too many Kanji during OCR detection like "理の食VS暴の食" from the Yueno Muteki SSR Support Card due to my lack of experience with Tesseract.
 
+# Help Wanted!
+![Help Wanted](https://raw.githubusercontent.com/steve1316/uma-android-training-helper/main/app/src/main/assets/readme/help_wanted.png)
+
+- If anyone has the Japanese text for these event names, please send them my way. Right now, these events right after doing a Race are unsupported.
+
 # Features
 - [x] Perform OCR text detection on the fly for Uma Musume's training events.
 - [ ] Add support for all characters. (IN-PROGRESS)
