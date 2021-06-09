@@ -20,7 +20,6 @@ class CharacterData {
 				"テイオー、ウマドルになる！？" to arrayListOf("Power +10", "Speed +10"),
 				"ダンスレッスン" to arrayListOf("Stamina +10", "Power +10"),
 				"新年の抱負" to arrayListOf("Guts +10", "Energy +20", "Skill points +20"),
-				"初詣" to arrayListOf("Energy +30", "All stats +5", "Skill points +35")
 			),
 			"Daiwa Scarlet" to mapOf(
 				"1番は見逃せない！" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Speed -5\nPower +5\nGet Overweight status"),
@@ -54,7 +53,6 @@ class CharacterData {
 				"参考にしたくて" to arrayListOf("Energy -10\nGuts +20", "Energy +5\nSkill points+15"),
 				"ダンスレッスン" to arrayListOf("Stamina +10", "Speed +10"),
 				"新年の抱負" to arrayListOf("Guts +10", "Energy +20", "Skill points +20"),
-				"初詣" to arrayListOf("Energy +30", "All stats +5", "Skill points +35")
 			),
 			
 			// Shared, as in these options are all the exact same with the same results for all characters.
