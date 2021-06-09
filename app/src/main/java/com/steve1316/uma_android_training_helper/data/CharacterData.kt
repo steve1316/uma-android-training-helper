@@ -20,7 +20,6 @@ class CharacterData {
 				"テイオー、ウマドルになる！？" to arrayListOf("Power +10", "Speed +10"),
 				"ダンスレッスン" to arrayListOf("Stamina +10", "Power +10"),
 				"新年の抱負" to arrayListOf("Guts +10", "Energy +20", "Skill points +20"),
-				"初詣" to arrayListOf("Energy +30", "All stats +5", "Skill points +35")
 			),
 			"Daiwa Scarlet" to mapOf(
 				"1番は見逃せない！" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Speed -5\nPower +5\nGet Overweight status"),
@@ -38,6 +37,22 @@ class CharacterData {
 				"ついつい着たくなる！" to arrayListOf("Stamina +10\nIntelligence +10\n(random) Get Rising Star status", "Speed +10\nGuts +10\n(random) Get Rising Star status"),
 				"ダンスレッスン" to arrayListOf("Guts +10", "Speed +10"),
 				"新年の抱負" to arrayListOf("Intelligence +10", "Energy +20", "Skill points +20"),
+			),
+			"Rice Shower" to mapOf(
+				"ライスにお任せ……！" to arrayListOf("Guts +10", "Speed +10"),
+				"てんとう虫が離れても" to arrayListOf("Stamina +10", "Intelligence +10"),
+				"甘くて真っ赤な1ページ" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Get Overweight status"),
+				"雲が空を覆っても" to arrayListOf("Speed+5\nPower +5", "Guts +10"),
+				"相応しい自分" to arrayListOf("Guts +10\nIntelligence +10\n(random) Get Charming status", "Stamina +10\nPower +10\n(random) Get Charming status"),
+				"甘く賑やかな幸福" to arrayListOf("Speed +10\n Stamina +10", "Intelligence +20"),
+				"わたしのたいよう" to arrayListOf("Guts +5\nIntelligence +5", "Speed +5\nPower+5", "Stamina +10"),
+				"夕焼けの1ページ" to arrayListOf("Power +5\nGuts+ 5", "Stamina +5\nIntelligence +5"),
+				"素敵な世界に会いたくて" to arrayListOf("Stamina +10", "Speed +5\nIntelligence +5"),
+				"何事も前向きに？" to arrayListOf("Stamina +5\nGuts +10", "良バ場○ hint +1"),
+				"相応しくない自分！" to arrayListOf("Guts +20", "Power +20"),
+				"参考にしたくて" to arrayListOf("Energy -10\nGuts +20", "Energy +5\nSkill points+15"),
+				"ダンスレッスン" to arrayListOf("Stamina +10", "Speed +10"),
+				"新年の抱負" to arrayListOf("Guts +10", "Energy +20", "Skill points +20"),
 			),
 			
 			// Shared, as in these options are all the exact same with the same results for all characters.
