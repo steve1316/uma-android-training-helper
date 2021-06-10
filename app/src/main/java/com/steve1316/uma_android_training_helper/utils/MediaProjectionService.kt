@@ -81,8 +81,8 @@ class MediaProjectionService : Service() {
 				
 				// Now write the Bitmap to the specified file inside the /files/temp/ folder.
 				SCREENSHOT_NUM++
-				val fos = FileOutputStream("$tempDirectory/source.jpg")
-				sourceBitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos)
+				val fos = FileOutputStream("$tempDirectory/source.png")
+				sourceBitmap.compress(Bitmap.CompressFormat.PNG, 100, fos)
 				
 				// Perform cleanup by closing streams and freeing up memory.
 				try {
