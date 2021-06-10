@@ -12,26 +12,14 @@
         <item>Tokai Teio</item>
     </string-array>
 
-    <string-array name="support_list_r">
+    <string-array name="support_list">
         <item>El Condor Pasa</item>
         <item>Kitasan Black</item>
         <item>Mejiro Dober</item>
         <item>Silence Suzuka</item>
+        <item>Tokai Teio</item>
         <item>Twin Turbo</item>
         <item>Yaeno Muteki</item>
-    </string-array>
-
-    <string-array name="support_list_sr">
-        <item>Mejiro Dober</item>
         <item>Zenno Rob Roy</item>
-    </string-array>
-
-    <string-array name="support_list_ssr">
-        <item>El Condor Pasa</item>
-        <item>Kitasan Black</item>
-        <item>Mejiro Dober</item>
-        <item>Silence Suzuka</item>
-        <item>Twin Turbo</item>
-        <item>Yaeno Muteki</item>
     </string-array>
 </resources>

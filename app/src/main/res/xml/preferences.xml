@@ -14,20 +14,16 @@
     </PreferenceCategory>
 
     <PreferenceCategory app:title="Support Card(s) Selection">
-        <Preference
-            app:key="supportRPicker"
-            app:summary="Select your chosen R Support Card(s)."
-            app:title="Select R Support Card(s)" />
+        <CheckBoxPreference
+            app:key="selectAllCheckBox"
+            app:summary="Check this to select all Support Cards if you are too lazy to select them one-by-one."
+            app:title="Select All Support Cards" />
 
         <Preference
-            app:key="supportSRPicker"
-            app:summary="Select your chosen SR Support Card(s)."
-            app:title="Select SR Support Card(s)" />
+            app:key="supportPicker"
+            app:summary="Covers all R, SR, and SSR variants into one."
+            app:title="Select Support Card(s)" />
 
-        <Preference
-            app:key="supportSSRPicker"
-            app:summary="Select your chosen SSR Support Card(s)."
-            app:title="Select SSR Support Card(s)" />
 
     </PreferenceCategory>
 
