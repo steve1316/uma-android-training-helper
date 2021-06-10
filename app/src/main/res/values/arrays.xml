@@ -5,10 +5,11 @@
 
     <string-array name="character_list">
         <item>Daiwa Scarlet</item>
+        <item>Mejiro McQueen</item>
         <item>Oguri Cap</item>
         <item>Rice Shower</item>
         <item>Special Week</item>
-        <item>Tokai Teio (Non-Anime ver.)</item>
+        <item>Tokai Teio</item>
     </string-array>
 
     <string-array name="support_list_r">

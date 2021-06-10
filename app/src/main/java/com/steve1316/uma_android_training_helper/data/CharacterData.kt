@@ -4,6 +4,7 @@ class CharacterData {
 	companion object {
 		val characters = mapOf(
 			"Tokai Teio" to mapOf(
+				// Original
 				"\"女帝\"vs.\"帝王\"" to arrayListOf("Guts +10", "Skill points +30"),
 				"叱られちゃった" to arrayListOf("Intelligence +10", "Power +5\nGuts +5"),
 				"気づいちゃった！" to arrayListOf("Speed +5\nStamina +5", "Guts +5\nIntelligence +5", "Power +10"),
@@ -20,6 +21,11 @@ class CharacterData {
 				"テイオー、ウマドルになる！？" to arrayListOf("Power +10", "Speed +10"),
 				"ダンスレッスン" to arrayListOf("Stamina +10", "Power +10"),
 				"新年の抱負" to arrayListOf("Guts +10", "Energy +20", "Skill points +20"),
+				
+				// Anime Collab
+				"ネバー･ギブ･アップ･ワガハイ！" to arrayListOf("Stamina +15\nGuts +5\n(random) Get Good Practice ○ status", "Power +5\nIntelligence +15\n(random) Get Good Practice ○ status"),
+				"好敵手と書いて友と呼ぶ！" to arrayListOf("スタミナキープ hint +2", "Speed +10\nSkill points +15"),
+				"ワガハイがテイオー先輩だ！" to arrayListOf("コーナー加速○ hint +2", "Intelligence +10\nSkill points +15")
 			),
 			"Daiwa Scarlet" to mapOf(
 				"1番は見逃せない！" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Speed -5\nPower +5\nGet Overweight status"),
@@ -85,6 +91,29 @@ class CharacterData {
 				"気になる隣の晩ご飯！" to arrayListOf("Speed +10", "Guts +10"),
 				"ダンスレッスン" to arrayListOf("Power +10", "Speed +10"),
 				"新年の抱負" to arrayListOf("Power +10", "Energy +20", "Skill points +20"),
+			),
+			"Mejiro McQueen" to mapOf(
+				// Original
+				"レース場グルメの誘惑" to arrayListOf("Energy +30\nStamina +10\nSkill points +10\n(random) Speed -5\nPower +5\nGet Overweight status", "Guts +15\nSkill points +5"),
+				"孤島の女王" to arrayListOf("Speed +10", "Stamina +10"),
+				"エキサイティングお嬢様" to arrayListOf("Guts +10", "Power +10"),
+				"覚悟と使命の証" to arrayListOf("Speed +10\nIntelligence +10", "Power +20"),
+				"ご令嬢の風格" to arrayListOf("Stamina +10\nPower +10\n(random) Get Good Practice ○ status", "Intelligence +20\n(random) Get Good Practice ○ status"),
+				"掘り出し物" to arrayListOf("Speed +10", "Guts +10"),
+				"ラーメン3杯分の誘惑" to arrayListOf("Skill points +30", "Speed +5\nStamina +5"),
+				"銀幕の2人" to arrayListOf("Stamina +10", "Intelligence +5\nSkill points +15"),
+				"栗祭り襲来！" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Speed -5\nPower +5\nGet Overweight status"),
+				"その名はホヤ！" to arrayListOf("Skill points +30", "Stamina +10"),
+				"思い出クッキング" to arrayListOf("Energy +15", "先駆け hint +1"),
+				"果てなき王国" to arrayListOf("Stamina +10", "Intelligence +10", "Speed +5\nPower +5"),
+				"夜中のファンサ特訓" to arrayListOf("Guts +20", "Speed +20"),
+				"ダンスレッスン" to arrayListOf("Stamina +10", "Intelligence +10"),
+				"新年の抱負" to arrayListOf("Stamina +10", "Energy +20", "Skill points +20"),
+				
+				// Anime Collab
+				"メジロ家のあの子たち~難しい選択~" to arrayListOf("Speed +10\nPower +10", "Stamina +7\nGuts +7\nIntelligence +7"),
+				"同室のあの子~そうだと思いましたわ~" to arrayListOf("ウマ込み冷静 hint +2", "Stamina +10\nSkill points +15"),
+				"ライバルのあの子~どんな舞台でも~" to arrayListOf("ポジションセンス hint +2\n(random) Get Rising Star status", "Intelligence +10\nSkill points +15\n(random) Get Rising Star status")
 			),
 			// Shared, as in these options are all the exact same with the same results for all characters.
 			"Shared" to mapOf(
