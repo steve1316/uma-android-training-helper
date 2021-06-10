@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit
 class Game(private val myContext: Context) {
 	private val TAG: String = "UATH_Game"
 	
-	private var debugMode: Boolean = SettingsFragment.getBooleanSharedPreference(myContext, "debugMode")
+	private var hideResults: Boolean = SettingsFragment.getBooleanSharedPreference(myContext, "hideResults")
 	
 	private val imageUtils: ImageUtils = ImageUtils(myContext, this)
 	

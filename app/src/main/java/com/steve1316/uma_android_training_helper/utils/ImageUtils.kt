@@ -24,8 +24,6 @@ class ImageUtils(context: Context, private val game: Game) {
 	
 	private val matchMethod: Int = Imgproc.TM_CCOEFF_NORMED
 	
-	private var debugMode: Boolean = false
-	
 	companion object {
 		private var matchFilePath: String = ""
 		private lateinit var matchLocation: Point
@@ -44,9 +42,6 @@ class ImageUtils(context: Context, private val game: Game) {
 		// Set the file path to the /files/temp/ folder.
 		val matchFilePath: String = myContext.getExternalFilesDir(null)?.absolutePath + "/temp"
 		updateMatchFilePath(matchFilePath)
-		
-		// Now determine if Debug Mode is turned on for more informational logging messages.
-		debugMode = SettingsFragment.getBooleanSharedPreference(myContext, "debugMode")
 	}
 	
 	/**
@@ -93,21 +88,9 @@ class ImageUtils(context: Context, private val game: Game) {
 		if ((matchMethod == Imgproc.TM_SQDIFF || matchMethod == Imgproc.TM_SQDIFF_NORMED) && mmr.minVal <= 0.2) {
 			matchLocation = mmr.minLoc
 			matchCheck = true
-			
-			if (debugMode) {
-				game.printToLog("[DEBUG] Match found with similarity <= 0.2 at Point $matchLocation with minVal = ${mmr.minVal}.", MESSAGE_TAG = TAG)
-			}
 		} else if ((matchMethod != Imgproc.TM_SQDIFF && matchMethod != Imgproc.TM_SQDIFF_NORMED) && mmr.maxVal >= 0.8) {
 			matchLocation = mmr.maxLoc
 			matchCheck = true
-			
-			if (debugMode) {
-				game.printToLog("[DEBUG] Match found with similarity >= 0.8 at Point $matchLocation with maxVal = ${mmr.maxVal}.", MESSAGE_TAG = TAG)
-			}
-		} else {
-			if (debugMode) {
-				game.printToLog("[DEBUG] Match not found.", MESSAGE_TAG = TAG)
-			}
 		}
 		
 		if (matchCheck) {
@@ -155,9 +138,7 @@ class ImageUtils(context: Context, private val game: Game) {
 		return if (templateBitmap != null) {
 			Pair(sourceBitmap, templateBitmap)
 		} else {
-			if (debugMode) {
-				game.printToLog("[ERROR] One or more of the Bitmaps are null.", MESSAGE_TAG = TAG, isError = true)
-			}
+			game.printToLog("[ERROR] One or more of the Bitmaps are null.", MESSAGE_TAG = TAG, isError = true)
 			
 			Pair(sourceBitmap, templateBitmap)
 		}
@@ -174,9 +155,9 @@ class ImageUtils(context: Context, private val game: Game) {
 		initTesseract()
 		val tessBaseAPI = TessBaseAPI()
 		tessBaseAPI.init(myContext.getExternalFilesDir(null)?.absolutePath + "/tesseract/", "jpn")
-		game.printToLog("[INFO] JPN Training file loaded.", MESSAGE_TAG = TAG)
+		game.printToLog("[INFO] JPN Training file loaded.\n", MESSAGE_TAG = TAG)
 		
-		var cvImage = Imgcodecs.imread("${matchFilePath}/source.jpg", Imgcodecs.IMREAD_GRAYSCALE)
+		var cvImage = Imgcodecs.imread("${matchFilePath}/source.png", Imgcodecs.IMREAD_GRAYSCALE)
 		
 		// Now see if it is necessary to shift the cropped region over by 70 pixels or not to account for certain events.
 		if (match(croppedBitmap, templateBitmap!!)) {
@@ -190,9 +171,7 @@ class ImageUtils(context: Context, private val game: Game) {
 		Imgproc.threshold(cvImage, bwImage, 220.0, 255.0, Imgproc.THRESH_BINARY)
 		Imgcodecs.imwrite("$matchFilePath/RESULT.png", bwImage)
 		
-		if (debugMode) {
-			game.printToLog("[INFO] Saved result image successfully.", MESSAGE_TAG = TAG)
-		}
+		game.printToLog("[INFO] Saved result image successfully named RESULT.png to internal storage inside the /files/temp/ folder.\n", MESSAGE_TAG = TAG)
 		
 		val resultBitmap = BitmapFactory.decodeFile("$matchFilePath/RESULT.png")
 		tessBaseAPI.setImage(resultBitmap)
@@ -226,12 +205,12 @@ class ImageUtils(context: Context, private val game: Game) {
 			val successfullyCreated: Boolean = newTempDirectory.mkdirs()
 			
 			// If the folder was not able to be created for some reason, log the error and stop the MediaProjection Service.
-			if (!successfullyCreated && debugMode) {
+			if (!successfullyCreated) {
 				game.printToLog("[ERROR] Failed to create the /files/tesseract/tessdata/ folder.", MESSAGE_TAG = TAG, isError = true)
-			} else if (debugMode) {
+			} else {
 				game.printToLog("[INFO] Successfully created /files/tesseract/tessdata/ folder.", MESSAGE_TAG = TAG)
 			}
-		} else if (debugMode) {
+		} else {
 			game.printToLog("[INFO] /files/tesseract/tessdata/ folder already exists.", MESSAGE_TAG = TAG)
 		}
 		
