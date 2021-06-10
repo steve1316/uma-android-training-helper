@@ -58,14 +58,18 @@ class HomeFragment : Fragment() {
 		
 		val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 		val character = sharedPreferences.getString("character", "")
-		val supportRList = sharedPreferences.getString("supportRList", "")?.split("|")
-		val supportSRList = sharedPreferences.getString("supportSRList", "")?.split("|")
-		val supportSSRList = sharedPreferences.getString("supportSSRList", "")?.split("|")
+		val supportList = sharedPreferences.getString("supportList", "")?.split("|")
 		val threshold = sharedPreferences.getInt("threshold", 230)
 		val hideResults = sharedPreferences.getBoolean("hideResults", false)
+		val selectAllSupportCards = sharedPreferences.getBoolean("selectAllSupportCards", false)
 		
-		settingsStatusTextView.text = "Character Selected: $character\n\nR Support(s) Selected: $supportRList\n\nSR Support(s) Selected: $supportSRList\n\nSSR Support(s) Selected: " +
-				"$supportSSRList\n\nThreshold Value: $threshold\n\nHide String Comparison Results: $hideResults"
+		if (selectAllSupportCards) {
+			settingsStatusTextView.text = "Character Selected: $character\n\nSupport(s) Selected: All Support Cards Selected\n\nThreshold Value: $threshold\n\nHide String Comparison " +
+					"Results: $hideResults"
+		} else {
+			settingsStatusTextView.text = "Character Selected: $character\n\nSupport(s) Selected: $supportList\n\nThreshold Value: $threshold\n\nHide String Comparison Results: $hideResults"
+		}
+		
 		
 		// Enable the start button if the required settings have been set.
 		if ((character != null && character.isNotEmpty())) {
