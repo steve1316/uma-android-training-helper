@@ -19,6 +19,7 @@ class Game(private val myContext: Context) {
 	private val TAG: String = "UATH_Game"
 	
 	private var hideResults: Boolean = SettingsFragment.getBooleanSharedPreference(myContext, "hideResults")
+	private var selectAllSupportCards: Boolean = SettingsFragment.getBooleanSharedPreference(myContext, "selectAllSupportCards")
 	
 	private val imageUtils: ImageUtils = ImageUtils(myContext, this)
 	
@@ -36,9 +37,7 @@ class Game(private val myContext: Context) {
 	private val notificationTextArray = arrayListOf<String>()
 	
 	private val character = SettingsFragment.getStringSharedPreference(myContext, "character")
-	private val rSupportCards: List<String> = SettingsFragment.getStringSharedPreference(myContext, "supportRList").split("|")
-	private val srSupportCards: List<String> = SettingsFragment.getStringSharedPreference(myContext, "supportSRList").split("|")
-	private val ssrSupportCards: List<String> = SettingsFragment.getStringSharedPreference(myContext, "supportSSRList").split("|")
+	private val supportCards: List<String> = SettingsFragment.getStringSharedPreference(myContext, "supportList").split("|")
 	
 	/**
 	 * Returns a formatted string of the elapsed time since the bot started as HH:MM:SS format.
@@ -144,53 +143,38 @@ class Game(private val myContext: Context) {
 		}
 		
 		// Finally, do the same with the user-selected Support Cards.
-		rSupportCards.forEach { supportCardName ->
-			SupportData.R[supportCardName]?.forEach { (eventName, eventOptions) ->
-				val score = service.score(result, eventName)
-				if (!hideResults) {
-					printToLog("[R-SUPPORT] $supportCardName \"${result}\" vs. \"${eventName}\" confidence: $score")
-				}
-				
-				if (score > confidence) {
-					confidence = score
-					eventTitle = eventName
-					supportCardTitle = supportCardName
-					eventOptionRewards = eventOptions
-					category = "support-r"
-				}
-			}
-		}
-		
-		srSupportCards.forEach { supportCardName ->
-			SupportData.SR[supportCardName]?.forEach { (eventName, eventOptions) ->
-				val score = service.score(result, eventName)
-				if (!hideResults) {
-					printToLog("[SR-SUPPORT] $supportCardName \"${result}\" vs. \"${eventName}\" confidence: $score")
-				}
-				
-				if (score > confidence) {
-					confidence = score
-					eventTitle = eventName
-					supportCardTitle = supportCardName
-					eventOptionRewards = eventOptions
-					category = "support-sr"
+		if (!selectAllSupportCards) {
+			supportCards.forEach { supportCardName ->
+				SupportData.supports[supportCardName]?.forEach { (eventName, eventOptions) ->
+					val score = service.score(result, eventName)
+					if (!hideResults) {
+						printToLog("[SUPPORT] $supportCardName \"${result}\" vs. \"${eventName}\" confidence: $score")
+					}
+					
+					if (score > confidence) {
+						confidence = score
+						eventTitle = eventName
+						supportCardTitle = supportCardName
+						eventOptionRewards = eventOptions
+						category = "support"
+					}
 				}
 			}
-		}
-		
-		ssrSupportCards.forEach { supportCardName ->
-			SupportData.SSR[supportCardName]?.forEach { (eventName, eventOptions) ->
-				val score = service.score(result, eventName)
-				if (!hideResults) {
-					printToLog("[SSR-SUPPORT] $supportCardName \"${result}\" vs. \"${eventName}\" confidence: $score")
-				}
-				
-				if (score > confidence) {
-					confidence = score
-					eventTitle = eventName
-					supportCardTitle = supportCardName
-					eventOptionRewards = eventOptions
-					category = "support-ssr"
+		} else {
+			SupportData.supports.forEach { (supportName, support) ->
+				support.forEach { (eventName, eventOptions) ->
+					val score = service.score(result, eventName)
+					if (!hideResults) {
+						printToLog("[SUPPORT] $supportName \"${result}\" vs. \"${eventName}\" confidence: $score")
+					}
+					
+					if (score > confidence) {
+						confidence = score
+						eventTitle = eventName
+						supportCardTitle = supportName
+						eventOptionRewards = eventOptions
+						category = "support"
+					}
 				}
 			}
 		}
@@ -293,14 +277,8 @@ class Game(private val myContext: Context) {
 			"character-shared" -> {
 				printToLog("\n[RESULT] Character $character Shared Event Name = $eventTitle with confidence = $confidence")
 			}
-			"support-r" -> {
-				printToLog("\n[RESULT] R Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
-			}
-			"support-sr" -> {
-				printToLog("\n[RESULT] SR Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
-			}
-			"support-ssr" -> {
-				printToLog("\n[RESULT] SSR Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
+			"support" -> {
+				printToLog("\n[RESULT] Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
 			}
 		}
 		
