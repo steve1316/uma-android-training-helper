@@ -60,7 +60,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		 */
 		fun getIntSharedPreference(context: Context, key: String): Int {
 			val sharedPreferences: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
-			return sharedPreferences.getInt(key, 0)
+			return sharedPreferences.getInt(key, 230)
 		}
 		
 		/**
@@ -79,7 +79,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
 	// This listener is triggered whenever the user changes a Preference setting in the Settings Page.
 	private val onSharedPreferenceChangeListener = SharedPreferences.OnSharedPreferenceChangeListener { sharedPreferences, key ->
 		val characterPicker: ListPreference = findPreference("characterPicker")!!
-		val debugModeCheckBox: CheckBoxPreference = findPreference("debugModeCheckBox")!!
+		val hideResultsCheckBox: CheckBoxPreference = findPreference("hideResultsCheckBox")!!
+		val thresholdSeekBar: SeekBarPreference = findPreference("thresholdSeekBar")!!
 		
 		if (key != null) {
 			// Note that is no need to handle the Preference that allows multiple selection here as it is already handled in its own function.
@@ -90,9 +91,15 @@ class SettingsFragment : PreferenceFragmentCompat() {
 						commit()
 					}
 				}
-				"debugModeCheckBox" -> {
+				"hideResultsCheckBox" -> {
 					sharedPreferences.edit {
-						putBoolean("debugMode", debugModeCheckBox.isChecked)
+						putBoolean("hideResults", hideResultsCheckBox.isChecked)
+						commit()
+					}
+				}
+				"thresholdSeekBar" -> {
+					sharedPreferences.edit {
+						putInt("threshold", thresholdSeekBar.value)
 						commit()
 					}
 				}
@@ -122,11 +129,13 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		
 		// Grab the saved preferences from the previous time the user used the app.
 		val character = sharedPreferences.getString("character", "")
-		val debugMode = sharedPreferences.getBoolean("debugMode", false)
+		val threshold = sharedPreferences.getInt("threshold", 230)
+		val hideResults = sharedPreferences.getBoolean("hideResults", false)
 		
 		// Get references to the Preference components.
 		val characterPicker: ListPreference = findPreference("characterPicker")!!
-		val debugModeCheckBox: CheckBoxPreference = findPreference("debugModeCheckBox")!!
+		val thresholdSeekBar: SeekBarPreference = findPreference("thresholdSeekBar")!!
+		val hideResultsCheckBox: CheckBoxPreference = findPreference("hideResultsCheckBox")!!
 		
 		// Now set the following values from the shared preferences. Work downwards through the Preferences and make the next ones enabled to direct user's attention as they go through the settings
 		// down the page.
@@ -140,7 +149,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		createSupportCardPicker("SR")
 		createSupportCardPicker("SSR")
 		
-		debugModeCheckBox.isChecked = debugMode
+		thresholdSeekBar.value = threshold
+		
+		hideResultsCheckBox.isChecked = hideResults
 		
 		Log.d(TAG, "Preferences created successfully.")
 	}
