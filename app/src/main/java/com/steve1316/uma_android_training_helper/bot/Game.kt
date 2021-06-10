@@ -24,6 +24,22 @@ class Game(private val myContext: Context) {
 	
 	private val startTime: Long = System.currentTimeMillis()
 	
+	private var result = ""
+	private var confidence = 0.0
+	private var category = ""
+	private var eventTitle = ""
+	private var supportCardTitle = ""
+	private var eventOptionRewards: ArrayList<String> = arrayListOf()
+	private var eventOptionNumber = 1
+	private var firstLine = true
+	private var notificationTextBody: String = ""
+	private val notificationTextArray = arrayListOf<String>()
+	
+	private val character = SettingsFragment.getStringSharedPreference(myContext, "character")
+	private val rSupportCards: List<String> = SettingsFragment.getStringSharedPreference(myContext, "supportRList").split("|")
+	private val srSupportCards: List<String> = SettingsFragment.getStringSharedPreference(myContext, "supportSRList").split("|")
+	private val ssrSupportCards: List<String> = SettingsFragment.getStringSharedPreference(myContext, "supportSSRList").split("|")
+	
 	/**
 	 * Returns a formatted string of the elapsed time since the bot started as HH:MM:SS format.
 	 *
@@ -75,43 +91,29 @@ class Game(private val myContext: Context) {
 	}
 	
 	/**
-	 * Bot will begin automation here.
-	 *
-	 * @return True if all automation goals have been met. False otherwise.
+	 * Fix incorrect characters determined by OCR by replacing them with their Japanese equivalents.
 	 */
-	fun start(): Boolean {
-		var confidence = 0.0
-		var category = ""
-		var eventTitle = ""
-		var supportCardTitle = ""
-		var eventOptionRewards: ArrayList<String> = arrayListOf()
-		var eventOptionNumber = 1
-		var firstLine = true
-		val notificationTextBody: String
-		val notificationTextArray = arrayListOf<String>()
+	private fun fixIncorrectCharacters() {
+		printToLog("\n[INFO] Now attempting to fix incorrect characters in: $result")
 		
-		val character = SettingsFragment.getStringSharedPreference(myContext, "character")
-		val rSupportCards: List<String> = SettingsFragment.getStringSharedPreference(myContext, "supportRList").split("|")
-		val srSupportCards: List<String> = SettingsFragment.getStringSharedPreference(myContext, "supportSRList").split("|")
-		val ssrSupportCards: List<String> = SettingsFragment.getStringSharedPreference(myContext, "supportSSRList").split("|")
-		
-		// Perform Tesseract OCR detection.
-		var result = imageUtils.findText()
-		if (result.isEmpty() || result == "empty!") {
-			return false
-		}
-		
-		// Make some minor improvements by replacing certain incorrect characters with their Japanese equivalents.
 		if (result.last() == '/') {
 			result = result.replace("/", "！")
 		}
-		result = result.replace("(", "（")
-		result = result.replace(")", "）")
 		
-		// Use the Jaro Winkler algorithm to compare similarities the ocr detected string and the rest of the strings.
+		result = result.replace("(", "（").replace(")", "）")
+		printToLog("[INFO] Finished attempting to fix incorrect characters: $result")
+	}
+	
+	/**
+	 * Attempt to find the most similar string from data compared to the string returned by OCR.
+	 */
+	private fun findMostSimilarString() {
+		printToLog("\n[INFO] Now starting process to find most similar string to: $result\n")
+		
+		// Use the Jaro Winkler algorithm to compare similarities the OCR detected string and the rest of the strings inside the data classes.
 		val service = StringSimilarityServiceImpl(JaroWinklerStrategy())
 		
-		// Attempt to find the most similar string to the resulting string from OCR detection starting with the Character-specific events.
+		// Attempt to find the most similar string inside the data classes starting with the Character-specific events.
 		CharacterData.characters[character]?.forEach { (eventName, eventOptions) ->
 			val score = service.score(result, eventName)
 			if (!hideResults) {
@@ -193,24 +195,13 @@ class Game(private val myContext: Context) {
 			}
 		}
 		
-		when (category) {
-			"character" -> {
-				printToLog("\n[RESULT] Character $character Event Name = $eventTitle with confidence = $confidence")
-			}
-			"character-shared" -> {
-				printToLog("\n[RESULT] Character $character Shared Event Name = $eventTitle with confidence = $confidence")
-			}
-			"support-r" -> {
-				printToLog("\n[RESULT] R Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
-			}
-			"support-sr" -> {
-				printToLog("\n[RESULT] SR Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
-			}
-			"support-ssr" -> {
-				printToLog("\n[RESULT] SSR Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
-			}
-		}
-		
+		printToLog("\n[INFO] Finished process to find similar string.")
+	}
+	
+	/**
+	 * Construct the result's text body and then display it as a Notification.
+	 */
+	private fun constructNotification() {
 		// Now construct the text body for the Notification.
 		if (confidence > 0.6) {
 			// Process the resulting string from the acquired information.
@@ -275,6 +266,46 @@ class Game(private val myContext: Context) {
 			NotificationUtils.updateNotification(
 				myContext, "OCR Failed", "Sorry, either Tesseract failed to detect text or the detected text is below the required confidence minimum.", confidence)
 		}
+	}
+	
+	/**
+	 * Bot will begin automation here.
+	 *
+	 * @return True if all automation goals have been met. False otherwise.
+	 */
+	fun start(): Boolean {
+		// Perform Tesseract OCR detection.
+		result = imageUtils.findText()
+		if (result.isEmpty() || result == "empty!") {
+			return false
+		}
+		
+		// Make some minor improvements by replacing certain incorrect characters with their Japanese equivalents.
+		fixIncorrectCharacters()
+		
+		// Now attempt to find the most similar string compared to the one from OCR.
+		findMostSimilarString()
+		
+		when (category) {
+			"character" -> {
+				printToLog("\n[RESULT] Character $character Event Name = $eventTitle with confidence = $confidence")
+			}
+			"character-shared" -> {
+				printToLog("\n[RESULT] Character $character Shared Event Name = $eventTitle with confidence = $confidence")
+			}
+			"support-r" -> {
+				printToLog("\n[RESULT] R Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
+			}
+			"support-sr" -> {
+				printToLog("\n[RESULT] SR Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
+			}
+			"support-ssr" -> {
+				printToLog("\n[RESULT] SSR Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
+			}
+		}
+		
+		// Now construct and display the Notification containing the results from OCR, whether it was successful or not.
+		constructNotification()
 		
 		return true
 	}
