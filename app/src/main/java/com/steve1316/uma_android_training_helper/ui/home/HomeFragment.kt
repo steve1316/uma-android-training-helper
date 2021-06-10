@@ -61,10 +61,11 @@ class HomeFragment : Fragment() {
 		val supportRList = sharedPreferences.getString("supportRList", "")?.split("|")
 		val supportSRList = sharedPreferences.getString("supportSRList", "")?.split("|")
 		val supportSSRList = sharedPreferences.getString("supportSSRList", "")?.split("|")
-		val debugMode = sharedPreferences.getBoolean("debugMode", false)
+		val threshold = sharedPreferences.getInt("threshold", 230)
+		val hideResults = sharedPreferences.getBoolean("hideResults", false)
 		
 		settingsStatusTextView.text = "Character Selected: $character\n\nR Support(s) Selected: $supportRList\n\nSR Support(s) Selected: $supportSRList\n\nSSR Support(s) Selected: " +
-				"$supportSSRList\n\nDebug Mode: $debugMode"
+				"$supportSSRList\n\nThreshold Value: $threshold\n\nHide String Comparison Results: $hideResults"
 		
 		// Enable the start button if the required settings have been set.
 		if ((character != null && character.isNotEmpty())) {

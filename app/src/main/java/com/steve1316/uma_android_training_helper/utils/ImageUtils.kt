@@ -168,7 +168,8 @@ class ImageUtils(context: Context, private val game: Game) {
 		
 		// Thresh the grayscale cropped image to make black and white.
 		val bwImage = Mat()
-		Imgproc.threshold(cvImage, bwImage, 220.0, 255.0, Imgproc.THRESH_BINARY)
+		val threshold = SettingsFragment.getIntSharedPreference(myContext, "threshold")
+		Imgproc.threshold(cvImage, bwImage, threshold.toDouble(), 255.0, Imgproc.THRESH_BINARY)
 		Imgcodecs.imwrite("$matchFilePath/RESULT.png", bwImage)
 		
 		game.printToLog("[INFO] Saved result image successfully named RESULT.png to internal storage inside the /files/temp/ folder.\n", MESSAGE_TAG = TAG)
