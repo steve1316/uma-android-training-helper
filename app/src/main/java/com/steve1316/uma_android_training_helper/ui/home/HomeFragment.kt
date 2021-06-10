@@ -62,12 +62,14 @@ class HomeFragment : Fragment() {
 		val threshold = sharedPreferences.getInt("threshold", 230)
 		val hideResults = sharedPreferences.getBoolean("hideResults", false)
 		val selectAllSupportCards = sharedPreferences.getBoolean("selectAllSupportCards", false)
+		val enableIncrementalThreshold = sharedPreferences.getBoolean("enableIncrementalThreshold", false)
 		
 		if (selectAllSupportCards) {
 			settingsStatusTextView.text = "Character Selected: $character\n\nSupport(s) Selected: All Support Cards Selected\n\nThreshold Value: $threshold\n\nHide String Comparison " +
-					"Results: $hideResults"
+					"Results: $hideResults\n\nEnabled Automatic Retry: $enableIncrementalThreshold"
 		} else {
-			settingsStatusTextView.text = "Character Selected: $character\n\nSupport(s) Selected: $supportList\n\nThreshold Value: $threshold\n\nHide String Comparison Results: $hideResults"
+			settingsStatusTextView.text = "Character Selected: $character\n\nSupport(s) Selected: $supportList\n\nThreshold Value: $threshold\n\nHide String Comparison Results: $hideResults" +
+					"\n\nEnabled Automatic Retry: $enableIncrementalThreshold"
 		}
 		
 		

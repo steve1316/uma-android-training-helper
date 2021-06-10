@@ -24,6 +24,8 @@ class ImageUtils(context: Context, private val game: Game) {
 	
 	private val matchMethod: Int = Imgproc.TM_CCOEFF_NORMED
 	
+	private val tessBaseAPI: TessBaseAPI
+	
 	companion object {
 		private var matchFilePath: String = ""
 		private lateinit var matchLocation: Point
@@ -42,6 +44,10 @@ class ImageUtils(context: Context, private val game: Game) {
 		// Set the file path to the /files/temp/ folder.
 		val matchFilePath: String = myContext.getExternalFilesDir(null)?.absolutePath + "/temp"
 		updateMatchFilePath(matchFilePath)
+		
+		// Initialize Tesseract with the jpn.traineddata model.
+		initTesseract()
+		tessBaseAPI = TessBaseAPI()
 	}
 	
 	/**
@@ -147,13 +153,10 @@ class ImageUtils(context: Context, private val game: Game) {
 	/**
 	 * Perform OCR text detection using Tesseract along with some image manipulation using OpenCV.
 	 */
-	fun findText(): String {
+	fun findText(increment: Double): String {
 		val (sourceBitmap, templateBitmap) = getBitmaps("shift", "images")
 		val croppedBitmap = Bitmap.createBitmap(sourceBitmap!!, 165, 435, 645, 65)
 		
-		// Initialize Tesseract with the jpn.traineddata model.
-		initTesseract()
-		val tessBaseAPI = TessBaseAPI()
 		tessBaseAPI.init(myContext.getExternalFilesDir(null)?.absolutePath + "/tesseract/", "jpn")
 		game.printToLog("[INFO] JPN Training file loaded.\n", MESSAGE_TAG = TAG)
 		
@@ -169,7 +172,7 @@ class ImageUtils(context: Context, private val game: Game) {
 		// Thresh the grayscale cropped image to make black and white.
 		val bwImage = Mat()
 		val threshold = SettingsFragment.getIntSharedPreference(myContext, "threshold")
-		Imgproc.threshold(cvImage, bwImage, threshold.toDouble(), 255.0, Imgproc.THRESH_BINARY)
+		Imgproc.threshold(cvImage, bwImage, threshold.toDouble() + increment, 255.0, Imgproc.THRESH_BINARY)
 		Imgcodecs.imwrite("$matchFilePath/RESULT.png", bwImage)
 		
 		game.printToLog("[INFO] Saved result image successfully named RESULT.png to internal storage inside the /files/temp/ folder.\n", MESSAGE_TAG = TAG)

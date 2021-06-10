@@ -185,7 +185,7 @@ class Game(private val myContext: Context) {
 	/**
 	 * Construct the result's text body and then display it as a Notification.
 	 */
-	private fun constructNotification() {
+	private fun constructNotification(): Boolean {
 		// Now construct the text body for the Notification.
 		if (confidence > 0.6) {
 			// Process the resulting string from the acquired information.
@@ -244,11 +244,10 @@ class Game(private val myContext: Context) {
 			
 			// Display the information to the user as a newly updated Notification.
 			NotificationUtils.updateNotification(myContext, eventTitle, notificationTextBody, confidence)
+			return true
 		} else {
-			printToLog("\n[ERROR] Confidence of $confidence failed to be greater than the minimum of 0.60 so OCR failed.")
-			
-			NotificationUtils.updateNotification(
-				myContext, "OCR Failed", "Sorry, either Tesseract failed to detect text or the detected text is below the required confidence minimum.", confidence)
+			printToLog("\n[ERROR] Confidence of $confidence failed to be greater than the minimum of 0.60 so OCR failed.", isError = true)
+			return false
 		}
 	}
 	
@@ -258,32 +257,57 @@ class Game(private val myContext: Context) {
 	 * @return True if all automation goals have been met. False otherwise.
 	 */
 	fun start(): Boolean {
-		// Perform Tesseract OCR detection.
-		result = imageUtils.findText()
-		if (result.isEmpty() || result == "empty!") {
-			return false
+		val threshold = SettingsFragment.getIntSharedPreference(myContext, "threshold").toDouble()
+		val enableIncrementalThreshold = SettingsFragment.getBooleanSharedPreference(myContext, "enableIncrementalThreshold")
+		var increment = 0.0
+		var flag = false
+		
+		while (!flag) {
+			// Perform Tesseract OCR detection.
+			if ((255.0 - threshold - increment > 0.0)) {
+				result = imageUtils.findText(increment)
+			} else {
+				break
+			}
+			
+			if (result.isEmpty() || result == "empty!") {
+				return false
+			}
+			
+			// Make some minor improvements by replacing certain incorrect characters with their Japanese equivalents.
+			fixIncorrectCharacters()
+			
+			// Now attempt to find the most similar string compared to the one from OCR.
+			findMostSimilarString()
+			
+			when (category) {
+				"character" -> {
+					printToLog("\n[RESULT] Character $character Event Name = $eventTitle with confidence = $confidence")
+				}
+				"character-shared" -> {
+					printToLog("\n[RESULT] Character $character Shared Event Name = $eventTitle with confidence = $confidence")
+				}
+				"support" -> {
+					printToLog("\n[RESULT] Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
+				}
+			}
+			
+			// Now construct and display the Notification containing the results from OCR, whether it was successful or not.
+			flag = constructNotification()
+			if (!flag && enableIncrementalThreshold) {
+				increment += 5.0
+			} else {
+				break
+			}
 		}
 		
-		// Make some minor improvements by replacing certain incorrect characters with their Japanese equivalents.
-		fixIncorrectCharacters()
-		
-		// Now attempt to find the most similar string compared to the one from OCR.
-		findMostSimilarString()
-		
-		when (category) {
-			"character" -> {
-				printToLog("\n[RESULT] Character $character Event Name = $eventTitle with confidence = $confidence")
-			}
-			"character-shared" -> {
-				printToLog("\n[RESULT] Character $character Shared Event Name = $eventTitle with confidence = $confidence")
-			}
-			"support" -> {
-				printToLog("\n[RESULT] Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
-			}
+		if (!flag) {
+			NotificationUtils.updateNotification(myContext, "OCR Failed", "Sorry, either this text is not in data yet or acquired confidence was less than the minimum.", confidence)
 		}
 		
-		// Now construct and display the Notification containing the results from OCR, whether it was successful or not.
-		constructNotification()
+		if (enableIncrementalThreshold) {
+			printToLog("\n[RESULT] Threshold incremented by $increment")
+		}
 		
 		return true
 	}

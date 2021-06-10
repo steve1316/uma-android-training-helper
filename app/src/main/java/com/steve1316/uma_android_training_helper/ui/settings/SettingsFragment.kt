@@ -64,6 +64,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		val hideResultsCheckBox: CheckBoxPreference = findPreference("hideResultsCheckBox")!!
 		val thresholdSeekBar: SeekBarPreference = findPreference("thresholdSeekBar")!!
 		val selectAllCheckBox: CheckBoxPreference = findPreference("selectAllCheckBox")!!
+		val enableIncrementalThresholdCheckBox: CheckBoxPreference = findPreference("enableIncrementalThresholdCheckBox")!!
 		
 		if (key != null) {
 			// Note that is no need to handle the Preference that allows multiple selection here as it is already handled in its own function.
@@ -112,6 +113,12 @@ class SettingsFragment : PreferenceFragmentCompat() {
 						apply()
 					}
 				}
+				"enableIncrementalThresholdCheckBox" -> {
+					sharedPreferences.edit {
+						putBoolean("enableIncrementalThreshold", enableIncrementalThresholdCheckBox.isChecked)
+						commit()
+					}
+				}
 			}
 		}
 	}
@@ -141,6 +148,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		val threshold = sharedPreferences.getInt("threshold", 230)
 		val hideResults = sharedPreferences.getBoolean("hideResults", false)
 		val selectAllSupportCards = sharedPreferences.getBoolean("selectAllSupportCards", false)
+		val enableIncrementalThreshold = sharedPreferences.getBoolean("enableIncrementalThreshold", false)
 		
 		// Get references to the Preference components.
 		val characterPicker: ListPreference = findPreference("characterPicker")!!
@@ -148,6 +156,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		val thresholdSeekBar: SeekBarPreference = findPreference("thresholdSeekBar")!!
 		val hideResultsCheckBox: CheckBoxPreference = findPreference("hideResultsCheckBox")!!
 		val selectAllCheckBox: CheckBoxPreference = findPreference("selectAllCheckBox")!!
+		val enableIncrementalThresholdCheckBox: CheckBoxPreference = findPreference("enableIncrementalThresholdCheckBox")!!
 		
 		// Now set the following values from the shared preferences.
 		
@@ -168,6 +177,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		
 		hideResultsCheckBox.isChecked = hideResults
 		selectAllCheckBox.isChecked = selectAllSupportCards
+		enableIncrementalThresholdCheckBox.isChecked = enableIncrementalThreshold
 		
 		Log.d(TAG, "Preferences created successfully.")
 	}
