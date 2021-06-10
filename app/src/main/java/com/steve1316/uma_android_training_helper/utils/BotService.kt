@@ -103,8 +103,8 @@ class BotService : Service() {
 					if (elapsedTime < 100L) {
 						// Update both the Notification and the overlay button to reflect the current bot status.
 						if (!isRunning) {
-							Log.d(TAG, "Service for Uma Android Translator is now running.")
-							Toast.makeText(myContext, "Service for Uma Android Translator is now running.", Toast.LENGTH_SHORT).show()
+							Log.d(TAG, "Service for Uma Android Training Helper is now running.")
+							Toast.makeText(myContext, "Service for Uma Android Training Helper is now running.", Toast.LENGTH_SHORT).show()
 							isRunning = true
 							overlayButton.setImageResource(R.drawable.ic_baseline_stop_circle_24)
 							
@@ -124,11 +124,11 @@ class BotService : Service() {
 									sendBroadcast(newIntent)
 									
 									MessageLog.saveLogToFile(myContext)
-									Log.d(TAG, "Service for Uma Android Translator is now stopped.")
+									Log.d(TAG, "Service for Uma Android Training Helper is now stopped.")
 									isRunning = false
 									overlayButton.setImageResource(R.drawable.ic_baseline_play_circle_outline_24)
 								} catch (e: Exception) {
-									game.printToLog("Uma Android Translator encountered an Exception: $e", MESSAGE_TAG = TAG, isError = true)
+									game.printToLog("Uma Android Training Helper encountered an Exception: $e", MESSAGE_TAG = TAG, isError = true)
 									
 									val newIntent = Intent("CUSTOM_INTENT")
 									if (e.toString() == "java.lang.InterruptedException") {
@@ -146,8 +146,8 @@ class BotService : Service() {
 							thread.interrupt()
 							MessageLog.saveLogToFile(myContext)
 							
-							Log.d(TAG, "Service for Uma Android Translator is now stopped.")
-							Toast.makeText(myContext, "Service for Uma Android Translator is now stopped.", Toast.LENGTH_SHORT).show()
+							Log.d(TAG, "Service for Uma Android Training Helper is now stopped.")
+							Toast.makeText(myContext, "Service for Uma Android Training Helper is now stopped.", Toast.LENGTH_SHORT).show()
 							isRunning = false
 							overlayButton.setImageResource(R.drawable.ic_baseline_play_circle_outline_24)
 						}
