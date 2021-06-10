@@ -71,6 +71,14 @@ class Game(private val myContext: Context) {
 	 * @return True if all automation goals have been met. False otherwise.
 	 */
 	fun start(): Boolean {
+		var confidence = 0.0
+		var category = ""
+		var eventTitle = ""
+		var supportCardTitle = ""
+		var eventOptionRewards: ArrayList<String> = arrayListOf()
+		var eventOptionNumber = 1
+		var notificationTextBody = ""
+		
 		val character = SettingsFragment.getStringSharedPreference(myContext, "character")
 		val rSupportCards: List<String> = SettingsFragment.getStringSharedPreference(myContext, "supportRList").split("|")
 		val srSupportCards: List<String> = SettingsFragment.getStringSharedPreference(myContext, "supportSRList").split("|")
@@ -89,68 +97,87 @@ class Game(private val myContext: Context) {
 		result = result.replace("(", "（")
 		result = result.replace(")", "）")
 		
-		var confidence = 0.0
-		var newIndex = ""
-		var type = ""
-		
 		// Use the Jaro Winkler algorithm to compare similarities the ocr detected string and the rest of the strings.
 		val service = StringSimilarityServiceImpl(JaroWinklerStrategy())
 		
 		// Attempt to find the most similar string to the resulting string from OCR detection starting with the Character-specific events.
-		CharacterData.characters[character]?.forEach { (eventName, _) ->
+		CharacterData.characters[character]?.forEach { (eventName, eventOptions) ->
 			val score = service.score(result, eventName)
-			printToLog("[CHARA] $character \"${result}\" vs. \"${eventName}\" confidence: $score")
+			if (!hideResults) {
+				printToLog("[CHARA] $character \"${result}\" vs. \"${eventName}\" confidence: $score")
+			}
+			
 			if (score > confidence) {
 				confidence = score
-				newIndex = eventName
-				type = "character"
+				eventTitle = eventName
+				eventOptionRewards = eventOptions
+				category = "character"
 			}
 		}
 		
 		// Now move on to the Character-shared events.
-		CharacterData.characters["Shared"]?.forEach { (eventName, _) ->
+		CharacterData.characters["Shared"]?.forEach { (eventName, eventOptions) ->
 			val score = service.score(result, eventName)
-			printToLog("[CHARA-SHARED] \"${result}\" vs. \"${eventName}\" confidence: $score")
+			if (!hideResults) {
+				printToLog("[CHARA-SHARED] \"${result}\" vs. \"${eventName}\" confidence: $score")
+			}
+			
 			if (score > confidence) {
 				confidence = score
-				newIndex = eventName
-				type = "character-shared"
+				eventTitle = eventName
+				eventOptionRewards = eventOptions
+				category = "character-shared"
 			}
 		}
 		
 		// Finally, do the same with the user-selected Support Cards.
 		rSupportCards.forEach { supportCardName ->
-			SupportData.R[supportCardName]?.forEach { (eventName, _) ->
+			SupportData.R[supportCardName]?.forEach { (eventName, eventOptions) ->
 				val score = service.score(result, eventName)
-				printToLog("[R-SUPPORT] $supportCardName \"${result}\" vs. \"${eventName}\" confidence: $score")
+				if (!hideResults) {
+					printToLog("[R-SUPPORT] $supportCardName \"${result}\" vs. \"${eventName}\" confidence: $score")
+				}
+				
 				if (score > confidence) {
 					confidence = score
-					newIndex = eventName
-					type = "support-r"
+					eventTitle = eventName
+					supportCardTitle = supportCardName
+					eventOptionRewards = eventOptions
+					category = "support-r"
 				}
 			}
 		}
 		
 		srSupportCards.forEach { supportCardName ->
-			SupportData.SR[supportCardName]?.forEach { (eventName, _) ->
+			SupportData.SR[supportCardName]?.forEach { (eventName, eventOptions) ->
 				val score = service.score(result, eventName)
-				printToLog("[SR-SUPPORT] $supportCardName \"${result}\" vs. \"${eventName}\" confidence: $score")
+				if (!hideResults) {
+					printToLog("[SR-SUPPORT] $supportCardName \"${result}\" vs. \"${eventName}\" confidence: $score")
+				}
+				
 				if (score > confidence) {
 					confidence = score
-					newIndex = eventName
-					type = "support-sr"
+					eventTitle = eventName
+					supportCardTitle = supportCardName
+					eventOptionRewards = eventOptions
+					category = "support-sr"
 				}
 			}
 		}
 		
 		ssrSupportCards.forEach { supportCardName ->
-			SupportData.SSR[supportCardName]?.forEach { (eventName, _) ->
+			SupportData.SSR[supportCardName]?.forEach { (eventName, eventOptions) ->
 				val score = service.score(result, eventName)
-				printToLog("[SSR-SUPPORT] $supportCardName \"${result}\" vs. \"${eventName}\" confidence: $score")
+				if (!hideResults) {
+					printToLog("[SSR-SUPPORT] $supportCardName \"${result}\" vs. \"${eventName}\" confidence: $score")
+				}
+				
 				if (score > confidence) {
 					confidence = score
-					newIndex = eventName
-					type = "support-ssr"
+					eventTitle = eventName
+					supportCardTitle = supportCardName
+					eventOptionRewards = eventOptions
+					category = "support-ssr"
 				}
 			}
 		}
@@ -211,8 +238,10 @@ class Game(private val myContext: Context) {
 			}
 			
 			// Display the information to the user as a newly updated Notification.
-			NotificationUtils.updateNotification(myContext, eventTitle, resultString, confidence)
+			NotificationUtils.updateNotification(myContext, eventTitle, notificationTextBody, confidence)
 		} else {
+			printToLog("\n[ERROR] Confidence of $confidence failed to be greater than the minimum of 0.60 so OCR failed.")
+			
 			NotificationUtils.updateNotification(
 				myContext, "OCR Failed", "Sorry, either Tesseract failed to detect text or the detected text is below the required confidence minimum.", confidence)
 		}
