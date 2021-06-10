@@ -8,7 +8,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.uma_android_translator"
+        applicationId "com.steve1316.uma_android_training_helper"
         minSdkVersion 29
         targetSdkVersion 30
         versionCode 3
