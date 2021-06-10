@@ -9,6 +9,12 @@ It accomplishes this by taking a screenshot via the MediaProjection and OpenCV p
 
 https://user-images.githubusercontent.com/18709555/121310298-13673280-c8b8-11eb-9f94-dab7fb7fc3e2.mp4
 
+## Technical Process
+Upon tapping the floating overlay button, the process begins. 
+- First it takes a fullscreen screenshot using MediaProjection and saves it as ``source.png`` inside the /files/temp/ folder in Android internal storage.
+- Secondly, it converts the ``source.png`` to grayscale and crops the image to be the region of the Event Title. After that, it thresholds the cropped region turning it black and white and saves it as ``RESULTS.png`` inside the /files/temp/ folder in Android internal storage.
+- Lastly, Tesseract performs OCR on it using [@amate's jpn.traineddata](https://github.com/amate/UmaUmaCruise). It then takes that string and begins comparison with the strings stored in [CharacterData.kt](https://github.com/steve1316/uma-android-training-helper/blob/main/app/src/main/java/com/steve1316/uma_android_training_helper/data/CharacterData.kt) and [SupportData.kt](https://github.com/steve1316/uma-android-training-helper/blob/main/app/src/main/java/com/steve1316/uma_android_training_helper/data/SupportData.kt) to determine the highest similarity. If the confidence is higher than the set minimum, then it will have the Notification in your Notification Drawer updated to be the Event Rewards for each option. If not, then the Notification will be updated to indicate failure.
+
 # Disclaimer
 Due to the notoriously difficult nature of Kanji, this tool will fail when it encounters too many Kanji in the Event title during OCR detection due to my lack of experience with Tesseract. I have added an option to adjust the Threshold value in the Settings to allow manual adjustment to improve OCR accuracy. Mileage may vary.
 
