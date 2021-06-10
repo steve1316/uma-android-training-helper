@@ -10,7 +10,7 @@ It accomplishes this by taking a screenshot via the MediaProjection and OpenCV p
 https://user-images.githubusercontent.com/18709555/121310298-13673280-c8b8-11eb-9f94-dab7fb7fc3e2.mp4
 
 # Disclaimer
-Due to the notoriously difficult nature of Kanji, this tool will fail when it encounters too many Kanji during OCR detection like "理の食VS暴の食" from the Yueno Muteki SSR Support Card due to my lack of experience with Tesseract.
+Due to the notoriously difficult nature of Kanji, this tool will fail when it encounters too many Kanji in the Event title during OCR detection due to my lack of experience with Tesseract. I have added an option to adjust the Threshold value in the Settings to allow manual adjustment to improve OCR accuracy. Mileage may vary.
 
 # Features
 - [x] Perform OCR text detection on the fly for Uma Musume's training events.
