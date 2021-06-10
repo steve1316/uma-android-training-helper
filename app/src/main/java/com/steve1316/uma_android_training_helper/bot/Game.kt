@@ -48,8 +48,9 @@ class Game(private val myContext: Context) {
 	 * @param message Message to be saved.
 	 * @param MESSAGE_TAG TAG to distinguish between messages for where they came from. Defaults to Game's TAG.
 	 * @param isError Flag to determine whether to display log message in console as debug or error.
+	 * @param isOption Flag to determine whether to append a newline right after the time in the string.
 	 */
-	fun printToLog(message: String, MESSAGE_TAG: String = TAG, isError: Boolean = false) {
+	fun printToLog(message: String, MESSAGE_TAG: String = TAG, isError: Boolean = false, isOption: Boolean = false) {
 		if (!isError) {
 			Log.d(MESSAGE_TAG, message)
 		} else {
@@ -59,9 +60,17 @@ class Game(private val myContext: Context) {
 		// Remove the newline prefix if needed and place it where it should be.
 		if (message.startsWith("\n")) {
 			val newMessage = message.removePrefix("\n")
-			MessageLog.messageLog.add("\n" + printTime() + " " + newMessage)
+			if (isOption) {
+				MessageLog.messageLog.add("\n" + printTime() + "\n" + newMessage)
+			} else {
+				MessageLog.messageLog.add("\n" + printTime() + " " + newMessage)
+			}
 		} else {
-			MessageLog.messageLog.add(printTime() + " " + message)
+			if (isOption) {
+				MessageLog.messageLog.add(printTime() + "\n" + message)
+			} else {
+				MessageLog.messageLog.add(printTime() + " " + message)
+			}
 		}
 	}
 	
