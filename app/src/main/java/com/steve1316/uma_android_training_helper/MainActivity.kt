@@ -1,6 +1,9 @@
 package com.steve1316.uma_android_training_helper
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -24,6 +27,12 @@ class MainActivity : AppCompatActivity() {
 		val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
 		val navView: NavigationView = findViewById(R.id.nav_view)
 		val navController = findNavController(R.id.nav_host_fragment)
+		
+		val githubTextView: TextView = findViewById(R.id.github_textView)
+		githubTextView.setOnClickListener {
+			val newIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/steve1316/uma-android-training-helper"))
+			startActivity(newIntent)
+		}
 		
 		appBarConfiguration = AppBarConfiguration(setOf(R.id.nav_home, R.id.nav_settings), drawerLayout)
 		
