@@ -73,6 +73,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
 						putString("character", characterPicker.value)
 						commit()
 					}
+					
+					characterPicker.summary = "Covers all R, SR and SSR variants into one.\n\n${characterPicker.value}"
 				}
 				"hideResultsCheckBox" -> {
 					sharedPreferences.edit {
@@ -147,11 +149,11 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		val hideResultsCheckBox: CheckBoxPreference = findPreference("hideResultsCheckBox")!!
 		val selectAllCheckBox: CheckBoxPreference = findPreference("selectAllCheckBox")!!
 		
-		// Now set the following values from the shared preferences. Work downwards through the Preferences and make the next ones enabled to direct user's attention as they go through the settings
-		// down the page.
+		// Now set the following values from the shared preferences.
 		
 		if (character != null && character.isNotEmpty()) {
 			characterPicker.value = character
+			characterPicker.summary = "Covers all R, SR and SSR variants into one.\n\n${characterPicker.value}"
 		}
 		
 		// Populate the list in the multi-picker for Support Cards.

@@ -8,8 +8,8 @@
             app:entries="@array/character_list"
             app:entryValues="@array/character_list"
             app:key="characterPicker"
-            app:title="Select your Uma Musume Character *"
-            app:useSimpleSummaryProvider="true" />
+            app:summary="Covers all R, SR and SSR variants into one."
+            app:title="Select your Uma Musume Character *" />
 
     </PreferenceCategory>
 
