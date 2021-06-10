@@ -127,7 +127,7 @@ class NotificationUtils {
 				NotificationCompat.Builder(context, CHANNEL_ID).apply {
 					setSmallIcon(R.drawable.ic_baseline_control_camera_24)
 					setContentTitle("$eventName | Confidence: $confidence")
-					setContentText("Swipe me down to see the option rewards!")
+					setContentText("To view event rewards, Swipe or Tap me to view in full!")
 					setStyle(NotificationCompat.BigTextStyle().bigText(options))
 					setContentIntent(contentPendingIntent)
 					addAction(R.drawable.ic_baseline_stop_circle_24, context.getString(R.string.stop_process), stopPendingIntent)
