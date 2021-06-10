@@ -155,93 +155,66 @@ class Game(private val myContext: Context) {
 			}
 		}
 		
-		printToLog("[RESULT] confidence = $confidence, newIndex = $newIndex, type = $type")
+		when (category) {
+			"character" -> {
+				printToLog("\n[RESULT] Character $character Event Name = $eventTitle with confidence = $confidence")
+			}
+			"character-shared" -> {
+				printToLog("\n[RESULT] Character $character Shared Event Name = $eventTitle with confidence = $confidence")
+			}
+			"support-r" -> {
+				printToLog("\n[RESULT] R Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
+			}
+			"support-sr" -> {
+				printToLog("\n[RESULT] SR Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
+			}
+			"support-ssr" -> {
+				printToLog("\n[RESULT] SSR Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
+			}
+		}
 		
-		// Now prepare to send the Event Title, its option rewards, and the confidence to the application's Notification.
-		var optionNumber = 1
-		var eventTitle = ""
-		var resultString = ""
+		// Now construct the text body for the Notification.
 		if (confidence > 0.6) {
-			when (type) {
-				"character" -> {
-					CharacterData.characters[character]!!.entries.forEach { (eventName, eventOptions) ->
-						if (eventName == newIndex) {
-							eventOptions.forEach { option ->
-								printToLog("[OPTION $optionNumber] \n$option\n")
-								resultString += "[OPTION $optionNumber] \n$option\n"
-								optionNumber += 1
-							}
-							
-							eventTitle = eventName
-						}
-					}
-				}
-				"character-shared" -> {
-					CharacterData.characters["Shared"]!!.entries.forEach { (eventName, eventOptions) ->
-						if (eventName == newIndex) {
-							eventOptions.forEach { option ->
-								printToLog("[OPTION $optionNumber] \n$option\n")
-								resultString += "[OPTION $optionNumber] \n$option\n"
-								optionNumber += 1
-							}
-							
-							eventTitle = eventName
-						}
-					}
-				}
-				"support-r" -> {
-					rSupportCards.forEach { supportCardName ->
-						SupportData.R[supportCardName]?.forEach { (eventName, eventOptions) ->
-							if (eventName == newIndex) {
-								eventOptions.forEach { option ->
-									printToLog("[OPTION $optionNumber] \n$option\n")
-									resultString += "[OPTION $optionNumber] \n$option\n"
-									optionNumber += 1
-								}
-								
-								eventTitle = eventName
+			// Now process the resulting string from the acquired information.
+			eventOptionRewards.forEach { reward ->
+				if (eventOptionRewards.size == 1) {
+					if (notificationTextBody.lines().count() <= 8) {
+						val lineList = reward.split("\n")
+						lineList.forEach { line ->
+							if (notificationTextBody.lines().count() <= 8) {
+								notificationTextBody += "$line\n"
 							}
 						}
 					}
-				}
-				"support-sr" -> {
-					srSupportCards.forEach { supportCardName ->
-						SupportData.SR[supportCardName]?.forEach { (eventName, eventOptions) ->
-							if (eventName == newIndex) {
-								eventOptions.forEach { option ->
-									printToLog("[OPTION $optionNumber] \n$option\n")
-									resultString += "[OPTION $optionNumber] \n$option\n"
-									optionNumber += 1
-								}
-								
-								eventTitle = eventName
+					
+					printToLog("\n$reward\n")
+					eventOptionNumber += 1
+				} else {
+					if (notificationTextBody.lines().count() <= 8) {
+						val lineList = reward.split("\n")
+						notificationTextBody += "[OPTION $eventOptionNumber] \n"
+						lineList.forEach { line ->
+							if (notificationTextBody.lines().count() <= 8) {
+								notificationTextBody += "$line\n"
 							}
 						}
 					}
+					
+					printToLog("[OPTION $eventOptionNumber] \n$reward\n")
+					eventOptionNumber += 1
 				}
-				"support-ssr" -> {
-					ssrSupportCards.forEach { supportCardName ->
-						SupportData.SSR[supportCardName]?.forEach { (eventName, eventOptions) ->
-							if (eventName == newIndex) {
-								eventOptions.forEach { option ->
-									printToLog("[OPTION $optionNumber] \n$option\n")
-									resultString += "[OPTION $optionNumber] \n$option\n"
-									optionNumber += 1
-								}
-								
-								eventTitle = eventName
-							}
-						}
-					}
-				}
+			}
+			
+			// Append this last line to the Notification's text body if the rest of the text was going to be cut off as the Notification's expanded mode is set only at 256dp.
+			if (notificationTextBody.lines().count() >= 9) {
+				notificationTextBody += "Text is cut off. Please Tap me to see the full text!"
 			}
 			
 			// Display the information to the user as a newly updated Notification.
 			NotificationUtils.updateNotification(myContext, eventTitle, resultString, confidence)
 		} else {
 			NotificationUtils.updateNotification(
-				myContext, "OCR Failed", "Sorry, either Tesseract failed to detect text or the detected text is below the required " +
-						"confidence minimum.", confidence)
+				myContext, "OCR Failed", "Sorry, either Tesseract failed to detect text or the detected text is below the required confidence minimum.", confidence)
 		}
 		
 		return true
