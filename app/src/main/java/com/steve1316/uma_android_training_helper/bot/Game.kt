@@ -86,7 +86,9 @@ class Game(private val myContext: Context) {
 		var supportCardTitle = ""
 		var eventOptionRewards: ArrayList<String> = arrayListOf()
 		var eventOptionNumber = 1
-		var notificationTextBody = ""
+		var firstLine = true
+		val notificationTextBody: String
+		val notificationTextArray = arrayListOf<String>()
 		
 		val character = SettingsFragment.getStringSharedPreference(myContext, "character")
 		val rSupportCards: List<String> = SettingsFragment.getStringSharedPreference(myContext, "supportRList").split("|")
@@ -211,40 +213,59 @@ class Game(private val myContext: Context) {
 		
 		// Now construct the text body for the Notification.
 		if (confidence > 0.6) {
-			// Now process the resulting string from the acquired information.
+			// Process the resulting string from the acquired information.
 			eventOptionRewards.forEach { reward ->
 				if (eventOptionRewards.size == 1) {
-					if (notificationTextBody.lines().count() <= 8) {
+					if (notificationTextArray.size < 9) {
 						val lineList = reward.split("\n")
 						lineList.forEach { line ->
-							if (notificationTextBody.lines().count() <= 8) {
-								notificationTextBody += "$line\n"
+							if (notificationTextArray.size < 9) {
+								if (firstLine) {
+									notificationTextArray.add(line)
+									firstLine = false
+								} else {
+									notificationTextArray.add("\n$line")
+								}
 							}
 						}
 					}
 					
-					printToLog("\n$reward\n")
+					printToLog("\n\n$reward\n", isOption = true)
 					eventOptionNumber += 1
 				} else {
-					if (notificationTextBody.lines().count() <= 8) {
+					if (notificationTextArray.size < 9) {
 						val lineList = reward.split("\n")
-						notificationTextBody += "[OPTION $eventOptionNumber] \n"
+						if (!firstLine) {
+							notificationTextArray.add("\n[OPTION $eventOptionNumber]")
+						} else {
+							notificationTextArray.add("[OPTION $eventOptionNumber]\n")
+						}
+						
 						lineList.forEach { line ->
-							if (notificationTextBody.lines().count() <= 8) {
-								notificationTextBody += "$line\n"
+							if (notificationTextArray.size < 9) {
+								if (firstLine) {
+									notificationTextArray.add(line)
+									firstLine = false
+								} else {
+									notificationTextArray.add("\n$line")
+								}
 							}
 						}
 					}
 					
-					printToLog("[OPTION $eventOptionNumber] \n$reward\n")
+					printToLog("\n[OPTION $eventOptionNumber] \n$reward\n", isOption = true)
 					eventOptionNumber += 1
 				}
 			}
 			
 			// Append this last line to the Notification's text body if the rest of the text was going to be cut off as the Notification's expanded mode is set only at 256dp.
-			if (notificationTextBody.lines().count() >= 9) {
-				notificationTextBody += "Text is cut off. Please Tap me to see the full text!"
+			if (notificationTextArray.size >= 8) {
+				notificationTextArray.removeAt(notificationTextArray.lastIndex)
+				notificationTextArray.add("\n*Text is cut off. Please Tap me to see the full text!*")
 			}
+			
+			// Now join the array into its new text body string for the Notification.
+			notificationTextBody = notificationTextArray.joinToString("")
 			
 			// Display the information to the user as a newly updated Notification.
 			NotificationUtils.updateNotification(myContext, eventTitle, notificationTextBody, confidence)
