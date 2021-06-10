@@ -2,10 +2,8 @@ package com.steve1316.uma_android_training_helper.utils
 
 import android.annotation.SuppressLint
 import android.app.Service
-import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
 import android.graphics.PixelFormat
 import android.os.IBinder
 import android.util.Log
@@ -32,19 +30,6 @@ class BotService : Service() {
 	private lateinit var overlayView: View
 	private lateinit var overlayButton: ImageButton
 	
-	private val messageReceiver = object : BroadcastReceiver() {
-		// This will receive any bot state changes issued from inside the Thread and will display a Notification that will contain the intent's message.
-		override fun onReceive(context: Context?, intent: Intent?) {
-			if (intent != null) {
-//				if (intent.hasExtra("EXCEPTION")) {
-//					NotificationUtils.createBotStateChangedNotification(context!!, "Bot State Changed", intent.getStringExtra("EXCEPTION")!!)
-//				} else if (intent.hasExtra("SUCCESS")) {
-//					NotificationUtils.createBotStateChangedNotification(context!!, "Bot State Changed", intent.getStringExtra("SUCCESS")!!)
-//				}
-			}
-		}
-	}
-	
 	companion object {
 		private lateinit var thread: Thread
 		private lateinit var windowManager: WindowManager
@@ -67,11 +52,6 @@ class BotService : Service() {
 		super.onCreate()
 		
 		myContext = this
-		
-		// Any Intents that wants to be received needs to have the following action attached to it to be recognized.
-		val filter = IntentFilter()
-		filter.addAction("CUSTOM_INTENT")
-		registerReceiver(messageReceiver, filter)
 		
 		overlayView = LayoutInflater.from(this).inflate(R.layout.bot_actions, null)
 		windowManager = getSystemService(WINDOW_SERVICE) as WindowManager

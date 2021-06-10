@@ -160,10 +160,10 @@ class ImageUtils(context: Context, private val game: Game) {
 		var cvImage = Imgcodecs.imread("${matchFilePath}/source.png", Imgcodecs.IMREAD_GRAYSCALE)
 		
 		// Now see if it is necessary to shift the cropped region over by 70 pixels or not to account for certain events.
-		if (match(croppedBitmap, templateBitmap!!)) {
-			cvImage = cvImage.submat(435, 500, 165 + 70, 810)
+		cvImage = if (match(croppedBitmap, templateBitmap!!)) {
+			cvImage.submat(435, 500, 165 + 70, 810)
 		} else {
-			cvImage = cvImage.submat(435, 500, 165, 810)
+			cvImage.submat(435, 500, 165, 810)
 		}
 		
 		// Thresh the grayscale cropped image to make black and white.
