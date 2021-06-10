@@ -88,6 +88,18 @@ class CharacterData {
 			),
 			// Shared, as in these options are all the exact same with the same results for all characters.
 			"Shared" to mapOf(
+				// 1st Place
+				"レース勝利！(1着)" to arrayListOf("1 random stat +5(OP)/+8(G2/G3)/+10(G1)\nSkill points +35\nEnergy -15\n(random) Hint for a skill related to the race", "1 random stat " +
+						"+5(OP)/+8(G2/G3)/+10(G1)\nSkill points +45\nEnergy -5/-20/-30\n(random) Hint for a skill related to the race"),
+				
+				// 2nd~5th Place
+				"レース入着(2~5着)" to arrayListOf("1 random stat +2-4(OP)/+4-6(G2/G3)/+5-8(G1)\nSkill points +40-45\nEnergy -20\n(random) Hint for a skill related to the race",
+					"1 random stat +2-4(OP)/+4-6(G2/G3)/+5-8(G1)\nSkill points +40-45\nEnergy -10/-30\n(random) Hint for a skill related to the race"),
+				
+				// 6th Place or worse
+				"レース敗北(6着以下)" to arrayListOf("1 random stat +1(G2/G3)/+4(G1)\nSkill points +10(OP)/+20(G2/G3)/+25(G1)\nEnergy -25\n(random) Hint for a skill related to the race",
+					"1 random stat +1(G2/G3)/+4(G1)\nSkill points +10(OP)/+20(G2/G3)/+25(G1)\nEnergy -15/-25/-35\n(random) Hint for a skill related to the race"),
+				
 				// "Failed Training"
 				"お大事に！" to arrayListOf(
 					"Motivation -1\nLast trained stat -5\n(random) Get Bad Practice status", "One of these will be selected at random\n----------\nMotivation -1\nLast trained stat -10\n" +
