@@ -45,9 +45,9 @@
 
     <PreferenceCategory app:title="Misc">
         <CheckBoxPreference
-            app:key="debugModeCheckBox"
-            app:title="Enable Debug Mode"
-            app:summary="Allows debugging messages to be shown in the log to reveal diagnostic information and potential errors." />
+            app:key="hideResultsCheckBox"
+            app:summary="Hides the log messages regarding the string comparison process."
+            app:title="Hide String Comparison Results" />
 
     </PreferenceCategory>
 </PreferenceScreen>
