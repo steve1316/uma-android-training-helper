@@ -515,6 +515,24 @@ class CharacterData {
 				"ダンスレッスン" to arrayListOf("Stamina +10", "Speed +10"),
 				"新年の抱負" to arrayListOf("Power +10", "Energy +20", "Skill points +20"),
 			),
+			"Taiki Shuttle" to mapOf(
+				"TO THE NO.1！" to arrayListOf("Power +10\nGuts +10\n(random) Get Sharp status", "Speed +10\nIntelligence +10\n(random) Get Sharp status"),
+				"シャル・ウィー・ハグ？" to arrayListOf("Power +10", "Energy +10"),
+				"バーガー・イン・ジャパン！" to arrayListOf("One of these will be selected at random\n----------\nMotivation +1\nSpeed +10\nPower +5\n----------\nMotivation -1", "Intelligence +10"),
+				"ハイド・アンド・シーク！" to arrayListOf("Speed +10", "Stamina +10"),
+				"レイニー・ピックアップ" to arrayListOf("Skill points +30", "Power +5\nIntelligence +5", "Speed +5\nGuts +5"),
+				"負けられない戦いが、あるのデス" to arrayListOf("Intelligence +20", "Stamina +20"),
+				"レイニー・チョイス！" to arrayListOf("Speed +5\nGuts +5", "Stamina +5\nIntelligence +5"),
+				"レイニー・パワフル！" to arrayListOf("Power +10", "Skill points +30"),
+				"一緒に帰るデース！" to arrayListOf("Motivation +1\nSpeed +5", "Motivation +1\nStamina +5"),
+				"特急リドル便？" to arrayListOf("Motivation +1\nStamina +5\nPower +10\n(random) Motivation -1", "Intelligence +10"),
+				"肉の空へ！" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Speed -5\nPower +5\nSkill points +10\nGet Overweight status"),
+				"レッツ・ミマワリ！" to arrayListOf("Power +10", "Energy +10"),
+				"ハヤウチ・バトル！" to arrayListOf("Energy +10\nSpeed +10", "Energy +10\nIntelligence +10"),
+				"収穫フェスティバル" to arrayListOf("Power +10\nSkill points +15", "抜け出し準備 hint +1"),
+				"ダンスレッスン" to arrayListOf("Power +10", "Speed +10"),
+				"新年の抱負" to arrayListOf("Speed +10", "Energy +20", "Skill points +20"),
+			),
 			"Tokai Teio" to mapOf(
 				// Original
 				"\"女帝\"vs.\"帝王\"" to arrayListOf("Guts +10", "Skill points +30"),
@@ -538,6 +556,22 @@ class CharacterData {
 				"ネバー･ギブ･アップ･ワガハイ！" to arrayListOf("Stamina +15\nGuts +5\n(random) Get Good Practice ○ status", "Power +5\nIntelligence +15\n(random) Get Good Practice ○ status"),
 				"好敵手と書いて友と呼ぶ！" to arrayListOf("スタミナキープ hint +2", "Speed +10\nSkill points +15"),
 				"ワガハイがテイオー先輩だ！" to arrayListOf("コーナー加速○ hint +2", "Intelligence +10\nSkill points +15")
+			),
+			"Vodka" to mapOf(
+				"共に極めよ、カッコ良さの道" to arrayListOf("Power +10", "Speed +10", "Stamina +5\nGuts +5"),
+				"挑め、”宿命”" to arrayListOf("Stamina +10", "Speed +10"),
+				"憧れヴィンテージ" to arrayListOf("Power +20", "Stamina +20"),
+				"カッコ良さの基準" to arrayListOf("Intelligence +10", "Guts +10"),
+				"甘くなれない素直さ" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Motivation -1\nGet Overweight status"),
+				"クール・アンド・ヒート" to arrayListOf("Speed +20\n(random) Get Good Practice ○ status", "Speed +10\nPower +10\n(random) Get Good Practice ○ status"),
+				"河川敷でガチバトル！" to arrayListOf("Intelligence +10\nSkill points +15", "ギアシフト hint +1"),
+				"たまにはガキの頃みたく" to arrayListOf("Speed +10", "Power +10"),
+				"響け、熱いサウンド！" to arrayListOf("Speed +10", "Stamina +10"),
+				"“寄り道”しようぜ" to arrayListOf("Speed +10", "Energy +5\nMotivation +1"),
+				"硬派な甘さ" to arrayListOf("Energy +5", "Power +10"),
+				"俺的ダチ道" to arrayListOf("Speed +20\n(random) Get Good Practice ○ status", "Guts +20"),
+				"ダンスレッスン" to arrayListOf("Guts +10", "Stamina +10"),
+				"新年の抱負" to arrayListOf("Speed +10", "Energy +20", "Skill points +20"),
 			),
 			
 			// Shared, as in these options are all the exact same with the same results for all characters.
