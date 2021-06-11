@@ -184,6 +184,25 @@ class CharacterData {
 				"ダンスレッスン" to arrayListOf("Speed +10", "Intelligence +10"),
 				"新年の抱負" to arrayListOf("Speed +10", "Energy +20", "Skill points +20")
 			),
+			"Matikanefukukitaru" to mapOf(
+				"フクキタル的厄除けキタル" to arrayListOf("Guts +10", "Power +10"),
+				"選ばれし者の間" to arrayListOf("Guts +20", "Speed +20"),
+				"流星群でグングンと" to arrayListOf("Speed +10\nPower +10\n(random) Get Charming ○ status", "Stamina +10\nGuts +10\n(random) Get Charming ○ status"),
+				"食い倒れ！七福神グルメめぐり" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Speed -5\nPower +5\n(random) Get Overweight status"),
+				"マンハッタンの夢" to arrayListOf("逃げためらい hint +1", "Stamina +10"),
+				"お礼参り" to arrayListOf("Power +5\nGuts +5", "Speed +5\nStamina +5"),
+				"開運！ラッキーテレフォン" to arrayListOf("Stamina +10\nIntelligence +10", "Power +20"),
+				"呪いのカメラ" to arrayListOf("Intelligence +10", "Skill points +30"),
+				"プリティー・ガンマンズ" to arrayListOf("Skill points +15\nMotivation +1", "Power +10"),
+				"ピンチの後は…？" to arrayListOf("Speed +10", "Stamina +5\nIntelligence +5"),
+				"レッツ・バンジー☆" to arrayListOf("Stamina +10", "Speed +5\nIntelligence +5"),
+				"開運カードはどれ！？" to arrayListOf(
+					"One of these will be selected at random\n----------\nSpeed +5\nStamina +5\n----------\nMotivation +1\nSkill points +15\n----------\nMotivation -1",
+					"Same as Option 1",
+					"Same as Option 1"),
+				"ダンスレッスン" to arrayListOf("Power +10", "Intelligence +10"),
+				"新年の抱負" to arrayListOf("Intelligence +10", "Energy +20", "Skill points +20"),
+			),
 			"Mayano Top Gun" to mapOf(
 				// Original
 				"大人なモデルの秘訣！" to arrayListOf("Energy -10\nStamina +20\n", "Speed +10"),
