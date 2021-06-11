@@ -573,6 +573,21 @@ class CharacterData {
 				"ダンスレッスン" to arrayListOf("Guts +10", "Stamina +10"),
 				"新年の抱負" to arrayListOf("Speed +10", "Energy +20", "Skill points +20"),
 			),
+			"Winning Ticket" to mapOf(
+				"この壁を超えてゆけ！" to arrayListOf("Motivation +1\nGuts +5", "Motivation +1\nPower +5"),
+				"悩みなんて吹き飛ばせ！" to arrayListOf("Motivation +1\nPower +5", "Speed +5\nSkill points +15"),
+				"全力ファッション！" to arrayListOf("Stamina +20", "Power +10\nGuts +10"),
+				"三国志演技" to arrayListOf("Stamina +5\nSkill points +15", "Power +5\nSkill points +15"),
+				"全力テスト" to arrayListOf("Guts +20", "Speed +20"),
+				"全力がんばる！" to arrayListOf("Speed +10\nIntelligence +10\n(random) Get Rising Star status", "Power +20\n(random) Get Rising Star status"),
+				"いきなりフットサル！？" to arrayListOf("Guts +10", "Speed +10"),
+				"雨ニモ負ケズ" to arrayListOf("Energy -10\nStamina +10\nSkill points +15", "Power +10"),
+				"新たな気づき" to arrayListOf("Speed +10\nSkill points +15", "垂れウマ回避 hint +1"),
+				"よく泣くお姉ちゃん" to arrayListOf("Guts +5\nSkill points +15", "Motivation +1\nPower +5"),
+				"ごはんも全力！！" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Speed -5\nPower +5\nGet Overweight status"),
+				"ダンスレッスン" to arrayListOf("Guts +10", "Intelligence +10"),
+				"新年の抱負" to arrayListOf("Guts +10", "Energy +20", "Skill points +20"),
+			),
 			
 			// Shared, as in these options are all the exact same with the same results for all characters.
 			"Shared" to mapOf(
