@@ -248,6 +248,21 @@ class CharacterData {
 				"同室のあの子~そうだと思いましたわ~" to arrayListOf("ウマ込み冷静 hint +2", "Stamina +10\nSkill points +15"),
 				"ライバルのあの子~どんな舞台でも~" to arrayListOf("ポジションセンス hint +2\n(random) Get Rising Star status", "Intelligence +10\nSkill points +15\n(random) Get Rising Star status")
 			),
+			"Mejiro Ryan" to mapOf(
+				"はやる気持ち" to arrayListOf("Intelligence +10", "Speed +10"),
+				"ウマドルの小さなファンたち" to arrayListOf("Power +10", "Intelligence +10"),
+				"マッスル・ジェラシー" to arrayListOf("Guts +10", "Intelligence +10"),
+				"ポニー少女とオオカミ王子" to arrayListOf("Energy +5\nStamina +5", "Energy +5\nSpeed +5"),
+				"本当の爽やかさ" to arrayListOf("Stamina +20\n(random) Get Rising Star status", "Power +20\n(random) Get Rising Star status"),
+				"積み上げた本当のこと" to arrayListOf("Power +10\nSkill points +15", "道悪○ hint +1"),
+				"ドキドキ水族館" to arrayListOf("Power +10\nIntelligence +10", "Stamina +10\nIntelligence +10"),
+				"筋肉の休息日" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Get Overweight status"),
+				"頼れる助っ人、登場！" to arrayListOf("Power +10", "Guts +10"),
+				"周りから見た勝負服姿" to arrayListOf("Guts +20", "Speed +20"),
+				"息詰まる息抜き" to arrayListOf("Stamina +10", "Power +10"),
+				"ダンスレッスン" to arrayListOf("Power +10", "Speed +10"),
+				"新年の抱負" to arrayListOf("Power +10", "Energy +20", "Skill points +20"),
+			),
 			"Narita Brian" to mapOf(
 				"肉食" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Speed -5\n(random) Get Overweight status"),
 				"得意距離？" to arrayListOf("Stamina +10", "Intelligence +10"),
