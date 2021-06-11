@@ -463,6 +463,23 @@ class CharacterData {
 				"ダンスレッスン" to arrayListOf("Guts +10", "Stamina +10"),
 				"新年の抱負" to arrayListOf("Stamina +10", "Energy +20", "Skill points +20"),
 			),
+			"Super Creek" to mapOf(
+				"友だちのために" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Speed -5\nPower +5\nGet Overweight status"),
+				"息抜きは甘え？" to arrayListOf("Stamina +10", "Intelligence +10"),
+				"ギュッとマッサージ" to arrayListOf("Guts +10", "Speed +5\nIntelligence +5"),
+				"自己満足な願い" to arrayListOf("Power +20", "Stamina +20"),
+				"夜の甘い誘惑" to arrayListOf("Energy +30\nSpeed +10\nSkill points +10\n(random) Motivation -1\nGet Overweight status", "Energy +10\nSpeed +5\nSkill points +5"),
+				"迷子を捜せ！" to arrayListOf("Energy -10\nStamina +10\nPower +10", "Intelligence +10"),
+				"分かち合いましょう" to arrayListOf("Stamina +10", "Speed +10", "Power +10"),
+				"不安を拭って" to arrayListOf("Power +10", "Speed +5\nGuts +5"),
+				"危険なご褒美" to arrayListOf("Guts +10\nSkill points +15", "コーナー回復○ hint +1"),
+				"焦らずにいきましょう" to arrayListOf("Guts +20\n(random) Get Rising Star status", "Stamina +10\nPower +10\n(random) Get Rising Star status"),
+				"命には愛を込めて" to arrayListOf("One of these will be selected at random\n----------\nSpeed +10\nStamina +10\n----------\nIntelligence +20", "Intelligence +20"),
+				"星を見るなら2人で" to arrayListOf("Power +5\nGuts +5", "Stamina +10"),
+				"1日体験☆陶芸教室" to arrayListOf("Speed +5\nIntelligence +5", "Stamina +10"),
+				"ダンスレッスン" to arrayListOf("Stamina +10", "Speed +10"),
+				"新年の抱負" to arrayListOf("Stamina +10", "Energy +20", "Skill points +20"),
+			),
 			"Tokai Teio" to mapOf(
 				// Original
 				"\"女帝\"vs.\"帝王\"" to arrayListOf("Guts +10", "Skill points +30"),
