@@ -110,6 +110,28 @@ class CharacterData {
 				"ダンスレッスン" to arrayListOf("Speed +10", "Intelligence +10"),
 				"新年の抱負" to arrayListOf("Speed +10", "Energy +20", "Skill points +20")
 			),
+			"Mayano Top Gun" to mapOf(
+				// Original
+				"大人なモデルの秘訣！" to arrayListOf("Energy -10\nStamina +20\n", "Speed +10"),
+				"マヤのドキドキ☆肝試し！" to arrayListOf("Power +20", "Guts +20"),
+				"マヤの大切な人！" to arrayListOf("Speed +10", "Guts +10"),
+				"勉強はマヤにおまかせ☆" to arrayListOf("Power +5\nGuts +5", "Intelligence +10"),
+				"マヤちんのレース講座☆" to arrayListOf("Stamina +10\nSkill points +15", "直線巧者 hint +1"),
+				"マヤノ・テイクオフ☆" to arrayListOf("Speed +20\n(random) Get Charming ○ status", "Stamina +20\n(random) Get Charming ○ status"),
+				"星に願いを" to arrayListOf("Intelligence +10", "Speed +10"),
+				"マヤのワクワク☆配信！" to arrayListOf("Stamina +5\nPower +5", "Guts +10"),
+				"マヤのキラキラ☆決心" to arrayListOf("Speed +5\nStamina +5", "Power +10", "Intelligence +10"),
+				"甘いキモチをキミに♪" to arrayListOf("Stamina +20", "Intelligence +20"),
+				"目指せ！大人のちゃんこ鍋☆" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Speed -5\nPower +5\nGet Overweight status"),
+				"マヤのルンルン☆配信！" to arrayListOf("Speed +10", "Stamina +10"),
+				"ダンスレッスン" to arrayListOf("Guts +10", "Speed +10"),
+				"新年の抱負" to arrayListOf("Stamina +10", "Energy +20", "Skill points +20"),
+				
+				// Wedding
+				"Meant To Be♪" to arrayListOf("ペースキープ hint +2", "直線加速 hint +2"),
+				"You're My Sunshine☆" to arrayListOf("Stamina +20", "Power +20"),
+				"With My Whole Heart!" to arrayListOf("Stamina +10\nSkill points +15\n(random) Get Good Practice ○ status", "Energy +15\n(random) Get Good Practice ○ status"),
+			),
 			"Mejiro McQueen" to mapOf(
 				// Original
 				"レース場グルメの誘惑" to arrayListOf("Energy +30\nStamina +10\nSkill points +10\n(random) Speed -5\nPower +5\nGet Overweight status", "Guts +15\nSkill points +5"),
@@ -209,15 +231,18 @@ class CharacterData {
 			// Shared, as in these options are all the exact same with the same results for all characters.
 			"Shared" to mapOf(
 				// 1st Place
-				"レース勝利！(1着)" to arrayListOf("1 random stat +5(OP)/+8(G2/G3)/+10(G1)\nSkill points +35\nEnergy -15\n(random) Hint for a skill related to the race", "1 random stat " +
-						"+5(OP)/+8(G2/G3)/+10(G1)\nSkill points +45\nEnergy -5/-20/-30\n(random) Hint for a skill related to the race"),
+				"レース勝利！(1着)" to arrayListOf(
+					"1 random stat +5(OP)/+8(G2/G3)/+10(G1)\nSkill points +35\nEnergy -15\n(random) Hint for a skill related to the race",
+					"1 random stat +5(OP)/+8(G2/G3)/+10(G1)\nSkill points +45\nEnergy -5/-20/-30\n(random) Hint for a skill related to the race"),
 				
 				// 2nd~5th Place
-				"レース入着(2~5着)" to arrayListOf("1 random stat +2-4(OP)/+4-6(G2/G3)/+5-8(G1)\nSkill points +40-45\nEnergy -20\n(random) Hint for a skill related to the race",
+				"レース入着(2~5着)" to arrayListOf(
+					"1 random stat +2-4(OP)/+4-6(G2/G3)/+5-8(G1)\nSkill points +40-45\nEnergy -20\n(random) Hint for a skill related to the race",
 					"1 random stat +2-4(OP)/+4-6(G2/G3)/+5-8(G1)\nSkill points +40-45\nEnergy -10/-30\n(random) Hint for a skill related to the race"),
 				
 				// 6th Place or worse
-				"レース敗北(6着以下)" to arrayListOf("1 random stat +1(G2/G3)/+4(G1)\nSkill points +10(OP)/+20(G2/G3)/+25(G1)\nEnergy -25\n(random) Hint for a skill related to the race",
+				"レース敗北(6着以下)" to arrayListOf(
+					"1 random stat +1(G2/G3)/+4(G1)\nSkill points +10(OP)/+20(G2/G3)/+25(G1)\nEnergy -25\n(random) Hint for a skill related to the race",
 					"1 random stat +1(G2/G3)/+4(G1)\nSkill points +10(OP)/+20(G2/G3)/+25(G1)\nEnergy -15/-25/-35\n(random) Hint for a skill related to the race"),
 				
 				// "Failed Training"
