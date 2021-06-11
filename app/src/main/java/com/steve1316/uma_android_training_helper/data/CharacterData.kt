@@ -3,6 +3,22 @@ package com.steve1316.uma_android_training_helper.data
 class CharacterData {
 	companion object {
 		val characters = mapOf(
+			"Agnes Tachyon" to mapOf(
+				"速くなれるお薬依頼？" to arrayListOf("Power +5\nGuts +5", "Speed +5\nIntelligence +5"),
+				"黒い空からの贈り物" to arrayListOf("Speed +5\nPower +5", "Guts +10"),
+				"肉体改造思いのまま！" to arrayListOf("Power +5\nIntelligence +5", "Stamina +10"),
+				"だだっ子タキオン" to arrayListOf("Stamina +10\nGuts +10\n(random) Get Sharp status", "Intelligence +20\n(random) Get Sharp status"),
+				"目指す場所に近道はない" to arrayListOf("Guts +10", "Intelligence +10", "Power +10"),
+				"データを手に入れろ！" to arrayListOf("Intelligence +20", "Power +20"),
+				"研究の真意" to arrayListOf("Intelligence +10", "Speed +10"),
+				"信念を表すもの" to arrayListOf("Stamina +20", "Speed +20"),
+				"正義の圧？" to arrayListOf("Intelligence +10\nSkill points +15", "コーナー巧者○ hint +1"),
+				"お手伝いハンバーガー！" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Speed -5\nPower +5\nGet Overweight status"),
+				"マイペース・タキオン" to arrayListOf("Guts +10", "Speed +5\nPower +5"),
+				"最強の協力者！？" to arrayListOf("Energy -20\nStamina +15\nGuts +10", "Energy +5\nIntelligence +5"),
+				"ダンスレッスン" to arrayListOf("Stamina +10", "Speed +10"),
+				"新年の抱負" to arrayListOf("Intelligence +10", "Energy +20", "Skill points +20"),
+			),
 			"Daiwa Scarlet" to mapOf(
 				"1番は見逃せない！" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Speed -5\nPower +5\nGet Overweight status"),
 				"もうちょっとだけ" to arrayListOf("Skill points +30", "Power +10"),
@@ -184,7 +200,7 @@ class CharacterData {
 			),
 			"Nice Nature" to mapOf(
 				"願いを叶えるクリスマスカラー" to arrayListOf("Guts +20\n(random) Get Charming ○ status"),
-				"雨の日の遊戯" to arrayListOf("Intelligence +10", "Energy -10\ntamina +10\nGuts +10"),
+				"雨の日の遊戯" to arrayListOf("Intelligence +10", "Energy -10\nStamina +10\nGuts +10"),
 				"嵐の如き助っ人" to arrayListOf("読解力 hint +1", "Speed +5\nStamina +5\nPower +5"),
 				"アタシもたまには" to arrayListOf("Stamina +5\nGuts +5", "Stamina +5\nPower +5"),
 				"ガラじゃないですし" to arrayListOf("Energy +5\nMotivation +1", "Speed +5\nPower +5"),
