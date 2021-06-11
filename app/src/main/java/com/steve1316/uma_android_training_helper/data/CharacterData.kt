@@ -155,6 +155,33 @@ class CharacterData {
 				"同室のあの子~そうだと思いましたわ~" to arrayListOf("ウマ込み冷静 hint +2", "Stamina +10\nSkill points +15"),
 				"ライバルのあの子~どんな舞台でも~" to arrayListOf("ポジションセンス hint +2\n(random) Get Rising Star status", "Intelligence +10\nSkill points +15\n(random) Get Rising Star status")
 			),
+			"Narita Brian" to mapOf(
+				"肉食" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Speed -5\n(random) Get Overweight status"),
+				"得意距離？" to arrayListOf("Stamina +10", "Intelligence +10"),
+				"飢えた戦士たち" to arrayListOf(
+					"Energy +5\nIntelligence +10",
+					"One of these will be selected at random\n----------\nEnergy -10\nMotivation +1\nSpeed +25\n----------\nEnergy -10\nSpeed +10",
+					"One of these will be selected at random\n----------\nEnergy -10\nMotivation +1\nStamina +25\n----------\nEnergy -10\nStamina +10",
+					"One of these will be selected at random\n----------\nEnergy -10\nMotivation +1\nPower +25\n----------\nEnergy -10\nPower +10"),
+				"飢えた戦士たち" to arrayListOf(
+					"Energy +5\nIntelligence +10",
+					"One of these will be selected at random\n----------\nEnergy -10\nMotivation +1\nSpeed +25\n----------\nEnergy -10\nSpeed +10",
+					"One of these will be selected at random\n----------\nEnergy -10\nMotivation +1\nStamina +25\n----------\nEnergy -10\nStamina +10",
+					"One of these will be selected at random\n----------\nEnergy -10\nMotivation +1\nPower +25\n----------\nEnergy -10\nPower +10"),
+				"手腕" to arrayListOf("Speed +15", "パス上手 hint +1"),
+				"憧憬" to arrayListOf("Power +10", "Energy -10\nPower +20"),
+				"超越" to arrayListOf("Power +10", "Stamina +5\nGuts +5"),
+				"不動" to arrayListOf("Speed +20\n(random) Get Rising Star status", "Guts +20\n(random) Get Rising Star status"),
+				"孤高のグルメ？" to arrayListOf("Speed +5\nPower +5", "Stamina +10"),
+				"意匠" to arrayListOf("Speed +20", "Power +20"),
+				"ブライアンは見た……！" to arrayListOf("Stamina +10", "Guts +10"),
+				"武骨" to arrayListOf("Stamina +20", "Intelligence +20"),
+				"孤高の責任" to arrayListOf("Stamina +5\nGuts +5", "Power +5\nIntelligence +5"),
+				"岐" to arrayListOf("Increased difficulty of future training goals\nIncreased rewards for future training goals", "Nothing happens"),
+				"ファミリーレストラン" to arrayListOf("Speed +10", "Stamina +10", "Guts +10"),
+				"ダンスレッスン" to arrayListOf("Stamina +10", "Intelligence +10"),
+				"新年の抱負" to arrayListOf("Speed +10", "Energy +20", "Skill points +20"),
+			),
 			"Oguri Cap" to mapOf(
 				"畑でビルドアップ" to arrayListOf("Guts +10", "Power +10"),
 				"オグリの大食い選手権" to arrayListOf("Energy +30\nSkill points +10\n(random) Power +5~10\nSpeed -5\nGet Overweight status", "Energy +10\nPower +5\nSkill points +5"),
