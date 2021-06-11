@@ -499,6 +499,22 @@ class CharacterData {
 				"ダンスレッスン" to arrayListOf("Intelligence +10", "Power +10"),
 				"新年の抱負" to arrayListOf("Intelligence +10", "Energy +20", "Skill points +20"),
 			),
+			"TM Opera O" to mapOf(
+				"聞こえる声は" to arrayListOf("Power +10", "Intelligence +10"),
+				"鏡が映すのは" to arrayListOf("Intelligence +10", "Guts +10"),
+				"パジャマ姿の姫君" to arrayListOf("Speed +10", "Stamina +10"),
+				"夕暮れ時のオペラオー劇場" to arrayListOf("Power +10", "Energy +10"),
+				"素晴らしき美を維持するために……" to arrayListOf("Speed +10", "Intelligence +10"),
+				"愛しき瞳の為に" to arrayListOf("Stamina +10\nGuts +10", "Speed +20"),
+				"輝きを君に" to arrayListOf("Power +10", "Guts +10", "Intelligence +10"),
+				"尽くせ、礼" to arrayListOf("Speed +10", "Skill points +15", "非根幹距離○ hint +1"),
+				"意志の力" to arrayListOf("Intelligence +20\n(random) Get Sharp status", "Speed +10\nPower +10\n(random) Speed +20\n(random) Get Sharp status"),
+				"\"覇王\"として" to arrayListOf("Intelligence +20", "Power +20"),
+				"幾重もの輝き" to arrayListOf("Energy -10\nPower +20", "Speed +10"),
+				"王者の戦い～ラーメン編～" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Speed -5\nPower +5\nGet Overweight status"),
+				"ダンスレッスン" to arrayListOf("Stamina +10", "Speed +10"),
+				"新年の抱負" to arrayListOf("Power +10", "Energy +20", "Skill points +20"),
+			),
 			"Tokai Teio" to mapOf(
 				// Original
 				"\"女帝\"vs.\"帝王\"" to arrayListOf("Guts +10", "Skill points +30"),
