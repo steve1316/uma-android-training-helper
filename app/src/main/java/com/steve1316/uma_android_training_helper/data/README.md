@@ -1,5 +1,10 @@
 # Data Template Step-by-step
 
+## Some things to note
+- Characters with multiple versions of themselves (Anime Collab, Wedding, etc.) share a lot of the same events and same rewards. They usually have 3-4 new lines for each different version.
+- Support Cards of the same Character share the same basic events as their R counterparts. As such, it is most likely not necessary to copy the bottom events every single time for each different version.
+- Different versions in the data are marked as such as a comment with their secondary name, either from [GameTora's Character List](https://gametora.com/umamusume/characters) or [GameWith's Support Card List](https://gamewith.jp/uma-musume/article/show/255037).
+
 ## Step 1
 Visit GameTora's Training Event Helper at (https://gametora.com/umamusume/training-event-helper) and select the Character or Support Card that you want to work on. Then select an event and a popup will appear with the event results for each option:
 
