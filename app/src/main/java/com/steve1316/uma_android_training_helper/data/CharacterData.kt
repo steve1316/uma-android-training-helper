@@ -19,6 +19,31 @@ class CharacterData {
 				"ダンスレッスン" to arrayListOf("Stamina +10", "Speed +10"),
 				"新年の抱負" to arrayListOf("Intelligence +10", "Energy +20", "Skill points +20"),
 			),
+			"Air Groove" to mapOf(
+				// Original
+				"道導" to arrayListOf("Speed +20\n(random) Get Rising Star status", "Power +20\n(random) Get Rising Star status"),
+				"麗しきストレス発散法？" to arrayListOf("Stamina +20", "Guts +20"),
+				"フリーダム目安箱" to arrayListOf("Energy +10", "Energy -10\nMotivation +1\nIntelligence +10"),
+				"花壇制作大作戦" to arrayListOf("Energy +5\nIntelligence +5", "Energy -10\nSpeed +10\nPower +10"),
+				"君に花を" to arrayListOf("Intelligence +20", "Speed +20"),
+				"点滅信号、渡るべからず" to arrayListOf("Intelligence +10", "Power +10"),
+				"\"女帝\"と\"皇帝\"" to arrayListOf("末脚 hint +1", "Motivation +1\nSkill points +15"),
+				"捕獲せよ！" to arrayListOf("Energy +10", "Energy -10\nMotivation +1\nSpeed +10"),
+				"尻尾ケアは大切に" to arrayListOf("Energy +10", "Energy -10\nMotivation +1\nPower +10"),
+				"\"女帝\"と\"帝王\"" to arrayListOf("Power +10", "Intelligence +10"),
+				"静寂に燃えて" to arrayListOf("Stamina +10", "Speed +10"),
+				"さつまいもケーキ" to arrayListOf("Power +10", "Stamina +10"),
+				"努力の味見" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Speed -5\nPower +5\nGet Overweight status"),
+				"麗姿、瞳に焼き付いて" to arrayListOf("Speed +10", "Power +10", "Stamina +10"),
+				"小さな出会い" to arrayListOf("Intelligence +10", "Guts +10"),
+				"ダンスレッスン" to arrayListOf("Power +10", "Speed +10"),
+				"新年の抱負" to arrayListOf("Power +10", "Energy +20", "Skill points +20"),
+				
+				// Wedding
+				"女帝、甘える" to arrayListOf("Speed +10\nStamina +10\n(random) Get Charming ○ status", "Stamina +10\nPower +10"),
+				"ネバー・エンディング・ロード" to arrayListOf("テンポアップ hint +2", "Power +20"),
+				"隣に立つのは……！" to arrayListOf("臨機応変 hint +2", "Guts +10\nIntelligence +10"),
+			),
 			"Daiwa Scarlet" to mapOf(
 				"1番は見逃せない！" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Speed -5\nPower +5\nGet Overweight status"),
 				"もうちょっとだけ" to arrayListOf("Skill points +30", "Power +10"),
