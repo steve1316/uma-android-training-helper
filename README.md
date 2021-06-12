@@ -16,7 +16,10 @@ Upon tapping the floating overlay button, the process begins.
 - Lastly, Tesseract performs OCR on it using [@amate's jpn.traineddata](https://github.com/amate/UmaUmaCruise). It then takes that string and begins comparison with the strings stored in [CharacterData.kt](https://github.com/steve1316/uma-android-training-helper/blob/main/app/src/main/java/com/steve1316/uma_android_training_helper/data/CharacterData.kt) and [SupportData.kt](https://github.com/steve1316/uma-android-training-helper/blob/main/app/src/main/java/com/steve1316/uma_android_training_helper/data/SupportData.kt) to determine the highest similarity. If the confidence is higher than the set minimum, then it will have the Notification in your Notification Drawer updated to be the Event Rewards for each option. If not, then the Notification will be updated to indicate failure.
 
 # Disclaimer
-Due to the difficult nature of Kanji, mileage may vary when using this. I have added an option to adjust the Threshold value in the Settings to allow manual adjustment to improve OCR accuracy. 
+Due to the difficult nature of Kanji, mileage may vary when using this. I have added an option to adjust the Threshold value in the Settings to allow manual adjustment to improve OCR accuracy.
+
+# Requirements
+- Android Device (Oreo 8.0+)
 
 # Features
 - [x] Perform OCR text detection on the fly with a floating overlay button for Uma Musume's training events and then display the results as a Notification.
