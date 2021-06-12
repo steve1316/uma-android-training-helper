@@ -1,6 +1,8 @@
 # Uma Musume Training Event Helper For Android using MediaProjection, AccessibilityService, OpenCV, and Tesseract
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/steve1316/uma-android-training-helper?logo=GitHub) ![GitHub last commit](https://img.shields.io/github/last-commit/steve1316/uma-android-training-helper?logo=GitHub) ![GitHub issues](https://img.shields.io/github/issues/steve1316/uma-android-training-helper?logo=GitHub) ![GitHub pull requests](https://img.shields.io/github/issues-pr/steve1316/uma-android-training-helper?logo=GitHub) ![GitHub](https://img.shields.io/github/license/steve1316/uma-android-training-helper?logo=GitHub)
 
+> Data last updated June 11, 2021.
+
 Inspiration from @amate for their work on [UmaUmaCruise](https://github.com/amate/UmaUmaCruise) and @gertasik for [GameTora's Training Event Helper](https://gametora.com/umamusume/training-event-helper).
 
 This Android application written in Kotlin is designed to assist Uma Musume Pretty Derby players with selecting the right training options in the same vein as amate's UmaCruise and GameTora's Training Event Helper.
@@ -20,8 +22,8 @@ Due to the notoriously difficult nature of Kanji, this tool will fail when it en
 
 # Features
 - [x] Perform OCR text detection on the fly for Uma Musume's training events.
-- [ ] Add support for all characters. (IN-PROGRESS)
-- [ ] Add support for all support cards. (IN-PROGRESS)
+- [x] Add support for all characters.
+- [x] Add support for all support cards.
 
 # Requirements
 WIP
