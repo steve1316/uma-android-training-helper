@@ -7,8 +7,12 @@ class SupportData {
 		val supports = mapOf(
 			"Agnes Digital" to mapOf(
 				// R Power トレセン学園
-				"ウマ娘ちゃん欠乏症" to arrayListOf("Energy +5\nSpeed +5\nAgnes Digital bond +5", "Speed +5\nPower +5\nAgnes Digital bond +5"),
-				"エモのためなら雨の中でも" to arrayListOf("雨の日○ hint +1\nAgnes Digital bond +5", "道悪○ hint +1\nAgnes Digital bond +5"),
+				"ウマ娘ちゃん欠乏症" to arrayListOf(
+					"Energy +5\nSpeed +5\nAgnes Digital bond +5",
+					"Speed +5\nPower +5\nAgnes Digital bond +5"),
+				"エモのためなら雨の中でも" to arrayListOf(
+					"雨の日○ hint +1\nAgnes Digital bond +5",
+					"道悪○ hint +1\nAgnes Digital bond +5"),
 				
 				// SR Power デジタル充電中＋
 				"幸福のヲタライフ" to arrayListOf("Power +10"),
@@ -16,8 +20,12 @@ class SupportData {
 			),
 			"Agnes Tachyon" to mapOf(
 				// R Intelligence トレセン学園
-				"要検証・睡眠時間と作業能率" to arrayListOf("Power +5\nIntelligence +5\nAgnes Tachyon bond +5", "Intelligence +10"),
-				"要検証・他者の介在による偶発性" to arrayListOf("差しのコツ○ hint +1\nAgnes Tachyon bond +5", "Intelligence +10\nAgnes Tachyon bond +5"),
+				"要検証・睡眠時間と作業能率" to arrayListOf(
+					"Power +5\nIntelligence +5\nAgnes Tachyon bond +5",
+					"Intelligence +10"),
+				"要検証・他者の介在による偶発性" to arrayListOf(
+					"差しのコツ○ hint +1\nAgnes Tachyon bond +5",
+					"Intelligence +10\nAgnes Tachyon bond +5"),
 				
 				// SR Intelligence 生体Aに関する実験的研究
 				"Report『特化鍛錬による可能性』" to arrayListOf("Intelligence +5\nSkill points +15"),
@@ -25,8 +33,12 @@ class SupportData {
 			),
 			"Air Groove" to mapOf(
 				// R Guts トレセン学園
-				"俊敏にして剛腕" to arrayListOf("Power +15\nAir Groove bond +5", "Speed +10\nStamina +5\nAir Groove bond +5"),
-				"峻厳にして優渥" to arrayListOf("臨機応変 hint +1\nAir Groove bond +5", "Energy +10\nIntelligence +10"),
+				"俊敏にして剛腕" to arrayListOf(
+					"Power +15\nAir Groove bond +5",
+					"Speed +10\nStamina +5\nAir Groove bond +5"),
+				"峻厳にして優渥" to arrayListOf(
+					"臨機応変 hint +1\nAir Groove bond +5",
+					"Energy +10\nIntelligence +10"),
 				
 				// SR Guts 副会長の一刺し
 				"凛と胡蝶蘭" to arrayListOf("Power +5\nGuts +5"),
@@ -34,8 +46,12 @@ class SupportData {
 			),
 			"Air Shakur" to mapOf(
 				// R Intelligence トレセン学園
-				"//要検証" to arrayListOf("Energy +10\nGuts +5\nAir Shakur bond +5", "Energy -10\nStamina +5\nGuts +10\nAir Shakur bond +5"),
-				"//絶対欲しい" to arrayListOf("ペースキープ hint +1\nAir Shakur bond +5", "Maximum Energy +4\nGuts +5\nAir Shakur bond +5"),
+				"//要検証" to arrayListOf(
+					"Energy +10\nGuts +5\nAir Shakur bond +5",
+					"Energy -10\nStamina +5\nGuts +10\nAir Shakur bond +5"),
+				"//絶対欲しい" to arrayListOf(
+					"ペースキープ hint +1\nAir Shakur bond +5",
+					"Maximum Energy +4\nGuts +5\nAir Shakur bond +5"),
 				
 				// SSR Intelligence 7センチの先へ
 				"ノイズは不要" to arrayListOf("Stamina +5\nIntelligence +5"),
@@ -45,8 +61,12 @@ class SupportData {
 			"Aoi Kiryuin" to mapOf(
 				// R Friendship トレセン学園
 				"お疲れ様です！" to arrayListOf("Intelligence +3\nAoi Kiryuin bond +5"),
-				"トレーナー心得『指導は常に改良せよ』" to arrayListOf("Energy +10\nSkill points +15\nAoi Kiryuin bond +5", "Speed +5\nIntelligence +5\nAoi Kiryuin bond +5"),
-				"趣味を探して" to arrayListOf("Energy +20\nSkill points +15\nMotivation +1\nAoi Kiryuin bond +5\nCan start dating", "Motivation -1\nおひとり様○ hint +1\nAoi Kiryuin bond -5\nEvent chain ended"),
+				"トレーナー心得『指導は常に改良せよ』" to arrayListOf(
+					"Energy +10\nSkill points +15\nAoi Kiryuin bond +5",
+					"Speed +5\nIntelligence +5\nAoi Kiryuin bond +5"),
+				"趣味を探して" to arrayListOf(
+					"Energy +20\nSkill points +15\nMotivation +1\nAoi Kiryuin bond +5\nCan start dating",
+					"Motivation -1\nおひとり様○ hint +1\nAoi Kiryuin bond -5\nEvent chain ended"),
 				
 				// SR Friendship 共に同じ道を！
 				"身をもって学ぶべし！" to arrayListOf("Energy +25\nSkill points +30\nMotivation +2\nAoi Kiryuin bond +5"),
@@ -57,12 +77,16 @@ class SupportData {
 				"尊重という幸福" to arrayListOf("Power +10\nSkill points +45\nMotivation +1\nAoi Kiryuin bond +5"),
 				"夢を追い続ける限り" to arrayListOf(
 					"One of these will be selected at random\n----------\nStamina +5\nSkill points +15\nAoi Kiryuin bond +5\n逃げけん制 hint +1\n----------\nStamina +5\nPower +5\nGuts +5\n" +
-							"Skill points +45\nhint +3\nAoi Kiryuin bond +5"),
+							"Skill points +45\n逃げけん制 hint +3\nAoi Kiryuin bond +5"),
 			),
 			"Biko Pegasus" to mapOf(
 				// R Speed トレセン学園
-				"ヒーローの苦悩" to arrayListOf("Energy +15\nBiko Pegasus bond +5", "Energy +5\nPower +5\nBiko Pegasus bond +5"),
-				"必殺技を手に入れろ！" to arrayListOf("短距離直線○ hint +1\nBiko Pegasus bond +5", "Energy +30\nBiko Pegasus bond +5"),
+				"ヒーローの苦悩" to arrayListOf(
+					"Energy +15\nBiko Pegasus bond +5",
+					"Energy +5\nPower +5\nBiko Pegasus bond +5"),
+				"必殺技を手に入れろ！" to arrayListOf(
+					"短距離直線○ hint +1\nBiko Pegasus bond +5",
+					"Energy +30\nBiko Pegasus bond +5"),
 				
 				// SSR Speed 必殺！Wキャロットパンチ
 				"熱い誓い！ アタシはヒーローになる！" to arrayListOf("Speed +5\nGuts +5"),
@@ -71,27 +95,45 @@ class SupportData {
 			),
 			"Biwa Hayahide" to mapOf(
 				// R Power トレセン学園
-				"脱・無難論" to arrayListOf("Energy -10\n内弁慶 hint +1\nBiwa Hayahide bond +5", "Energy +10\nStamina +10\nBiwa Hayahide bond +5"),
-				"ぎりぎり様相論" to arrayListOf("Power +15\nBiwa Hayahide bond +5", "Speed +10\nSkill points +15\nBiwa Hayahide bond +5"),
+				"脱・無難論" to arrayListOf(
+					"Energy -10\n内弁慶 hint +1\nBiwa Hayahide bond +5",
+					"Energy +10\nStamina +10\nBiwa Hayahide bond +5"),
+				"ぎりぎり様相論" to arrayListOf(
+					"Power +15\nBiwa Hayahide bond +5",
+					"Speed +10\nSkill points +15\nBiwa Hayahide bond +5"),
 				
 				// SR Power 検証、開始
-				"世話焼きお姉ちゃん" to arrayListOf("Energy -10", "Power +15"),
+				"世話焼きお姉ちゃん" to arrayListOf(
+					"Energy -10",
+					"Power +15"),
 				"トレーニングは理論的に" to arrayListOf(
 					"One of these will be selected at random\n----------\nEnergy -20\nPower +5\n追い上げ hint +1\n----------\nEnergy -10\nStamina +5\nPower +15\nBiwa Hayahide bond +5\n追い上げ hint +3"),
 			),
 			"Daitaku Helios" to mapOf(
 				// R Power トレセン学園
-				"太陽とエンカウント☆" to arrayListOf("Power +10\nDaitaku Helios bond +5", "Get Rising Star status\nDaitaku Helios bond +5"),
-				"笑顔フォーエバー" to arrayListOf("Speed +5\nPower +10\nDaitaku Helios bond +5", "伏兵○ hint +1\nDaitaku Helios bond +5"),
+				"太陽とエンカウント☆" to arrayListOf(
+					"Power +10\nDaitaku Helios bond +5",
+					"Get Rising Star status\nDaitaku Helios bond +5"),
+				"笑顔フォーエバー" to arrayListOf(
+					"Speed +5\nPower +10\nDaitaku Helios bond +5",
+					"伏兵○ hint +1\nDaitaku Helios bond +5"),
 				
 				// SR Power パリピ・ぱーりないと！
-				"#bff #Party!" to arrayListOf("Power +10\nDaitaku Helios bond +5", "Speed +10\nDaitaku Helios bond +5"),
-				"#lol #Party! #2nd" to arrayListOf("Speed +10\nPower +10\nhint +3\nDaitaku Helios bond +5", "Energy +20\n展開窺い hint +1\nDaitaku Helios bond +5"),
+				"#bff #Party!" to arrayListOf(
+					"Power +10\nDaitaku Helios bond +5",
+					"Speed +10\nDaitaku Helios bond +5"),
+				"#lol #Party! #2nd" to arrayListOf(
+					"Speed +10\nPower +10\nhint +3\nDaitaku Helios bond +5",
+					"Energy +20\n展開窺い hint +1\nDaitaku Helios bond +5"),
 			),
 			"Daiwa Scarlet" to mapOf(
 				// R Intelligence トレセン学園
-				"明日は私が勝つんだから！" to arrayListOf("Intelligence +10\nDaiwa Scarlet bond +5", "Motivation +1\nSkill points +15\nDaiwa Scarlet bond +5"),
-				"このくらい平気なんだから！" to arrayListOf("hint +1\nDaiwa Scarlet bond +5", "Energy +20\nMotivation +1\nDaiwa Scarlet bond +5"),
+				"明日は私が勝つんだから！" to arrayListOf(
+					"Intelligence +10\nDaiwa Scarlet bond +5",
+					"Motivation +1\nSkill points +15\nDaiwa Scarlet bond +5"),
+				"このくらい平気なんだから！" to arrayListOf(
+					"スタミナキープ hint +1\nDaiwa Scarlet bond +5",
+					"Energy +20\nMotivation +1\nDaiwa Scarlet bond +5"),
 				
 				// SR Intelligence 努力は裏切らない！
 				"相手が誰でも負けないんだから！" to arrayListOf("Energy +15\nIntelligence +5\nDaiwa Scarlet bond +5"),
@@ -99,8 +141,12 @@ class SupportData {
 			),
 			"Eishin Flash" to mapOf(
 				// R Speed トレセン学園
-				"想定外への対応" to arrayListOf("Guts +10\nEishin Flash bond +5", "徹底マーク○ hint +1\nEishin Flash bond +5"),
-				"想定外のお昼" to arrayListOf("Energy +15\nEishin Flash bond +5", "Speed +5\nGuts +5\nEishin Flash bond +5"),
+				"想定外への対応" to arrayListOf(
+					"Guts +10\nEishin Flash bond +5",
+					"徹底マーク○ hint +1\nEishin Flash bond +5"),
+				"想定外のお昼" to arrayListOf(
+					"Energy +15\nEishin Flash bond +5",
+					"Speed +5\nGuts +5\nEishin Flash bond +5"),
 				
 				// SR Speed 0500・定刻通り
 				"良き管理者たるもの" to arrayListOf("Maximum Energy +4\nEnergy +10\nMotivation +1"),
@@ -113,24 +159,38 @@ class SupportData {
 				
 				// SSR Power パッションチャンピオーナ！
 				"世界級の……！？" to arrayListOf("Power +5\nGuts +5"),
-				"ダシが重要！！" to arrayListOf("Energy +30\nEl Condor Pasa bond +5", "スタミナキープ hint +1\nEl Condor Pasa bond +5"),
+				"ダシが重要！！" to arrayListOf(
+					"Energy +30\nEl Condor Pasa bond +5",
+					"スタミナキープ hint +1\nEl Condor Pasa bond +5"),
 				"ルチャドーラ・エル！！" to arrayListOf("Power +10\nキラーチューン hint +1"),
 			),
 			"Fine Motion" to mapOf(
 				// R Intelligence トレセン学園
-				"ときめきシューズ" to arrayListOf("Speed +5\nSkill points +10\nFine Motion bond +5", "Energy -10\nStamina +5\nSkill points +20\nFine Motion bond +5"),
-				"思い出クローバー" to arrayListOf("コーナー巧者○ hint +1\nFine Motion bond +5", "Guts +15\nFine Motion bond +5"),
+				"ときめきシューズ" to arrayListOf(
+					"Speed +5\nSkill points +10\nFine Motion bond +5",
+					"Energy -10\nStamina +5\nSkill points +20\nFine Motion bond +5"),
+				"思い出クローバー" to arrayListOf(
+					"コーナー巧者○ hint +1\nFine Motion bond +5",
+					"Guts +15\nFine Motion bond +5"),
 				
 				// SSR Intelligence 感謝は指先まで込めて
-				"素敵な♪練習日和" to arrayListOf("Intelligence +5\nSkill points +20\nFine Motion bond +5", "Speed +10\nStamina +5", "Get Good Practice ○ status\nFine Motion bond +5"),
-				"素敵な♪ライブ日和" to arrayListOf("Energy +10", "Skill points +10"),
+				"素敵な♪練習日和" to arrayListOf(
+					"Intelligence +5\nSkill points +20\nFine Motion bond +5",
+					"Speed +10\nStamina +5",
+					"Get Good Practice ○ status\nFine Motion bond +5"),
+				"素敵な♪ライブ日和" to arrayListOf(
+					"Energy +10",
+					"Skill points +10"),
 				"素敵な♪レース日和" to arrayListOf("Energy -10\nGuts +5\nIntelligence +5/+10\nSkill points +15\nスピードスター hint +1/+3 or 抜け出し準備 hint +1"),
-				"aaa" to arrayListOf("aaa"),
 			),
 			"Fuji Kiseki" to mapOf(
 				// R Intelligence トレセン学園
-				"スライハンド" to arrayListOf("Intelligence +5\nSkill points +15\nFuji Kiseki bond +5", "Power +5\nSkill points +15\nFuji Kiseki bond +5"),
-				"ミスディレクション" to arrayListOf("抜け出し準備 hint +1\nFuji Kiseki bond +5", "Skill points +30\nFuji Kiseki bond +5"),
+				"スライハンド" to arrayListOf(
+					"Intelligence +5\nSkill points +15\nFuji Kiseki bond +5",
+					"Power +5\nSkill points +15\nFuji Kiseki bond +5"),
+				"ミスディレクション" to arrayListOf(
+					"抜け出し準備 hint +1\nFuji Kiseki bond +5",
+					"Skill points +30\nFuji Kiseki bond +5"),
 				
 				// SR Intelligence やれやれ、お帰り
 				"アブラカダブラ" to arrayListOf("Intelligence +10"),
@@ -138,8 +198,12 @@ class SupportData {
 			),
 			"Gold City" to mapOf(
 				// R Speed トレセン学園
-				"08:36/朝寝坊、やばっ" to arrayListOf("Motivation -1\nSkill points +45\nGold City bond +5", "Energy +10\nIntelligence +5\nGold City bond +5"),
-				"13:12/昼休み、気合い入れなきゃ" to arrayListOf("Skill points +30\nGold City bond +5", "小休憩 hint +1\nGold City bond +5"),
+				"08:36/朝寝坊、やばっ" to arrayListOf(
+					"Motivation -1\nSkill points +45\nGold City bond +5",
+					"Energy +10\nIntelligence +5\nGold City bond +5"),
+				"13:12/昼休み、気合い入れなきゃ" to arrayListOf(
+					"Skill points +30\nGold City bond +5",
+					"小休憩 hint +1\nGold City bond +5"),
 				
 				// SSR Speed Run(my)way
 				"Pride" to arrayListOf("Energy +20"),
@@ -148,8 +212,12 @@ class SupportData {
 			),
 			"Gold Ship" to mapOf(
 				// R Stamina トレセン学園
-				"冒険家ゴールドシップ" to arrayListOf("Stamina +15\nGold Ship bond +5", "Guts +10\nSkill points +15\nGold Ship bond +5"),
-				"甦れ！ゴルシ印のソース焼きそば！" to arrayListOf("Motivation +1\nStamina +5", "阪神レース場○ hint +1\nGold Ship bond +5"),
+				"冒険家ゴールドシップ" to arrayListOf(
+					"Stamina +15\nGold Ship bond +5",
+					"Guts +10\nSkill points +15\nGold Ship bond +5"),
+				"甦れ！ゴルシ印のソース焼きそば！" to arrayListOf(
+					"Motivation +1\nStamina +5",
+					"阪神レース場○ hint +1\nGold Ship bond +5"),
 				
 				// SSR Stamina 不沈艦の進撃
 				"熱血ッ！エアバスケッ！" to arrayListOf("Energy -10\nStamina +25"),
@@ -158,22 +226,31 @@ class SupportData {
 			),
 			"Grass Wonder" to mapOf(
 				// R Guts トレセン学園
-				"文殿、思ひ煩ふ" to arrayListOf("Intelligence +10\nGrass Wonder bond +5", "Guts +5\nIntelligence +5\nGrass Wonder bond +5"),
-				"昼つ方、打ち語らふ" to arrayListOf("先行駆け引き hint +1\nGrass Wonder bond +5", "徹底マーク○ hint +1\nGrass Wonder bond +5"),
+				"文殿、思ひ煩ふ" to arrayListOf(
+					"Intelligence +10\nGrass Wonder bond +5",
+					"Guts +5\nIntelligence +5\nGrass Wonder bond +5"),
+				"昼つ方、打ち語らふ" to arrayListOf(
+					"先行駆け引き hint +1\nGrass Wonder bond +5",
+					"徹底マーク○ hint +1\nGrass Wonder bond +5"),
 				
 				// SSR Guts 千紫万紅にまぎれぬ一凛
 				"密やかなる熱情" to arrayListOf("Energy +10\nIntelligence +5\nSkill points +15\nGrass Wonder bond +5"),
 				"ひととき、うらうらに" to arrayListOf(
-					"Energy +15\nGrass Wonder bond +5", "One of these will be selected at random\n----------\nEnergy -10\nPower +5\nGuts +5\nIntelligence +5\nGrass Wonder bond +5" +
-							"\n----------\nPower +5\nGuts +5\nIntelligence +10\nGrass Wonder bond +5"),
+					"Energy +15\nGrass Wonder bond +5",
+					"One of these will be selected at random\n----------\nEnergy -10\nPower +5\nGuts +5\nIntelligence +5\nGrass Wonder bond +5\n----------\nPower +5\nGuts +5\nIntelligence +10\n" +
+							"Grass Wonder bond +5"),
 				"秘すれば、花なり" to arrayListOf(
 					"Energy -10\nSpeed +5\nGuts +5\nIntelligence +5\n上昇気流 hint +1\nGrass Wonder bond +5",
 					"Energy -10\nSpeed +5\nGuts +10\nIntelligence +5\n豪脚 hint +3\nGrass Wonder bond +5"),
 			),
 			"Haru Urara" to mapOf(
 				// R Guts トレセン学園
-				"うららん☆テスト勉強" to arrayListOf("Energy +10\nHaru Urara bond +5\nIntelligence +5", "Motivation +1\nIntelligence +5"),
-				"うららん☆ふくへーダッシュ！" to arrayListOf("伏兵○ hint +1\nHaru Urara bond +5", "Motivation +1\nEnergy +10\nHaru Urara bond +5"),
+				"うららん☆テスト勉強" to arrayListOf(
+					"Energy +10\nHaru Urara bond +5\nIntelligence +5",
+					"Motivation +1\nIntelligence +5"),
+				"うららん☆ふくへーダッシュ！" to arrayListOf(
+					"伏兵○ hint +1\nHaru Urara bond +5",
+					"Motivation +1\nEnergy +10\nHaru Urara bond +5"),
 				
 				// SSR Guts うらら～な休日
 				"ライスちゃんと頑張る！" to arrayListOf("Energy +10"),
@@ -182,8 +259,12 @@ class SupportData {
 			),
 			"Hishi Akebono" to mapOf(
 				// R Guts トレセン学園
-				"どーんと☆召し上がれ♪" to arrayListOf("Energy +10\nHishi Akebono bond +5", "Energy -5\nPower +15\nHishi Akebono bond +5"),
-				"どーんと☆お任せあれ♪" to arrayListOf("Stamina +10\nHishi Akebono bond +5", "Energy -15\nスプリントギア hint +2\nHishi Akebono bond +5"),
+				"どーんと☆召し上がれ♪" to arrayListOf(
+					"Energy +10\nHishi Akebono bond +5",
+					"Energy -5\nPower +15\nHishi Akebono bond +5"),
+				"どーんと☆お任せあれ♪" to arrayListOf(
+					"Stamina +10\nHishi Akebono bond +5",
+					"Energy -15\nスプリントギア hint +2\nHishi Akebono bond +5"),
 				
 				// SSR Guts 召しませふぁーすとBite！
 				"そのままの自分でボーノボーノ♪" to arrayListOf("Maximum Energy +4\nGuts +5\nHishi Akebono bond +5"),
@@ -207,8 +288,12 @@ class SupportData {
 			),
 			"Ikuno Dictus" to mapOf(
 				// R Intelligence トレセン学園
-				"イクノ式万全メソッド" to arrayListOf("Intelligence +10\nIkuno Dictus bond +5", "Skill points +30\nIkuno Dictus bond +5"),
-				"イクノ式マネジメント論" to arrayListOf("Stamina +20\nIkuno Dictus bond +5", "トリック（後）hint +1\nIkuno Dictus bond +5"),
+				"イクノ式万全メソッド" to arrayListOf(
+					"Intelligence +10\nIkuno Dictus bond +5",
+					"Skill points +30\nIkuno Dictus bond +5"),
+				"イクノ式マネジメント論" to arrayListOf(
+					"Stamina +20\nIkuno Dictus bond +5",
+					"トリック（後）hint +1\nIkuno Dictus bond +5"),
 				
 				// SR Intelligence 準備運動は怠るべからず
 				"イクノ式友情メソッド" to arrayListOf("Intelligence +10\nSkill points +20"),
@@ -228,7 +313,8 @@ class SupportData {
 				// SSR Guts 飛び出せ、キラメケ
 				"お姉ちゃんの瞬発力" to arrayListOf("Energy -10\nSpeed +5\nStamina +5\nGuts +10"),
 				"ハピハピなる前進" to arrayListOf("Energy -10\nGuts +10\nSkill points +30\nInes Fujin bond +5"),
-				"目指せ、きらめく瞬間！" to arrayListOf("One of these will be selected at random\nEnergy -10\nGuts +10\nじゃじゃウマ娘 hint +1 or\n勢い任せ hint +1\nEnergy -10\nGuts +20\nIntelligence +5\nじゃじゃウマ娘 hint +3"),
+				"目指せ、きらめく瞬間！" to arrayListOf(
+					"One of these will be selected at random\nEnergy -10\nGuts +10\nじゃじゃウマ娘 hint +1 or 勢い任せ hint +1\nEnergy -10\nGuts +20\nIntelligence +5\nじゃじゃウマ娘 hint +3"),
 			),
 			"Kawakami Princess" to mapOf(
 				// R Speed トレセン学園
@@ -263,12 +349,18 @@ class SupportData {
 			),
 			"Kitasan Black" to mapOf(
 				// R Speed トレセン学園
-				"あぁ、故郷" to arrayListOf("Speed +5\nPower +10\nKitasan Black bond +5", "Get Good Practice ○ status\nKitasan Black bond +5"),
-				"あぁ、友情" to arrayListOf("Motivation +1\nPower +5\nKitasan Black bond +5", "Energy +10\nKitasan Black bond +5"),
+				"あぁ、故郷" to arrayListOf(
+					"Speed +5\nPower +10\nKitasan Black bond +5",
+					"Get Good Practice ○ status\nKitasan Black bond +5"),
+				"あぁ、友情" to arrayListOf(
+					"Motivation +1\nPower +5\nKitasan Black bond +5",
+					"Energy +10\nKitasan Black bond +5"),
 				
 				// SSR Speed 迫る熱に押されて
 				"輝き追いかけて" to arrayListOf("Motivation +1\nSpeed +2\nPower +2\nIntelligence +2\nKitasan Black bond +5"),
-				"情けは人のためならず" to arrayListOf("Energy +10\nMotivation +1\nKitasan Black bond +5", "Speed +5/+10\n直線巧者 hint +1/+3\nKitasan Black bond +5"),
+				"情けは人のためならず" to arrayListOf(
+					"Energy +10\nMotivation +1\nKitasan Black bond +5",
+					"Speed +5/+10\n直線巧者 hint +1/+3\nKitasan Black bond +5"),
 				"2人で行くこの花道" to arrayListOf(
 					"One of these will be selected at random\n----------\nSpeed +5\nPower +5\nKitasan Black bond +5\n弧線のプロフェッサー hint +1\n----------\nSpeed +10\nPower +10\n" +
 							"Kitasan Black bond +5\n弧線のプロフェッサー hint +3"),
@@ -371,15 +463,21 @@ class SupportData {
 			),
 			"Mejiro Dober" to mapOf(
 				// R Intelligence トレセン学園
-				"喜んでくれるかな……" to arrayListOf("Skill points +45\nMejiro Dober bond +5", "負けん気 hint +1\nMejiro Dober bond +5"),
-				"やってみてもいい" to arrayListOf("Energy +15\nMejiro Dober bond +5", "Motivation +1\nSkill points +15\nMejiro Dober bond +5"),
+				"喜んでくれるかな……" to arrayListOf(
+					"Skill points +45\nMejiro Dober bond +5",
+					"負けん気 hint +1\nMejiro Dober bond +5"),
+				"やってみてもいい" to arrayListOf(
+					"Energy +15\nMejiro Dober bond +5",
+					"Motivation +1\nSkill points +15\nMejiro Dober bond +5"),
 				
 				// SR Intelligence 目線は気にせず
 				"褒められたって" to arrayListOf("Energy +10\nGuts +5"),
 				"見られてたって" to arrayListOf("Energy +5/+20\nStamina +5/+15\n差し切り体勢 hint +1"),
 				
 				// SSR Intelligence おもい、ねがう
-				"踏み出す、一歩" to arrayListOf("Energy -10\nSkill points +15~45\nMejiro Dober bond +5", "Guts +5\nIntelligence +5\nMejiro Dober bond +5"),
+				"踏み出す、一歩" to arrayListOf(
+					"Energy -10\nSkill points +15~45\nMejiro Dober bond +5",
+					"Guts +5\nIntelligence +5\nMejiro Dober bond +5"),
 				"高め合い、二歩" to arrayListOf("Guts +3\nIntelligence +3\nSkill points +5"),
 				"三歩進み、二歩下がって、一歩" to arrayListOf("Energy -10\nGuts +5\nIntelligence +5\n大局観 hint +1"),
 			),
@@ -414,7 +512,7 @@ class SupportData {
 					"Energy +10\nGuts +5\nIntelligence +5\nMejiro Palmer bond +5",
 					"Energy +10\n逃げのコツ○ hint +1\nMejiro Palmer bond +5"),
 				"ポジティブ逃げネバギバ！" to arrayListOf(
-					"Energy -20\nStamina +5\nGuts +5\n先陣の心得 hint +3 or\nリードキープ hint +1/+3\nMejiro Palmer bond +5",
+					"Energy -20\nStamina +5\nGuts +5\n先陣の心得 hint +3 or リードキープ hint +1/+3\nMejiro Palmer bond +5",
 					"Energy +10\n一匹狼 hint +1"),
 			),
 			"Mejiro Ryan" to mapOf(
@@ -634,7 +732,7 @@ class SupportData {
 					"Stamina +5\nGuts +10\nSmart Falcon bond +5",
 					"Intelligence +15\nSmart Falcon bond +5"),
 				"かわいかったら見に来てね☆" to arrayListOf(
-					"Energy -10\nPower +10\nhint +1\nSmart Falcon bond +5",
+					"Energy -10\nPower +10\n押し切り準備 hint +1\nSmart Falcon bond +5",
 					"Energy +10\nIntelligence +5\nSmart Falcon bond +5"),
 				
 				// SSR Power これが私のウマドル道☆
@@ -763,8 +861,12 @@ class SupportData {
 			),
 			"Tokai Teio" to mapOf(
 				// R Speed トレセン学園
-				"ボクの武器" to arrayListOf("Motivation +1\nGuts +10\nTokai Teio bond +5", "先行直線○ hint +1\nTokai Teio bond +5"),
-				"ボクのやり方" to arrayListOf("Motivation +1\nSkill points +15\nTokai Teio bond +5", "Guts +15\nTokai Teio bond +5"),
+				"ボクの武器" to arrayListOf(
+					"Motivation +1\nGuts +10\nTokai Teio bond +5",
+					"先行直線○ hint +1\nTokai Teio bond +5"),
+				"ボクのやり方" to arrayListOf(
+					"Motivation +1\nSkill points +15\nTokai Teio bond +5",
+					"Guts +15\nTokai Teio bond +5"),
 				
 				// SSR Speed 夢は掲げるものなのだっ！
 				"幕開けの予感" to arrayListOf("Energy +10\nSpeed +5"),
@@ -773,23 +875,32 @@ class SupportData {
 				
 				// SSR Power ふたつのノーブルライト
 				"ライバルと2ショット" to arrayListOf("Power +10\nTokai Teio bond +5"),
-				"ゴシップ狂想曲" to arrayListOf("Energy +10\nMotivation +1\nTokai Teio bond +5", "Energy -10\nPower +15\nSkill points +20\nTokai Teio bond +5\nEvent chain ended"),
+				"ゴシップ狂想曲" to arrayListOf(
+					"Energy +10\nMotivation +1\nTokai Teio bond +5",
+					"Energy -10\nPower +15\nSkill points +20\nTokai Teio bond +5\nEvent chain ended"),
 				"灯火は未来へ輝く" to arrayListOf("Stamina +7\nPower +7\n火事場のバ鹿力 hint +1\nTokai Teio bond +5"),
 			),
 			"Twin Turbo" to mapOf(
 				// R Speed トレセン学園
-				"思い込んだら一直線！" to arrayListOf("Motivation -1\nSpeed +20", "Energy -10\nPower +20"),
-				"燃えてきた！！" to arrayListOf("Energy +15\nTwin Turbo bond +5", "先駆け hint +1\nTwin Turbo bond +5"),
+				"思い込んだら一直線！" to arrayListOf(
+					"Motivation -1\nSpeed +20",
+					"Energy -10\nPower +20"),
+				"燃えてきた！！" to arrayListOf(
+					"Energy +15\nTwin Turbo bond +5",
+					"先駆け hint +1\nTwin Turbo bond +5"),
 				
 				// SSR Speed ターボエンジン全開宣言！
 				"怖くないもん！" to arrayListOf(
-					"One of these will be selected at random\n----------\nSpeed +10\nTwin Turbo bond +5\n----------\nEnergy -10\nSpeed +10\nEvent chain ended", "Energy +20\nEvent chain ended"),
+					"One of these will be selected at random\n----------\nSpeed +10\nTwin Turbo bond +5\n----------\nEnergy -10\nSpeed +10\nEvent chain ended",
+					"Energy +20\nEvent chain ended"),
 				"捕まらないもん！" to arrayListOf(
 					"One of these will be selected at random\n----------\nSpeed +15\n(random) 先頭プライド hint +1/+3\n----------\nEnergy -10\nSpeed +10\n(random) 先頭プライド hint +1/+3\nEvent " +
-							"chain ended", "Energy +25\nEvent chain ended"),
+							"chain ended",
+					"Energy +25\nEvent chain ended"),
 				"ターボは強いんだもん！" to arrayListOf(
 					"One of these will be selected at random\n----------\nEnergy -10\nSpeed +25\n先手必勝 hint +1/+3\n先駆け hint +1/+3\n----------\nEnergy -10\nSpeed +5\n先手必勝 hint +1/+3\n" +
-							"先手必勝 hint +1/+3", "Energy +15\n展開窺い hint +1"),
+							"先手必勝 hint +1/+3",
+					"Energy +15\n展開窺い hint +1"),
 			),
 			"Vodka" to mapOf(
 				// R Power トレセン学園
@@ -860,14 +971,19 @@ class SupportData {
 			),
 			"Zenno Rob Roy" to mapOf(
 				// R Stamina トレセン学園
-				"託された物語" to arrayListOf("Stamina +10\nIntelligence +10\nZenno Rob Roy bond +5", "中距離直線○ hint +1\nZenno Rob Roy bond +5"),
-				"読書家あるある" to arrayListOf("Speed +5\nIntelligence +5\nZenno Rob Roy bond +5", "Energy +10\nPower +5\nZenno Rob Roy bond +5"),
+				"託された物語" to arrayListOf(
+					"Stamina +10\nIntelligence +10\nZenno Rob Roy bond +5",
+					"中距離直線○ hint +1\nZenno Rob Roy bond +5"),
+				"読書家あるある" to arrayListOf(
+					"Speed +5\nIntelligence +5\nZenno Rob Roy bond +5",
+					"Energy +10\nPower +5\nZenno Rob Roy bond +5"),
 				
 				// SR Stamina おすすめ本、あります！
-				"読書少女と魔法少女？" to arrayListOf("Stamina +5\nIntelligence +5\nZenno Rob Roy bond +5", "Energy +20\nPower +10\nZenno Rob Roy bond +5\nEvent chain ended"),
+				"読書少女と魔法少女？" to arrayListOf(
+					"Stamina +5\nIntelligence +5\nZenno Rob Roy bond +5",
+					"Energy +20\nPower +10\nZenno Rob Roy bond +5\nEvent chain ended"),
 				"いつか、『物語』の主役に" to arrayListOf("Stamina +10\nIntelligence +10\n鋭い眼光 hint +1"),
-				
-				)
+			)
 		)
 	}
 }
