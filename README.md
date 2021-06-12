@@ -1,13 +1,11 @@
-# Uma Musume Training Event Helper For Android using MediaProjection, AccessibilityService, OpenCV, and Tesseract
+# Uma Musume Training Event Helper For Android using OpenCV and Tesseract
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/steve1316/uma-android-training-helper?logo=GitHub) ![GitHub last commit](https://img.shields.io/github/last-commit/steve1316/uma-android-training-helper?logo=GitHub) ![GitHub issues](https://img.shields.io/github/issues/steve1316/uma-android-training-helper?logo=GitHub) ![GitHub pull requests](https://img.shields.io/github/issues-pr/steve1316/uma-android-training-helper?logo=GitHub) ![GitHub](https://img.shields.io/github/license/steve1316/uma-android-training-helper?logo=GitHub)
 
 > Data last updated June 11, 2021.
 
 Inspiration from @amate for their work on [UmaUmaCruise](https://github.com/amate/UmaUmaCruise) and @gertasik for [GameTora's Training Event Helper](https://gametora.com/umamusume/training-event-helper).
 
-This Android application written in Kotlin is designed to assist Uma Musume Pretty Derby players with selecting the right training options in the same vein as amate's UmaCruise and GameTora's Training Event Helper.
-
-It accomplishes this by taking a screenshot via the MediaProjection and OpenCV performs image processing. Finally, Tesseract will perform OCR text recognition on it and will determine if there is a similar string to it in the data and will display it as a Notification that you can view the training event's option rewards.
+This Android application written in Kotlin is designed to assist Uma Musume Pretty Derby players with selecting the right training options in the same vein as amate's UmaCruise and GameTora's Training Event Helper by informing you of what rewards you get for each option on the screen in a seamless manner.
 
 https://user-images.githubusercontent.com/18709555/121611207-96999d00-ca0c-11eb-9eb1-538131e52719.mp4
 
@@ -18,15 +16,13 @@ Upon tapping the floating overlay button, the process begins.
 - Lastly, Tesseract performs OCR on it using [@amate's jpn.traineddata](https://github.com/amate/UmaUmaCruise). It then takes that string and begins comparison with the strings stored in [CharacterData.kt](https://github.com/steve1316/uma-android-training-helper/blob/main/app/src/main/java/com/steve1316/uma_android_training_helper/data/CharacterData.kt) and [SupportData.kt](https://github.com/steve1316/uma-android-training-helper/blob/main/app/src/main/java/com/steve1316/uma_android_training_helper/data/SupportData.kt) to determine the highest similarity. If the confidence is higher than the set minimum, then it will have the Notification in your Notification Drawer updated to be the Event Rewards for each option. If not, then the Notification will be updated to indicate failure.
 
 # Disclaimer
-Due to the notoriously difficult nature of Kanji, this tool will fail when it encounters too many Kanji in the Event title during OCR detection due to my lack of experience with Tesseract. I have added an option to adjust the Threshold value in the Settings to allow manual adjustment to improve OCR accuracy. Mileage may vary.
+Due to the difficult nature of Kanji, mileage may vary when using this. I have added an option to adjust the Threshold value in the Settings to allow manual adjustment to improve OCR accuracy. 
 
 # Features
-- [x] Perform OCR text detection on the fly for Uma Musume's training events.
-- [x] Add support for all characters.
-- [x] Add support for all support cards.
-
-# Requirements
-WIP
+- [x] Perform OCR text detection on the fly with a floating overlay button for Uma Musume's training events and then display the results as a Notification.
+- [x] Support for all Characters.
+- [x] Support for all Support Cards.
+- [x] Various settings to adjust such as enabling automatic retry upon OCR failure.
 
 # Instructions
 1. Download the .apk file from the ```Releases``` section on the right and install it on your Android device. If you want to build the .apk yourself, do the following:
