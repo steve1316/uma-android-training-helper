@@ -107,7 +107,11 @@ class Game(private val myContext: Context) {
 	 * Attempt to find the most similar string from data compared to the string returned by OCR.
 	 */
 	private fun findMostSimilarString() {
-		printToLog("\n[INFO] Now starting process to find most similar string to: $result\n")
+		if (!hideResults) {
+			printToLog("\n[INFO] Now starting process to find most similar string to: $result\n")
+		} else {
+			printToLog("\n[INFO] Now starting process to find most similar string to: $result")
+		}
 		
 		// Use the Jaro Winkler algorithm to compare similarities the OCR detected string and the rest of the strings inside the data classes.
 		val service = StringSimilarityServiceImpl(JaroWinklerStrategy())
@@ -179,7 +183,11 @@ class Game(private val myContext: Context) {
 			}
 		}
 		
-		printToLog("\n[INFO] Finished process to find similar string.")
+		if (!hideResults) {
+			printToLog("\n[INFO] Finished process to find similar string.")
+		} else {
+			printToLog("[INFO] Finished process to find similar string.")
+		}
 	}
 	
 	/**
@@ -188,6 +196,9 @@ class Game(private val myContext: Context) {
 	private fun constructNotification(): Boolean {
 		// Now construct the text body for the Notification.
 		if (confidence > minimumConfidence) {
+			printToLog("\n####################")
+			printToLog("####################")
+			
 			// Process the resulting string from the acquired information.
 			eventOptionRewards.forEach { reward ->
 				if (eventOptionRewards.size == 1) {
@@ -233,6 +244,9 @@ class Game(private val myContext: Context) {
 				}
 			}
 			
+			printToLog("####################")
+			printToLog("####################\n")
+			
 			// Append this last line to the Notification's text body if the rest of the text was going to be cut off as the Notification's expanded mode is set only at 256dp.
 			if (notificationTextArray.size >= 8) {
 				notificationTextArray.removeAt(notificationTextArray.lastIndex)
@@ -246,7 +260,11 @@ class Game(private val myContext: Context) {
 			NotificationUtils.updateNotification(myContext, eventTitle, notificationTextBody, confidence)
 			return true
 		} else {
-			printToLog("\n[ERROR] Confidence of $confidence failed to be greater than the minimum of 0.60 so OCR failed.", isError = true)
+			printToLog("\n####################")
+			printToLog("####################")
+			printToLog("[ERROR] Confidence of $confidence failed to be greater than the minimum of $minimumConfidence", isError = true)
+			printToLog("####################")
+			printToLog("####################\n")
 			return false
 		}
 	}
@@ -294,6 +312,10 @@ class Game(private val myContext: Context) {
 				}
 			}
 			
+			if (enableIncrementalThreshold) {
+				printToLog("\n[RESULT] Threshold incremented by $increment")
+			}
+			
 			// Now construct and display the Notification containing the results from OCR, whether it was successful or not.
 			flag = constructNotification()
 			if (!flag && enableIncrementalThreshold) {
@@ -305,10 +327,6 @@ class Game(private val myContext: Context) {
 		
 		if (!flag) {
 			NotificationUtils.updateNotification(myContext, "OCR Failed", "Sorry, either this text is not in data yet or acquired confidence was less than the minimum.", confidence)
-		}
-		
-		if (enableIncrementalThreshold) {
-			printToLog("\n[RESULT] Threshold incremented by $increment")
 		}
 		
 		val endTime: Long = System.currentTimeMillis()

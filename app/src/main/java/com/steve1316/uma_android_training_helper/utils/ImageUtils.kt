@@ -181,7 +181,7 @@ class ImageUtils(context: Context, private val game: Game) {
 		Imgproc.threshold(cvImage, bwImage, threshold.toDouble() + increment, 255.0, Imgproc.THRESH_BINARY)
 		Imgcodecs.imwrite("$matchFilePath/RESULT.png", bwImage)
 		
-		game.printToLog("[INFO] Saved result image successfully named RESULT.png to internal storage inside the /files/temp/ folder.\n", MESSAGE_TAG = TAG)
+		game.printToLog("[INFO] Saved result image successfully named RESULT.png to internal storage inside the /files/temp/ folder.", MESSAGE_TAG = TAG)
 		
 		val resultBitmap = BitmapFactory.decodeFile("$matchFilePath/RESULT.png")
 		tessBaseAPI.setImage(resultBitmap)
