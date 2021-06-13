@@ -69,8 +69,8 @@ class HomeFragment : Fragment() {
 			settingsStatusTextView.text = "Character Selected: $character\n\nSupport(s) Selected: All Support Cards Selected\n\nMinimum Confidence Required: $confidence%\n\nThreshold Value: $threshold\n\nHide " +
 					"String Comparison Results: $hideResults\n\nEnabled Automatic Retry: $enableIncrementalThreshold"
 		} else {
-			settingsStatusTextView.text = "Character Selected: $character\n\nSupport(s) Selected: $supportList\n\nThreshold Value: $threshold\n\nHide String Comparison Results: $hideResults" +
-					"\n\nEnabled Automatic Retry: $enableIncrementalThreshold"
+			settingsStatusTextView.text = "Character Selected: $character\n\nSupport(s) Selected: $supportList\n\nMinimum Confidence Required: $confidence%\n\nThreshold Value: $threshold\n\n" +
+					"Hide String Comparison Results: $hideResults\n\nEnabled Automatic Retry: $enableIncrementalThreshold"
 		}
 		
 		
