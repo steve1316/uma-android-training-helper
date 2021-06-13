@@ -65,6 +65,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		val thresholdSeekBar: SeekBarPreference = findPreference("thresholdSeekBar")!!
 		val selectAllCheckBox: CheckBoxPreference = findPreference("selectAllCheckBox")!!
 		val enableIncrementalThresholdCheckBox: CheckBoxPreference = findPreference("enableIncrementalThresholdCheckBox")!!
+		val confidenceSeekBar: SeekBarPreference = findPreference("confidenceSeekBar")!!
 		
 		if (key != null) {
 			// Note that is no need to handle the Preference that allows multiple selection here as it is already handled in its own function.
@@ -119,6 +120,11 @@ class SettingsFragment : PreferenceFragmentCompat() {
 						commit()
 					}
 				}
+				"confidenceSeekBar" -> {
+					sharedPreferences.edit {
+						putInt("confidence", confidenceSeekBar.value)
+					}
+				}
 			}
 		}
 	}
@@ -149,6 +155,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		val hideResults = sharedPreferences.getBoolean("hideResults", false)
 		val selectAllSupportCards = sharedPreferences.getBoolean("selectAllSupportCards", false)
 		val enableIncrementalThreshold = sharedPreferences.getBoolean("enableIncrementalThreshold", false)
+		val confidence = sharedPreferences.getInt("confidence", 80)
 		
 		// Get references to the Preference components.
 		val characterPicker: ListPreference = findPreference("characterPicker")!!
@@ -157,6 +164,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		val hideResultsCheckBox: CheckBoxPreference = findPreference("hideResultsCheckBox")!!
 		val selectAllCheckBox: CheckBoxPreference = findPreference("selectAllCheckBox")!!
 		val enableIncrementalThresholdCheckBox: CheckBoxPreference = findPreference("enableIncrementalThresholdCheckBox")!!
+		val confidenceSeekBar: SeekBarPreference = findPreference("confidenceSeekBar")!!
 		
 		// Now set the following values from the shared preferences.
 		
@@ -174,10 +182,10 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		}
 		
 		thresholdSeekBar.value = threshold
-		
 		hideResultsCheckBox.isChecked = hideResults
 		selectAllCheckBox.isChecked = selectAllSupportCards
 		enableIncrementalThresholdCheckBox.isChecked = enableIncrementalThreshold
+		confidenceSeekBar.value = confidence
 		
 		Log.d(TAG, "Preferences created successfully.")
 	}
