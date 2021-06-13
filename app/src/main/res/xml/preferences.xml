@@ -39,7 +39,7 @@
 
         <CheckBoxPreference
             app:key="enableIncrementalThresholdCheckBox"
-            app:summary="[Experimental Feature]\nEnables automatic retrying of OCR by incrementing threshold value by 5 whenever it fails until it succeeds or it hits the max of 255.\n\nIncreases processing time by several seconds with worst case scenario being ~30 seconds at Threshold Value of 200."
+            app:summary="[Experimental Feature]\nEnables automatic retrying of OCR by incrementing threshold value by 5 whenever it fails until it succeeds or it hits the max of 255.\n\nIncreases processing time by several seconds with worst case scenario being ~10 seconds at Threshold Value of 200."
             app:title="Enable Automatic Retry" />
 
     </PreferenceCategory>
