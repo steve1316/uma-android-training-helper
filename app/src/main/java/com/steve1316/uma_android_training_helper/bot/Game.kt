@@ -37,7 +37,7 @@ class Game(private val myContext: Context) {
 	private val supportCards: List<String> = SettingsFragment.getStringSharedPreference(myContext, "supportList").split("|")
 	private var hideResults: Boolean = SettingsFragment.getBooleanSharedPreference(myContext, "hideResults")
 	private var selectAllSupportCards: Boolean = SettingsFragment.getBooleanSharedPreference(myContext, "selectAllSupportCards")
-	private val minimumConfidence = SettingsFragment.getIntSharedPreference(myContext, "confidence").toDouble() / 100.0
+	private var minimumConfidence = SettingsFragment.getIntSharedPreference(myContext, "confidence").toDouble() / 100.0
 	
 	/**
 	 * Returns a formatted string of the elapsed time since the bot started as HH:MM:SS format.
@@ -275,6 +275,10 @@ class Game(private val myContext: Context) {
 	 * @return True if all automation goals have been met. False otherwise.
 	 */
 	fun start(): Boolean {
+		if (minimumConfidence > 1.0) {
+			minimumConfidence = 0.8
+		}
+		
 		val startTime: Long = System.currentTimeMillis()
 		
 		val threshold = SettingsFragment.getIntSharedPreference(myContext, "threshold").toDouble()
