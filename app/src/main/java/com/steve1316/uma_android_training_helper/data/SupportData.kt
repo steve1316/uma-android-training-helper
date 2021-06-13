@@ -937,7 +937,7 @@ class SupportData {
 			),
 			"Yaeno Muteki" to mapOf(
 				// R Power トレセン学園
-				"剛毅朴訥、仁に近し" to arrayListOf("Speed +10"),
+				"剛毅朴訥、仁に近し" to arrayListOf("Speed +10", "Motivation +1\nPower +5"),
 				"嗚呼、守りたい……！" to arrayListOf("Stamina +10\nPower +10", "中距離コーナー○ hint +1"),
 				
 				// SSR Power 押して忍べど燃ゆるもの
