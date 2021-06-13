@@ -257,6 +257,8 @@ class Game(private val myContext: Context) {
 	 * @return True if all automation goals have been met. False otherwise.
 	 */
 	fun start(): Boolean {
+		val startTime: Long = System.currentTimeMillis()
+		
 		val threshold = SettingsFragment.getIntSharedPreference(myContext, "threshold").toDouble()
 		val enableIncrementalThreshold = SettingsFragment.getBooleanSharedPreference(myContext, "enableIncrementalThreshold")
 		var increment = 0.0
@@ -308,6 +310,10 @@ class Game(private val myContext: Context) {
 		if (enableIncrementalThreshold) {
 			printToLog("\n[RESULT] Threshold incremented by $increment")
 		}
+		
+		val endTime: Long = System.currentTimeMillis()
+		
+		Log.d(TAG, "Total Runtime: ${endTime - startTime}ms")
 		
 		return true
 	}
