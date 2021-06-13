@@ -26,6 +26,9 @@ class ImageUtils(context: Context, private val game: Game) {
 	
 	private val tessBaseAPI: TessBaseAPI
 	
+	private var firstTimeCheck: Boolean = true
+	private var sourceBitmap: Bitmap? = null
+	
 	companion object {
 		private var matchFilePath: String = ""
 		private lateinit var matchLocation: Point
@@ -126,11 +129,14 @@ class ImageUtils(context: Context, private val game: Game) {
 	 * @return A Pair of source and template Bitmaps.
 	 */
 	private fun getBitmaps(templateName: String, templateFolderName: String): Pair<Bitmap?, Bitmap?> {
-		var sourceBitmap: Bitmap? = null
-		
-		// Keep swiping a little bit up and down to trigger a new image for ImageReader to grab.
-		while (sourceBitmap == null) {
-			sourceBitmap = MediaProjectionService.takeScreenshotNow()
+		// Keep the same source Bitmap on repeated tries to reduce processing time.
+		if (firstTimeCheck) {
+			// Keep swiping a little bit up and down to trigger a new image for ImageReader to grab.
+			while (sourceBitmap == null) {
+				sourceBitmap = MediaProjectionService.takeScreenshotNow()
+			}
+			
+			firstTimeCheck = false
 		}
 		
 		var templateBitmap: Bitmap?
