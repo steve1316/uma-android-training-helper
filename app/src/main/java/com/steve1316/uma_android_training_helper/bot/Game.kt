@@ -18,9 +18,6 @@ import java.util.concurrent.TimeUnit
 class Game(private val myContext: Context) {
 	private val TAG: String = "UATH_Game"
 	
-	private var hideResults: Boolean = SettingsFragment.getBooleanSharedPreference(myContext, "hideResults")
-	private var selectAllSupportCards: Boolean = SettingsFragment.getBooleanSharedPreference(myContext, "selectAllSupportCards")
-	
 	private val imageUtils: ImageUtils = ImageUtils(myContext, this)
 	
 	private val startTime: Long = System.currentTimeMillis()
@@ -38,6 +35,9 @@ class Game(private val myContext: Context) {
 	
 	private val character = SettingsFragment.getStringSharedPreference(myContext, "character")
 	private val supportCards: List<String> = SettingsFragment.getStringSharedPreference(myContext, "supportList").split("|")
+	private var hideResults: Boolean = SettingsFragment.getBooleanSharedPreference(myContext, "hideResults")
+	private var selectAllSupportCards: Boolean = SettingsFragment.getBooleanSharedPreference(myContext, "selectAllSupportCards")
+	private val minimumConfidence = SettingsFragment.getIntSharedPreference(myContext, "confidence").toDouble() / 100.0
 	
 	/**
 	 * Returns a formatted string of the elapsed time since the bot started as HH:MM:SS format.
@@ -187,7 +187,7 @@ class Game(private val myContext: Context) {
 	 */
 	private fun constructNotification(): Boolean {
 		// Now construct the text body for the Notification.
-		if (confidence > 0.6) {
+		if (confidence > minimumConfidence) {
 			// Process the resulting string from the acquired information.
 			eventOptionRewards.forEach { reward ->
 				if (eventOptionRewards.size == 1) {
