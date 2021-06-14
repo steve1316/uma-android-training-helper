@@ -305,7 +305,7 @@ class CharacterData {
 				"岐" to arrayListOf("Increased difficulty of future training goals\nIncreased rewards for future training goals", "Nothing happens"),
 				"ファミリーレストラン" to arrayListOf("Speed +10", "Stamina +10", "Guts +10"),
 				"ダンスレッスン" to arrayListOf("Stamina +10", "Intelligence +10"),
-				"新年の抱負" to arrayListOf("Speed +10", "Energy +20", "Skill points +20"),
+				"新年の抱負" to arrayListOf("Power +10", "Energy +20", "Skill points +20"),
 			),
 			"Narita Taishin" to mapOf(
 				"後日レポート提出済" to arrayListOf("Speed +10", "Stamina +5\nPower +5"),
