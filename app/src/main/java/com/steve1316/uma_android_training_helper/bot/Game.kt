@@ -123,7 +123,7 @@ class Game(private val myContext: Context) {
 				printToLog("[CHARA] $character \"${result}\" vs. \"${eventName}\" confidence: $score")
 			}
 			
-			if (score > confidence) {
+			if (score >= confidence) {
 				confidence = score
 				eventTitle = eventName
 				eventOptionRewards = eventOptions
@@ -138,7 +138,7 @@ class Game(private val myContext: Context) {
 				printToLog("[CHARA-SHARED] \"${result}\" vs. \"${eventName}\" confidence: $score")
 			}
 			
-			if (score > confidence) {
+			if (score >= confidence) {
 				confidence = score
 				eventTitle = eventName
 				eventOptionRewards = eventOptions
@@ -155,7 +155,7 @@ class Game(private val myContext: Context) {
 						printToLog("[SUPPORT] $supportCardName \"${result}\" vs. \"${eventName}\" confidence: $score")
 					}
 					
-					if (score > confidence) {
+					if (score >= confidence) {
 						confidence = score
 						eventTitle = eventName
 						supportCardTitle = supportCardName
@@ -172,7 +172,7 @@ class Game(private val myContext: Context) {
 						printToLog("[SUPPORT] $supportName \"${result}\" vs. \"${eventName}\" confidence: $score")
 					}
 					
-					if (score > confidence) {
+					if (score >= confidence) {
 						confidence = score
 						eventTitle = eventName
 						supportCardTitle = supportName
@@ -288,44 +288,44 @@ class Game(private val myContext: Context) {
 		
 		while (!flag) {
 			// Perform Tesseract OCR detection.
-			if ((255.0 - threshold - increment > 0.0)) {
+			if ((255.0 - threshold - increment) > 0.0) {
 				result = imageUtils.findText(increment)
 			} else {
 				break
 			}
 			
-			if (result.isEmpty() || result == "empty!") {
-				return false
-			}
-			
-			// Make some minor improvements by replacing certain incorrect characters with their Japanese equivalents.
-			fixIncorrectCharacters()
-			
-			// Now attempt to find the most similar string compared to the one from OCR.
-			findMostSimilarString()
-			
-			when (category) {
-				"character" -> {
-					printToLog("\n[RESULT] Character $character Event Name = $eventTitle with confidence = $confidence")
+			if (result.isNotEmpty() && result != "empty!") {
+				// Make some minor improvements by replacing certain incorrect characters with their Japanese equivalents.
+				fixIncorrectCharacters()
+				
+				// Now attempt to find the most similar string compared to the one from OCR.
+				findMostSimilarString()
+				
+				when (category) {
+					"character" -> {
+						printToLog("\n[RESULT] Character $character Event Name = $eventTitle with confidence = $confidence")
+					}
+					"character-shared" -> {
+						printToLog("\n[RESULT] Character $character Shared Event Name = $eventTitle with confidence = $confidence")
+					}
+					"support" -> {
+						printToLog("\n[RESULT] Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
+					}
 				}
-				"character-shared" -> {
-					printToLog("\n[RESULT] Character $character Shared Event Name = $eventTitle with confidence = $confidence")
+				
+				if (enableIncrementalThreshold) {
+					printToLog("\n[RESULT] Threshold incremented by $increment")
 				}
-				"support" -> {
-					printToLog("\n[RESULT] Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence")
+				
+				// Now construct and display the Notification containing the results from OCR, whether it was successful or not.
+				flag = constructNotification()
+				if (!flag && enableIncrementalThreshold) {
+					increment += 5.0
+				} else {
+					break
 				}
-			}
-			
-			if (enableIncrementalThreshold) {
-				printToLog("\n[RESULT] Threshold incremented by $increment")
-			}
-			
-			// Now construct and display the Notification containing the results from OCR, whether it was successful or not.
-			flag = constructNotification()
-			if (!flag && enableIncrementalThreshold) {
-				increment += 5.0
 			} else {
-				break
+				increment += 5.0
 			}
 		}
 		
