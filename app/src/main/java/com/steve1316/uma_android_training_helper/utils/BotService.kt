@@ -167,8 +167,5 @@ class BotService : Service() {
 		
 		// Remove the overlay View that holds the overlay button.
 		windowManager.removeView(overlayView)
-		
-		val service = Intent(myContext, MyAccessibilityService::class.java)
-		myContext.stopService(service)
 	}
 }

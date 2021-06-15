@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 		val navView: NavigationView = findViewById(R.id.nav_view)
 		val navController = findNavController(R.id.nav_host_fragment)
 		
+		// Set the Link to the "Go to GitHub" button.
 		val githubTextView: TextView = findViewById(R.id.github_textView)
 		githubTextView.setOnClickListener {
 			val newIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/steve1316/uma-android-training-helper"))

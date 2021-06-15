@@ -157,7 +157,9 @@ class ImageUtils(context: Context, private val game: Game) {
 	}
 	
 	/**
-	 * Perform OCR text detection using Tesseract along with some image manipulation using OpenCV.
+	 * Perform OCR text detection using Tesseract along with some image manipulation via thresholding to make the cropped screenshot black and white using OpenCV.
+	 *
+	 * @return The detected String in the cropped region.
 	 */
 	fun findText(increment: Double): String {
 		val (sourceBitmap, templateBitmap) = getBitmaps("shift", "images")
@@ -203,7 +205,7 @@ class ImageUtils(context: Context, private val game: Game) {
 	}
 	
 	/**
-	 * Initialize Tesseract for future OCR operations.
+	 * Initialize Tesseract for future OCR operations. Make sure to put your .traineddata inside the root of the /assets/ folder.
 	 */
 	private fun initTesseract() {
 		val externalFilesDir: File? = myContext.getExternalFilesDir(null)
