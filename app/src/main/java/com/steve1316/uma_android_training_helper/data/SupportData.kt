@@ -91,13 +91,11 @@ class SupportData {
 				// SSR Power Head-on fight！
 				"目指すは得点王っス！" to arrayListOf("Energy -10\nStamina +3\nPower +3\nGuts +3\n対抗意識○ hint+1"),
 				"誰だろうと風紀は絶対っス！" to arrayListOf(
-					"One of these will be selected at random\n----------\nMaximum Energy +4\nEnergy -10\nStamina +10\nPower +10\nGuts +5\nBamboo Memory bond +5\n----------\nEnergy -20\nStamina +10\nPower +10\nGuts +5\nBamboo Memory bond +5\n----------\nEnergy -20\nStamina +10\nGuts +10\nObtain 空回り skill",
+					"One of these will be selected at random\n----------\nMaximum Energy +4\nEnergy -10\nStamina +10\nPower +10\nGuts +5\n末脚 hint +1\nBamboo Memory bond +5\n----------\nEnergy -20\nStamina +10\nPower +10\nGuts +5\nBamboo Memory bond +5\n----------\nEnergy -20\nStamina +10\nGuts +10\nObtain 空回り skill",
 					"Energy -10\nMotivation +1\nStamina +5\nPower +5\nBamboo Memory bond +5",
-					"Energy +30\n差しためらい hint +1"
-					),
-				" いつか強敵と呼べる日のために！っス！" to arrayListOf(
-					"One of these will be selected at random\n----------\nMaximum Energy +4\nStamina +10\nPower +15\n昇り龍 hint+3\nBamboo Memory bond +5\n----------\nEnergy -15\nStamina +10\nPower +15\n外差し準備 hint+3"
-					),
+					"Energy +30\n差しためらい hint +1"),
+				"いつか強敵と呼べる日のために！っス！" to arrayListOf(
+					"One of these will be selected at random\n----------\nMaximum Energy +4\nStamina +10\nPower +15\n昇り龍 hint +3\nBamboo Memory bond +5\n----------\nEnergy -15\nStamina +10\nPower +15\n外差し準備 hint +3"),
 			),
 			"Biko Pegasus" to mapOf(
 				// R Speed トレセン学園
