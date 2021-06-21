@@ -79,6 +79,24 @@ class SupportData {
 					"One of these will be selected at random\n----------\nStamina +5\nSkill points +15\nAoi Kiryuin bond +5\n逃げけん制 hint +1\n----------\nStamina +5\nPower +5\nGuts +5\n" +
 							"Skill points +45\n逃げけん制 hint +3\nAoi Kiryuin bond +5"),
 			),
+			"Bamboo Memory" to mapOf(
+				// R Power トレセン学園
+				"ライバル、打倒っス！" to arrayListOf(
+					"Guts +10\nBamboo Memory bond +5",
+					"Maximum Energy +4\nEnergy -5\nBamboo Memory bond +5"),
+				"トラブル、上等っス！" to arrayListOf(
+					"Stamina +5\nGuts +5\nBamboo Memory bond +5",
+					"Energy -10\n根幹距離○ hint +5\nBamboo Memory bond +5"),
+				
+				// SSR Power Head-on fight！
+				"目指すは得点王っス！" to arrayListOf("Energy -10\nStamina +3\nPower +3\nGuts +3\n対抗意識○ hint+1"),
+				"誰だろうと風紀は絶対っス！" to arrayListOf(
+					"One of these will be selected at random\n----------\nMaximum Energy +4\nEnergy -10\nStamina +10\nPower +10\nGuts +5\n末脚 hint +1\nBamboo Memory bond +5\n----------\nEnergy -20\nStamina +10\nPower +10\nGuts +5\nBamboo Memory bond +5\n----------\nEnergy -20\nStamina +10\nGuts +10\nObtain 空回り skill",
+					"Energy -10\nMotivation +1\nStamina +5\nPower +5\nBamboo Memory bond +5",
+					"Energy +30\n差しためらい hint +1"),
+				"いつか強敵と呼べる日のために！っス！" to arrayListOf(
+					"One of these will be selected at random\n----------\nMaximum Energy +4\nStamina +10\nPower +15\n昇り龍 hint +3\nBamboo Memory bond +5\n----------\nEnergy -15\nStamina +10\nPower +15\n外差し準備 hint +3"),
+			),
 			"Biko Pegasus" to mapOf(
 				// R Speed トレセン学園
 				"ヒーローの苦悩" to arrayListOf(
@@ -713,6 +731,22 @@ class SupportData {
 					"Skill points +30\n二の矢 hint +1\nSeiun Sky bond -5\nEvent chain ended"),
 				"トラップにご注意" to arrayListOf("Speed +5\nStamina +5"),
 				"すべては勝つために" to arrayListOf("Energy +10\nMotivation +1\nSpeed +5\nStamina +5\nIntelligence +5\nSkill points +5\n脱出術 hint +1/+3 or 急ぎ足 hint +1"),
+			),
+			"Shinko Windy" to mapOf(
+				// R Speed トレセン学園
+				"ガブッと、撲滅！" to arrayListOf(
+					"Speed +3\nMotivation +1\nShinko Windy bond +5",
+					"Energy +10\nSkill points +5\nShinko Windy bond +5"),
+				"ガブッと、突撃！" to arrayListOf(
+					"Skill points +15\nShinko Windy bond +5",
+					"Speed +3\n負けん気 hint +1\nShinko Windy bond +5"),
+				
+				// SR Speed ///WARNING GATE///
+				"ココ掘れ、ウインディ！" to arrayListOf(
+					"Speed +10\nShinko Windy bond +5",
+					"Energy -5\nSkill points +30\nShinko Windy bond +5"),
+				"ゲートよ、開け！" to arrayListOf(
+					"One of these will be selected at random\n----------\nSpeed +10\nSkill points +15\nギアシフト hint +3\nShinko Windy bond +5\n----------\nSpeed +5\nSkill points +10\nShinko Windy bond +5"),
 			),
 			"Silence Suzuka" to mapOf(
 				// R Speed トレセン学園
