@@ -3,6 +3,8 @@ package com.steve1316.uma_android_training_helper.bot
 import android.content.Context
 import android.util.Log
 import com.steve1316.uma_android_training_helper.data.CharacterData
+import com.steve1316.uma_android_training_helper.data.SkillData
+import com.steve1316.uma_android_training_helper.data.StatusData
 import com.steve1316.uma_android_training_helper.data.SupportData
 import com.steve1316.uma_android_training_helper.ui.settings.SettingsFragment
 import com.steve1316.uma_android_training_helper.utils.ImageUtils
@@ -29,6 +31,10 @@ class Game(private val myContext: Context) {
 	private var supportCardTitle = ""
 	private var eventOptionRewards: ArrayList<String> = arrayListOf()
 	private var eventOptionNumber = 1
+	private var eventOptionSkills: ArrayList<String> = arrayListOf()
+	private var eventOptionsSkillsNumbers: ArrayList<Int> = arrayListOf()
+	private var eventOptionStatus: ArrayList<String> = arrayListOf()
+	private var eventOptionsStatusNumbers: ArrayList<Int> = arrayListOf()
 	private var firstLine = true
 	private var notificationTextBody: String = ""
 	private val notificationTextArray = arrayListOf<String>()
@@ -191,6 +197,77 @@ class Game(private val myContext: Context) {
 	}
 	
 	/**
+	 * Attempt to find matches for skills and statuses from data inside the event option rewards.
+	 */
+	private fun checkForSkillsAndStatus() {
+		var optionNumber = 1
+		eventOptionRewards.forEach { line ->
+			StatusData.status.forEach { status ->
+				if (status.key in line) {
+					eventOptionStatus.add("${status.key};${status.value}")
+					eventOptionsStatusNumbers.add(optionNumber)
+				}
+			}
+			
+			SkillData.skills.forEach { skill ->
+				if (skill.key in line) {
+					eventOptionSkills.add("${skill.key};${skill.value["englishName"]};${skill.value["englishDescription"]}")
+					eventOptionsSkillsNumbers.add(optionNumber)
+				}
+			}
+			
+			optionNumber += 1
+		}
+	}
+	
+	/**
+	 * Format the reward string if necessary with the contents of the skill and status translations.
+	 */
+	private fun formatResultForSkillsAndStatus(reward: String, isSingleOption: Boolean = false): String {
+		var tempReward = reward
+		
+		if (isSingleOption) {
+			if ((eventOptionStatus.size != 0 || eventOptionSkills.size != 0) && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
+				tempReward += "\n"
+			}
+			
+			if (eventOptionStatus.size != 0 && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
+				val tempStatus = eventOptionStatus.get(0).split(";")
+				eventOptionStatus.removeAt(0)
+				eventOptionsStatusNumbers.removeAt(0)
+				tempReward = tempReward + "\n${tempStatus[0]} status: \"${tempStatus[1]}\""
+			}
+			
+			if (eventOptionSkills.size != 0 && eventOptionsSkillsNumbers.get(0) == eventOptionNumber) {
+				val tempSkill = eventOptionSkills.get(0).split(";")
+				eventOptionSkills.removeAt(0)
+				eventOptionsSkillsNumbers.removeAt(0)
+				tempReward = tempReward + "\n${tempSkill[0]} / ${tempSkill[1]}: \"${tempSkill[2]}\""
+			}
+		} else {
+			if ((eventOptionStatus.size != 0 || eventOptionSkills.size != 0) && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
+				tempReward += "\n"
+			}
+			
+			if (eventOptionStatus.size != 0 && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
+				val tempStatus = eventOptionStatus.get(0).split(";")
+				eventOptionStatus.removeAt(0)
+				eventOptionsStatusNumbers.removeAt(0)
+				tempReward = tempReward + "\n${tempStatus[0]} status: \"${tempStatus[1]}\""
+			}
+			
+			if (eventOptionSkills.size != 0 && eventOptionsSkillsNumbers.get(0) == eventOptionNumber) {
+				val tempSkill = eventOptionSkills.get(0).split(";")
+				eventOptionSkills.removeAt(0)
+				eventOptionsSkillsNumbers.removeAt(0)
+				tempReward = tempReward + "\n${tempSkill[0]} / ${tempSkill[1]}: \"${tempSkill[2]}\""
+			}
+		}
+		
+		return tempReward
+	}
+	
+	/**
 	 * Construct the result's text body and then display it as a Notification.
 	 */
 	private fun constructNotification(): Boolean {
@@ -216,7 +293,10 @@ class Game(private val myContext: Context) {
 						}
 					}
 					
-					printToLog("\n\n$reward\n", isOption = true)
+					// Begin appending to the reward string for english translations of skills and statuses if necessary.
+					val tempReward = formatResultForSkillsAndStatus(reward, isSingleOption = true)
+					
+					printToLog("\n\n$tempReward\n", isOption = true)
 					eventOptionNumber += 1
 				} else {
 					if (notificationTextArray.size < 9) {
@@ -239,7 +319,10 @@ class Game(private val myContext: Context) {
 						}
 					}
 					
-					printToLog("\n[OPTION $eventOptionNumber] \n$reward\n", isOption = true)
+					// Begin appending to the reward string for english translations of skills and statuses if necessary.
+					val tempReward = formatResultForSkillsAndStatus(reward)
+					
+					printToLog("\n[OPTION $eventOptionNumber] \n$tempReward\n", isOption = true)
 					eventOptionNumber += 1
 				}
 			}
@@ -300,6 +383,9 @@ class Game(private val myContext: Context) {
 				
 				// Now attempt to find the most similar string compared to the one from OCR.
 				findMostSimilarString()
+				
+				// Insert english translations and descriptions for any skills and statuses detected in the event rewards.
+				checkForSkillsAndStatus()
 				
 				when (category) {
 					"character" -> {
