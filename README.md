@@ -5,7 +5,7 @@
 
 Inspiration from @amate for their work on [UmaUmaCruise](https://github.com/amate/UmaUmaCruise) and @gertasik for [GameTora's Training Event Helper](https://gametora.com/umamusume/training-event-helper).
 
-This Android application written in Kotlin is designed to assist Uma Musume Pretty Derby players with selecting the right training options in the same vein as amate's UmaCruise and GameTora's Training Event Helper by informing you of what rewards you get for each option on the screen in a seamless manner.
+This Android application written in Kotlin is designed to assist Uma Musume Pretty Derby players with selecting the right training options in the same vein as amate's UmaCruise and GameTora's Training Event Helper by informing you of what rewards you get for each option on the screen in a seamless manner. In addition, it will also inform you of the English translations of any skills and statuses present in the rewards and what they do.
 
 https://user-images.githubusercontent.com/18709555/121611207-96999d00-ca0c-11eb-9eb1-538131e52719.mp4
 
@@ -23,6 +23,7 @@ Due to the difficult nature of Kanji, mileage may vary when using this. I have a
 
 # Features
 - [x] Perform OCR text detection on the fly with a floating overlay button for Uma Musume's training events and then display the results as a Notification.
+- [x] Provides Skill and Status translations during training events and what they do, available in the message log.
 - [x] Support for all Characters.
 - [x] Support for all Support Cards.
 - [x] Various settings to adjust such as enabling automatic retry upon OCR failure.
