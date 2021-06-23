@@ -18,7 +18,7 @@ class SkillData {
 			"精神一到" to mapOf(
 				"id" to 10111,
 				"englishName" to "Desire to win",
-				"englishDescription" to "Lightly increase speed when passing in the back in Final Leg straight."),
+				"englishDescription" to "Lightly increase speed when passing in the back in Final Leg straight"),
 			"熱血☆アミーゴ" to mapOf(
 				"id" to 10141,
 				"englishName" to "Hot Blooded ☆ Amigo",
@@ -846,7 +846,7 @@ class SkillData {
 			"慧眼" to mapOf(
 				"id" to 200691,
 				"englishName" to "Wisdom Eye",
-				"englishDescription" to "Mile・Become harder to tire when in the back of the pack during the Opening Le"),
+				"englishDescription" to "Mile・Become harder to tire when in the back of the pack during the Opening Leg"),
 			"展開窺い" to mapOf(
 				"id" to 200692,
 				"englishName" to "Progress Peek",
