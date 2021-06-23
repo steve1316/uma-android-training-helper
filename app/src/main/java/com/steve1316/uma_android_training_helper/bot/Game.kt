@@ -232,19 +232,20 @@ class Game(private val myContext: Context) {
 	private fun formatResultForSkillsAndStatus(reward: String, isSingleOption: Boolean = false): String {
 		var tempReward = reward
 		
+		// If there are multiple statuses/skills in the same string, the while loops will make sure that they are all accounted for.
 		if (isSingleOption) {
 			if (eventOptionStatus.size != 0 && eventOptionSkills.size != 0 && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
 				tempReward += "\n"
 			}
 			
-			if (eventOptionStatus.size != 0 && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
+			while (eventOptionStatus.size != 0 && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
 				val tempStatus = eventOptionStatus.get(0).split(";")
 				eventOptionStatus.removeAt(0)
 				eventOptionsStatusNumbers.removeAt(0)
 				tempReward = tempReward + "\n${tempStatus[0]} status: \"${tempStatus[1]}\""
 			}
 			
-			if (eventOptionSkills.size != 0 && eventOptionsSkillsNumbers.get(0) == eventOptionNumber) {
+			while (eventOptionSkills.size != 0 && eventOptionsSkillsNumbers.get(0) == eventOptionNumber) {
 				val tempSkill = eventOptionSkills.get(0).split(";")
 				eventOptionSkills.removeAt(0)
 				eventOptionsSkillsNumbers.removeAt(0)
@@ -255,14 +256,14 @@ class Game(private val myContext: Context) {
 				tempReward += "\n"
 			}
 			
-			if (eventOptionStatus.size != 0 && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
+			while (eventOptionStatus.size != 0 && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
 				val tempStatus = eventOptionStatus.get(0).split(";")
 				eventOptionStatus.removeAt(0)
 				eventOptionsStatusNumbers.removeAt(0)
 				tempReward = tempReward + "\n${tempStatus[0]} status: \"${tempStatus[1]}\""
 			}
 			
-			if (eventOptionSkills.size != 0 && eventOptionsSkillsNumbers.get(0) == eventOptionNumber) {
+			while (eventOptionSkills.size != 0 && eventOptionsSkillsNumbers.get(0) == eventOptionNumber) {
 				val tempSkill = eventOptionSkills.get(0).split(";")
 				eventOptionSkills.removeAt(0)
 				eventOptionsSkillsNumbers.removeAt(0)
