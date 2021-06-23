@@ -200,6 +200,12 @@ class Game(private val myContext: Context) {
 	 * Attempt to find matches for skills and statuses from data inside the event option rewards.
 	 */
 	private fun checkForSkillsAndStatus() {
+		// Clear the following of its contents in case automatic retry was turned on.
+		eventOptionStatus.clear()
+		eventOptionsStatusNumbers.clear()
+		eventOptionSkills.clear()
+		eventOptionsSkillsNumbers.clear()
+		
 		var optionNumber = 1
 		eventOptionRewards.forEach { line ->
 			StatusData.status.forEach { status ->
@@ -227,7 +233,7 @@ class Game(private val myContext: Context) {
 		var tempReward = reward
 		
 		if (isSingleOption) {
-			if ((eventOptionStatus.size != 0 || eventOptionSkills.size != 0) && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
+			if (eventOptionStatus.size != 0 && eventOptionSkills.size != 0 && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
 				tempReward += "\n"
 			}
 			
@@ -245,7 +251,7 @@ class Game(private val myContext: Context) {
 				tempReward = tempReward + "\n${tempSkill[0]} / ${tempSkill[1]}: \"${tempSkill[2]}\""
 			}
 		} else {
-			if ((eventOptionStatus.size != 0 || eventOptionSkills.size != 0) && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
+			if (eventOptionStatus.size != 0 && eventOptionSkills.size != 0 && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
 				tempReward += "\n"
 			}
 			
