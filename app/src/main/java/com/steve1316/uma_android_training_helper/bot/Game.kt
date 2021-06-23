@@ -272,7 +272,7 @@ class Game(private val myContext: Context) {
 	 */
 	private fun constructNotification(): Boolean {
 		// Now construct the text body for the Notification.
-		if (confidence > minimumConfidence) {
+		if (confidence >= minimumConfidence) {
 			printToLog("\n####################")
 			printToLog("####################")
 			
@@ -345,7 +345,7 @@ class Game(private val myContext: Context) {
 		} else {
 			printToLog("\n####################")
 			printToLog("####################")
-			printToLog("[ERROR] Confidence of $confidence failed to be greater than the minimum of $minimumConfidence", isError = true)
+			printToLog("[ERROR] Confidence of $confidence failed to be greater than or equal to the minimum of $minimumConfidence.", isError = true)
 			printToLog("####################")
 			printToLog("####################\n")
 			return false
@@ -416,7 +416,8 @@ class Game(private val myContext: Context) {
 		}
 		
 		if (!flag) {
-			NotificationUtils.updateNotification(myContext, "OCR Failed", "Sorry, either this text is not in data yet or acquired confidence was less than the minimum.", confidence)
+			NotificationUtils.updateNotification(myContext, "OCR Failed", "Confidence of $confidence failed to be greater than or equal to the minimum of $minimumConfidence.",
+				confidence)
 		}
 		
 		val endTime: Long = System.currentTimeMillis()
