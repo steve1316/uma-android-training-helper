@@ -241,6 +241,19 @@ class SupportData {
 				"熱血ッ！エアバスケッ！" to arrayListOf("Energy -10\nStamina +25"),
 				"リスペクトシャケッ！" to arrayListOf("Energy -10\nGuts +25"),
 				"強敵と書いて『とも』と読むッ！" to arrayListOf("Stamina +10\n曲線のソムリエ hint +1"),
+				
+				// SSR Speed ウマ王伝説・最強になった件
+				"ゴルシ様、城を建てる" to arrayListOf(
+					"Maximum Energy +4\nGold Ship bond +5",
+					"Speed +10\nGold Ship bond +5"
+				),
+				"ゴルシ様、ダンジョンを探す" to arrayListOf(
+					"Energy -15\nSpeed +5\nStamina +5\n長距離直線○ hint +1"
+				),
+				"ゴルシ様、配下をそろえる" to arrayListOf(
+					"One of these will be selected at random\n----------\nEnergy -10\nSpeed +5\nStamina +5\n内弁慶 hint +3\nGold Ship bond +5\n----------\nEnergy -10\nSpeed +10\nStamina +10\n内的体験 hint +3\nGold Ship bond +5",
+					"Energy +10\nおひとり様○ hint +1"
+				),
 			),
 			"Grass Wonder" to mapOf(
 				// R Guts トレセン学園
@@ -364,6 +377,19 @@ class SupportData {
 				// SR Speed 一流プランニング
 				"一流の指導" to arrayListOf("Speed +10"),
 				"一流の相談相手" to arrayListOf("Speed +15\nSkill points +15"),
+				
+				// SSR Power 今宵、円舞曲にのせて
+				"魅惑の招待状" to arrayListOf(
+					"Power +10\nKing Halo bond +5",
+					"Guts +10\nKing Halo bond +5"
+				),
+				"舞踏家のプライド" to arrayListOf(
+					"Energy -5\nStamina +10\nPower +5\nSkill points +5\nKing Halo bond +5",
+					"Energy +15\nSkill points +5\nKing Halo bond +5"
+				),
+				"舞踏会の綺羅星" to arrayListOf(
+					"One of these will be selected at random\n----------\nEnergy -10\nPower +25\n電撃の煌めき hint +3\n----------\nEnergy -10\nPower +20\n詰め寄り hint +3"
+				),
 			),
 			"Kitasan Black" to mapOf(
 				// R Speed トレセン学園
@@ -731,6 +757,17 @@ class SupportData {
 					"Skill points +30\n二の矢 hint +1\nSeiun Sky bond -5\nEvent chain ended"),
 				"トラップにご注意" to arrayListOf("Speed +5\nStamina +5"),
 				"すべては勝つために" to arrayListOf("Energy +10\nMotivation +1\nSpeed +5\nStamina +5\nIntelligence +5\nSkill points +5\n脱出術 hint +1/+3 or 急ぎ足 hint +1"),
+				
+				// SSR Intelligence 明日は全国的に赤でしょう♪
+				"いきなりマーダーミステリー！ その1" to arrayListOf(
+					"Intelligence +5\nSkill points +10\nSeiun Sky bond +5",
+					"Energy +10\nSeiun Sky bond +5"),
+				"いきなりマーダーミステリー！ その2" to arrayListOf(
+					"Intelligence +5\n先行駆け引き hint +1\nSeiun Sky bond +5",
+					"Energy +5\nSkill points +10\nSeiun Sky bond +5"),
+				"いきなりマーダーミステリー！ その3" to arrayListOf(
+					"Intelligence +5/+10\n先陣の心得 hint +1/+3\nSeiun Sky bond +5",
+					"Energy +10\nStamina +10\nSkill points +15"),
 			),
 			"Shinko Windy" to mapOf(
 				// R Speed トレセン学園
