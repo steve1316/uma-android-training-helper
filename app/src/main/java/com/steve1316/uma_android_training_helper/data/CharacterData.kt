@@ -94,6 +94,23 @@ class CharacterData {
 				"ダンスレッスン" to arrayListOf("Guts +10", "Speed +10"),
 				"新年の抱負" to arrayListOf("Intelligence +10", "Energy +20", "Skill points +20"),
 			),
+			"El Condor Pasa" to mapOf(
+				// Original
+				"もう１度、決意を" to arrayListOf("Speed +5\nStamina +5", "Guts +10"),
+				"オリジナル・マスク" to arrayListOf("Speed +10", "Power +10"),
+				"世界最強の決意を" to arrayListOf("Power +20", "Stamina +20"),
+				"憧れのレスラー" to arrayListOf("Stamina +10", "Speed +10"),
+				"夜の学園のご老公？" to arrayListOf("Motivation +1\nGuts +5", "Energy +10"),
+				"特大ピザを狙え！" to arrayListOf("Power +10\nSkill points +15", "軽やかステップ hint +1"),
+				"ホット＆フライ！" to arrayListOf("Energy +10\nSkill points +5", "Energy +30\nSkill points +10\n(random) Get Overweight status"),
+				"衝撃の引退" to arrayListOf("Guts +10", "Power +10"),
+				"贈る花言葉" to arrayListOf("Motivation +1\nIntelligence +5", "Energy +10"),
+				"勇気の入場曲" to arrayListOf("Power +20\n(random) Get Sharp status", "Speed +10\nPower +10\n(random) Get Sharp status"),
+				"サルサ・ロハ" to arrayListOf("Stamina +10", "Power +10"),
+				"サボテン料理をご馳走デース！" to arrayListOf("Speed +10\nStamina +10", "Intelligence +20"),
+				"ダンスレッスン" to arrayListOf("Stamina +10", "Intelligence +10"),
+				"新年の抱負" to arrayListOf("Power +10", "Energy +20", "Skill points +20"),
+			),
 			"Gold Ship" to mapOf(
 				"落としたものは？" to arrayListOf("Energy -10\nPower +20", "Speed +10"),
 				"ゴルシの！いきなり過去編！" to arrayListOf("Stamina +10\nIntelligence +10\n(random) Get Sharp status", "Speed +20\n(random) Get Sharp status"),
