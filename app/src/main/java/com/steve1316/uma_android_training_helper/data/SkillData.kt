@@ -207,10 +207,18 @@ class SkillData {
 				"id" to 110031,
 				"englishName" to "It's going to be me",
 				"englishDescription" to "Increase speed in the last straight when chasing someone close to the lead"),
+			"ゲインヒール・スペリアー" to mapOf(
+				"id" to 110111,
+				"englishName" to "Gain Superior Heal",
+				"englishDescription" to "During the Middle Leg, recover stamina when overtaken in the back of the pack"),
 			"最強の名を懸けて" to mapOf(
 				"id" to 110131,
 				"englishName" to "For the Strongest Name",
 				"englishDescription" to "Increase speed after the last corner when stamina runs out being one of the lead"),
+			"コンドル猛撃波" to mapOf(
+				"id" to 110141,
+				"englishName" to "Condor Onslaught",
+				"englishDescription" to "During the last corner, gain acceleration when aiming for the lead from the middle of the pack"),
 			"薫風、永遠なる瞬間を" to mapOf(
 				"id" to 110181,
 				"englishName" to "Summer Breeze, The Eternal Moment",

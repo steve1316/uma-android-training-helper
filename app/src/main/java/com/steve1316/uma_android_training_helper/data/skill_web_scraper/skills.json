@@ -306,10 +306,22 @@
         "endesc": "Increase speed in the last straight when chasing someone close to the lead"
     },
     {
+        "id": 110111,
+        "jpname": "ゲインヒール・スペリアー",
+        "enname": "Gain Superior Heal",
+        "endesc": "During the Middle Leg, recover stamina when overtaken in the back of the pack"
+    },
+    {
         "id": 110131,
         "jpname": "最強の名を懸けて",
         "enname": "For the Strongest Name",
         "endesc": "Increase speed after the last corner when stamina runs out being one of the lead"
+    },
+    {
+        "id": 110141,
+        "jpname": "コンドル猛撃波",
+        "enname": "Condor Onslaught",
+        "endesc": "During the last corner, gain acceleration when aiming for the lead from the middle of the pack"
     },
     {
         "id": 110181,
