@@ -110,6 +110,12 @@ class CharacterData {
 				"サボテン料理をご馳走デース！" to arrayListOf("Speed +10\nStamina +10", "Intelligence +20"),
 				"ダンスレッスン" to arrayListOf("Stamina +10", "Intelligence +10"),
 				"新年の抱負" to arrayListOf("Power +10", "Energy +20", "Skill points +20"),
+				
+				// Fantasy
+				"過去からの挑戦状！" to arrayListOf("Speed +10\nPower +10\n(random) Get Charming ○ status", "臨機応変 hint +2\n(random) Get Charming ○ status"),
+				"もう1度、決意を" to arrayListOf("Guts +10", "Stamina +10", "Speed +5\nStamina +5"),
+				"熱！伝！導！" to arrayListOf("Power +20", "Motivation +1\nIntelligence +10"),
+				"衣装に宿る熱き炎！" to arrayListOf("ウマ込み冷静 hint +2", "Speed +7\nPower +7\nGuts +7"),
 			),
 			"Gold Ship" to mapOf(
 				"落としたものは？" to arrayListOf("Energy -10\nPower +20", "Speed +10"),
@@ -131,6 +137,7 @@ class CharacterData {
 				"新年の抱負" to arrayListOf("Stamina +10", "Energy +20", "Skill points +20"),
 			),
 			"Grass Wonder" to mapOf(
+				// Original
 				"ナデシコ・ガール" to arrayListOf("Power +10", "Intelligence +10", "Speed +10"),
 				"花瓶" to arrayListOf("Guts +5\nIntelligence +5", "Speed +5\nStamina +5"),
 				"秘められた意味" to arrayListOf("Stamina +10\nGuts +10", "Power +20"),
@@ -146,6 +153,11 @@ class CharacterData {
 				"ふたつの原風景" to arrayListOf("Guts +10", "Stamina +10"),
 				"ダンスレッスン" to arrayListOf("Power +10", "Guts +10"),
 				"新年の抱負" to arrayListOf("Intelligence +10", "Energy +20", "Skill points +20"),
+				
+				// Fantasy
+				"たゆまぬ気魄【バトルクライ】" to arrayListOf("Motivation +1\nPower +10", "Energy +15"),
+				"永劫続く追撃【エンドレスマイターン】" to arrayListOf("鋭い眼光 hint +2\n(random) Get Rising Star status", "Speed +10\nSkill points +15\n(random) Get Rising Star status"),
+				"邂逅する想慕【ミラージュメモリー】" to arrayListOf("Guts +10\nIntelligence +10", "Stamina +20"),
 			),
 			"Haru Urara" to mapOf(
 				"かっくいいね！" to arrayListOf("Skill points +30", "Intelligence +10"),
