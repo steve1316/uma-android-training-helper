@@ -57,7 +57,7 @@ class SkillScraper:
         # Now save a txt version of the strings of formatted Kotlin code for SkillData.kt.
         with open("skills.txt", "w", encoding = "utf-8") as file:
             for skill in skill_list:
-                file.write(f"\"{skill['jpname']}\" to mapOf(\"id\" to {int(skill['id'])},\n\"englishName\" to \"{skill['enname']}\",\n\"englishDescription\" to \"{skill['endesc']}\"),\n")
+                file.write(f"\"{skill['jpname']}\" to mapOf(\n\t\"id\" to {int(skill['id'])},\n\t\"englishName\" to \"{skill['enname']}\",\n\t\"englishDescription\" to \"{skill['endesc']}\"),\n")
 
         return None
 
