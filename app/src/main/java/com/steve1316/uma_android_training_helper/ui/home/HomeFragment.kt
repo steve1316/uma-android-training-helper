@@ -17,14 +17,20 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
+import com.beust.klaxon.JsonReader
 import com.steve1316.uma_android_training_helper.R
+import com.steve1316.uma_android_training_helper.data.CharacterData
+import com.steve1316.uma_android_training_helper.data.SkillData
+import com.steve1316.uma_android_training_helper.data.SupportData
 import com.steve1316.uma_android_training_helper.utils.MediaProjectionService
 import com.steve1316.uma_android_training_helper.utils.MessageLog
+import java.io.StringReader
 
 class HomeFragment : Fragment() {
 	private val TAG: String = "UATH_HomeFragment"
 	private val SCREENSHOT_PERMISSION_REQUEST_CODE: Int = 100
 	private var firstBoot = false
+	private var firstRun = true
 	
 	private lateinit var myContext: Context
 	private lateinit var homeFragmentView: View
@@ -77,6 +83,12 @@ class HomeFragment : Fragment() {
 		// Enable the start button if the required settings have been set.
 		if ((character != null && character.isNotEmpty())) {
 			startButton.isEnabled = true
+		}
+		
+		// Now construct the data files if this is the first time.
+		if (firstRun) {
+			constructDataClasses()
+			firstRun = false
 		}
 		
 		return homeFragmentView
@@ -174,5 +186,82 @@ class HomeFragment : Fragment() {
 		
 		Log.d(TAG, "Application has permission to draw overlay.")
 		return true
+	}
+	
+	/**
+	 * Construct the data classes associated with Characters, Support Cards and Skills from the provided JSON data files.
+	 */
+	private fun constructDataClasses() {
+		// Construct the data class for Characters and Support Cards.
+		val fileList = arrayListOf("characters.json", "supports.json")
+		while (fileList.size > 0) {
+			val fileName = fileList[0]
+			fileList.removeAt(0)
+			val objectString = myContext.assets.open("data/$fileName").bufferedReader().use { it.readText() }
+			
+			JsonReader(StringReader(objectString)).use { reader ->
+				reader.beginObject {
+					while (reader.hasNext()) {
+						// Grab the name.
+						val name = reader.nextName()
+						
+						// Now iterate through each event and collect all of them and their option rewards into a map.
+						val eventOptionRewards = mutableMapOf<String, ArrayList<String>>()
+						reader.beginObject {
+							while (reader.hasNext()) {
+								// Grab the event name.
+								val eventName = reader.nextName()
+								eventOptionRewards.putIfAbsent(eventName, arrayListOf())
+								
+								reader.beginArray {
+									// Grab all of the event option rewards for this event and add them to the map.
+									while (reader.hasNext()) {
+										val optionReward = reader.nextString()
+										eventOptionRewards[eventName]?.add(optionReward)
+									}
+								}
+							}
+						}
+						
+						// Finally, put into the MutableMap the key value pair depending on the current category.
+						if (fileName == "characters.json") {
+							CharacterData.characters[name] = eventOptionRewards
+						} else {
+							SupportData.supports[name] = eventOptionRewards
+						}
+					}
+				}
+			}
+		}
+		
+		// Now construct the data class for Skills.
+		val objectString = myContext.assets.open("data/skills.json").bufferedReader().use { it.readText() }
+		JsonReader(StringReader(objectString)).use { reader ->
+			reader.beginObject {
+				while (reader.hasNext()) {
+					// Grab the name.
+					val skillName = reader.nextName()
+					SkillData.skills.putIfAbsent(skillName, mutableMapOf())
+					
+					reader.beginObject {
+						// Skip the id.
+						reader.nextName()
+						reader.nextInt()
+						
+						// Grab the English name and description.
+						reader.nextName()
+						val skillEnglishName = reader.nextString()
+						reader.nextName()
+						val skillEnglishDescription = reader.nextString()
+						
+						// Finally, collect them into a map and put them into the data class.
+						val tempMap = mutableMapOf<String, String>()
+						tempMap["englishName"] = skillEnglishName
+						tempMap["englishDescription"] = skillEnglishDescription
+						SkillData.skills[skillName] = tempMap
+					}
+				}
+			}
+		}
 	}
 }
