@@ -11,7 +11,7 @@ Visit GameTora's Training Event Helper at (https://gametora.com/umamusume/traini
 ![Example 1 from GameTora](https://raw.githubusercontent.com/steve1316/uma-android-training-helper/main/app/src/main/assets/readme/example1.png)
 
 ## Step 2
-Then head on over to the respective Data class and under their category, copy and paste from the popup's text and format it like so:
+Then head on over to the respective JSON file and under their category, copy and paste from the popup's text and format it like so:
 
 ![Formatted String Event of Example 1 from GameTora](https://raw.githubusercontent.com/steve1316/uma-android-training-helper/main/app/src/main/assets/readme/example1_formatted.png)
 
