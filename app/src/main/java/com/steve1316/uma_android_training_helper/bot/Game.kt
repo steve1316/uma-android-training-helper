@@ -234,40 +234,40 @@ class Game(private val myContext: Context) {
 		
 		// If there are multiple statuses/skills in the same string, the while loops will make sure that they are all accounted for.
 		if (isSingleOption) {
-			if (eventOptionStatus.size != 0 && eventOptionSkills.size != 0 && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
+			if (eventOptionStatus.size != 0 && eventOptionSkills.size != 0 && eventOptionsStatusNumbers[0] == eventOptionNumber) {
 				tempReward += "\n"
 			}
 			
-			while (eventOptionStatus.size != 0 && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
-				val tempStatus = eventOptionStatus.get(0).split(";")
+			while (eventOptionStatus.size != 0 && eventOptionsStatusNumbers[0] == eventOptionNumber) {
+				val tempStatus = eventOptionStatus[0].split(";")
 				eventOptionStatus.removeAt(0)
 				eventOptionsStatusNumbers.removeAt(0)
-				tempReward = tempReward + "\n${tempStatus[0]} status: \"${tempStatus[1]}\""
+				tempReward += "\n${tempStatus[0]} status: \"${tempStatus[1]}\""
 			}
 			
-			while (eventOptionSkills.size != 0 && eventOptionsSkillsNumbers.get(0) == eventOptionNumber) {
-				val tempSkill = eventOptionSkills.get(0).split(";")
+			while (eventOptionSkills.size != 0 && eventOptionsSkillsNumbers[0] == eventOptionNumber) {
+				val tempSkill = eventOptionSkills[0].split(";")
 				eventOptionSkills.removeAt(0)
 				eventOptionsSkillsNumbers.removeAt(0)
-				tempReward = tempReward + "\n${tempSkill[0]} / ${tempSkill[1]}: \"${tempSkill[2]}\""
+				tempReward += "\n${tempSkill[0]} / ${tempSkill[1]}: \"${tempSkill[2]}\""
 			}
 		} else {
-			if (eventOptionStatus.size != 0 && eventOptionSkills.size != 0 && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
+			if (eventOptionStatus.size != 0 && eventOptionSkills.size != 0 && eventOptionsStatusNumbers[0] == eventOptionNumber) {
 				tempReward += "\n"
 			}
 			
-			while (eventOptionStatus.size != 0 && eventOptionsStatusNumbers.get(0) == eventOptionNumber) {
-				val tempStatus = eventOptionStatus.get(0).split(";")
+			while (eventOptionStatus.size != 0 && eventOptionsStatusNumbers[0] == eventOptionNumber) {
+				val tempStatus = eventOptionStatus[0].split(";")
 				eventOptionStatus.removeAt(0)
 				eventOptionsStatusNumbers.removeAt(0)
-				tempReward = tempReward + "\n${tempStatus[0]} status: \"${tempStatus[1]}\""
+				tempReward += "\n${tempStatus[0]} status: \"${tempStatus[1]}\""
 			}
 			
-			while (eventOptionSkills.size != 0 && eventOptionsSkillsNumbers.get(0) == eventOptionNumber) {
-				val tempSkill = eventOptionSkills.get(0).split(";")
+			while (eventOptionSkills.size != 0 && eventOptionsSkillsNumbers[0] == eventOptionNumber) {
+				val tempSkill = eventOptionSkills[0].split(";")
 				eventOptionSkills.removeAt(0)
 				eventOptionsSkillsNumbers.removeAt(0)
-				tempReward = tempReward + "\n${tempSkill[0]} / ${tempSkill[1]}: \"${tempSkill[2]}\""
+				tempReward += "\n${tempSkill[0]} / ${tempSkill[1]}: \"${tempSkill[2]}\""
 			}
 		}
 		
@@ -423,7 +423,8 @@ class Game(private val myContext: Context) {
 		}
 		
 		if (!flag) {
-			NotificationUtils.updateNotification(myContext, "OCR Failed", "Confidence of $confidence failed to be greater than or equal to the minimum of $minimumConfidence.",
+			NotificationUtils.updateNotification(
+				myContext, "OCR Failed", "Confidence of $confidence failed to be greater than or equal to the minimum of $minimumConfidence.",
 				confidence)
 		}
 		
