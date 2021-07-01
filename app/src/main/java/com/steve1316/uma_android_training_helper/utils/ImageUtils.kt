@@ -177,6 +177,9 @@ class ImageUtils(context: Context, private val game: Game) {
 			cvImage.submat(435, 500, 165, 810)
 		}
 		
+		// Save the cropped image before converting it to black and white in order to troubleshoot issues related to differing device sizes and cropping.
+		Imgcodecs.imwrite("$matchFilePath/pre-RESULT.png", cvImage)
+		
 		// Thresh the grayscale cropped image to make black and white.
 		val bwImage = Mat()
 		val threshold = SettingsFragment.getIntSharedPreference(myContext, "threshold")
