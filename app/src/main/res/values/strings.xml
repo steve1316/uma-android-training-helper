@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">ウマ娘 Training Helper</string>
 
-    <string name="title_activity_main">ウマ娘 Training Helper</string>
+    <string name="title_activity_main">ウマ娘 Helper</string>
 
     <string name="menu_home">Home</string>
     <string name="menu_settings">Settings</string>

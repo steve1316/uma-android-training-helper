@@ -7,10 +7,11 @@ import android.os.Bundle
 import android.util.Log
 import androidx.core.content.edit
 import androidx.preference.*
+import com.steve1316.uma_android_training_helper.MainActivity
 import com.steve1316.uma_android_training_helper.R
 
 class SettingsFragment : PreferenceFragmentCompat() {
-	private val TAG: String = "UATH_SettingsFragment"
+	private val TAG: String = "[${MainActivity.loggerTag}]SettingsFragment"
 	
 	private lateinit var sharedPreferences: SharedPreferences
 	

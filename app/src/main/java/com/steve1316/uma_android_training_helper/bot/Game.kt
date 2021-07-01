@@ -2,6 +2,7 @@ package com.steve1316.uma_android_training_helper.bot
 
 import android.content.Context
 import android.util.Log
+import com.steve1316.uma_android_training_helper.MainActivity
 import com.steve1316.uma_android_training_helper.data.CharacterData
 import com.steve1316.uma_android_training_helper.data.SkillData
 import com.steve1316.uma_android_training_helper.data.StatusData
@@ -18,7 +19,7 @@ import java.util.concurrent.TimeUnit
  * Main driver for bot activity and navigation.
  */
 class Game(private val myContext: Context) {
-	private val TAG: String = "UATH_Game"
+	private val TAG: String = "[${MainActivity.loggerTag}]Game"
 	
 	private val imageUtils: ImageUtils = ImageUtils(myContext, this)
 	

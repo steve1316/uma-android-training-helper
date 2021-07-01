@@ -18,6 +18,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.beust.klaxon.JsonReader
+import com.steve1316.uma_android_training_helper.MainActivity
 import com.steve1316.uma_android_training_helper.R
 import com.steve1316.uma_android_training_helper.data.CharacterData
 import com.steve1316.uma_android_training_helper.data.SkillData
@@ -27,7 +28,7 @@ import com.steve1316.uma_android_training_helper.utils.MessageLog
 import java.io.StringReader
 
 class HomeFragment : Fragment() {
-	private val TAG: String = "UATH_HomeFragment"
+	private val TAG: String = "[${MainActivity.loggerTag}]HomeFragment"
 	private val SCREENSHOT_PERMISSION_REQUEST_CODE: Int = 100
 	private var firstBoot = false
 	private var firstRun = true

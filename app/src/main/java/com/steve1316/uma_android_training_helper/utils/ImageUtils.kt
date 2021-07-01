@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import com.googlecode.tesseract.android.TessBaseAPI
+import com.steve1316.uma_android_training_helper.MainActivity
 import com.steve1316.uma_android_training_helper.bot.Game
 import com.steve1316.uma_android_training_helper.ui.settings.SettingsFragment
 import org.opencv.android.Utils
@@ -19,7 +20,7 @@ import java.io.IOException
  * Utility functions for image processing via CV like OpenCV.
  */
 class ImageUtils(context: Context, private val game: Game) {
-	private val TAG: String = "UATH_ImageUtils"
+	private val TAG: String = "[${MainActivity.loggerTag}]ImageUtils"
 	private var myContext = context
 	
 	private val matchMethod: Int = Imgproc.TM_CCOEFF_NORMED
