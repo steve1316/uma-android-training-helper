@@ -77,4 +77,7 @@ dependencies {
 
     // string-similarity to compare the string from OCR to the strings in data.
     implementation 'net.ricecode:string-similarity:1.0.0'
+
+    // Klaxon to parse JSON data files.
+    implementation 'com.beust:klaxon:5.5'
 }
