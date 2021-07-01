@@ -1,7 +1,7 @@
 # Uma Musume Training Event Helper For Android using OpenCV and Tesseract
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/steve1316/uma-android-training-helper?logo=GitHub) ![GitHub last commit](https://img.shields.io/github/last-commit/steve1316/uma-android-training-helper?logo=GitHub) ![GitHub issues](https://img.shields.io/github/issues/steve1316/uma-android-training-helper?logo=GitHub) ![GitHub pull requests](https://img.shields.io/github/issues-pr/steve1316/uma-android-training-helper?logo=GitHub) ![GitHub](https://img.shields.io/github/license/steve1316/uma-android-training-helper?logo=GitHub)
 
-> Data last updated June 21, 2021 (Hishi Amazon update).
+> Data last updated June 29, 2021 (Fantasy World UmaNest update).
 
 Inspiration from @amate for their work on [UmaUmaCruise](https://github.com/amate/UmaUmaCruise) and @gertasik for [GameTora's Training Event Helper](https://gametora.com/umamusume/training-event-helper).
 
