@@ -15,6 +15,7 @@ import org.opencv.imgproc.Imgproc
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.lang.Integer.max
 
 
 /**
@@ -172,8 +173,8 @@ class ImageUtils(context: Context, private val game: Game) {
 		match(sourceBitmap!!, energyTemplateBitmap!!)
 		
 		// Acquire the (x, y) coordinates of the event title container right below the location of the energy text image.
-		val newX: Int = matchLocation.x.toInt() - 125
-		val newY: Int = matchLocation.y.toInt() + 116
+		val newX: Int = max(0, matchLocation.x.toInt() - 125)
+		val newY: Int = max(0, matchLocation.y.toInt() + 116)
 		var croppedBitmap: Bitmap = Bitmap.createBitmap(sourceBitmap, newX, newY, 645, 65)
 		
 		// Start up Tesseract.
