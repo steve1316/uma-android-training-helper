@@ -3,6 +3,7 @@ package com.steve1316.uma_android_training_helper.utils
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.util.Log
 import com.googlecode.tesseract.android.TessBaseAPI
 import com.steve1316.uma_android_training_helper.MainActivity
 import com.steve1316.uma_android_training_helper.bot.Game
@@ -160,23 +161,38 @@ class ImageUtils(context: Context, private val game: Game) {
 	/**
 	 * Perform OCR text detection using Tesseract along with some image manipulation via thresholding to make the cropped screenshot black and white using OpenCV.
 	 *
+	 * @param increment Increments the threshold by this value. Defaults to 0.0
 	 * @return The detected String in the cropped region.
 	 */
-	fun findText(increment: Double): String {
+	fun findText(increment: Double = 0.0): String {
 		val (sourceBitmap, templateBitmap) = getBitmaps("shift", "images")
-		val croppedBitmap = Bitmap.createBitmap(sourceBitmap!!, 165, 435, 645, 65)
 		
+		// Acquire the location of the energy text image.
+		val (_, energyTemplateBitmap) = getBitmaps("energy", "images")
+		match(sourceBitmap!!, energyTemplateBitmap!!)
+		
+		// Acquire the (x, y) coordinates of the event title container right below the location of the energy text image.
+		val newX: Int = matchLocation.x.toInt() - 125
+		val newY: Int = matchLocation.y.toInt() + 116
+		var croppedBitmap: Bitmap = Bitmap.createBitmap(sourceBitmap, newX, newY, 645, 65)
+		
+		// Start up Tesseract.
 		tessBaseAPI.init(myContext.getExternalFilesDir(null)?.absolutePath + "/tesseract/", "jpn")
 		game.printToLog("[INFO] JPN Training file loaded.\n", MESSAGE_TAG = TAG)
 		
-		var cvImage = Imgcodecs.imread("${matchFilePath}/source.png", Imgcodecs.IMREAD_GRAYSCALE)
-		
 		// Now see if it is necessary to shift the cropped region over by 70 pixels or not to account for certain events.
-		cvImage = if (match(croppedBitmap, templateBitmap!!)) {
-			cvImage.submat(435, 500, 165 + 70, 810)
+		croppedBitmap = if (match(croppedBitmap, templateBitmap!!)) {
+			Log.d(TAG, "Shifting the region over by 70 pixels!")
+			Bitmap.createBitmap(sourceBitmap, newX + 70, newY, 645 - 70, 65)
 		} else {
-			cvImage.submat(435, 500, 165, 810)
+			Log.d(TAG, "Do not need to shift.")
+			croppedBitmap
 		}
+		
+		// Make the cropped screenshot grayscale.
+		val cvImage = Mat()
+		Utils.bitmapToMat(croppedBitmap, cvImage)
+		Imgproc.cvtColor(cvImage, cvImage, Imgproc.COLOR_BGR2GRAY)
 		
 		// Save the cropped image before converting it to black and white in order to troubleshoot issues related to differing device sizes and cropping.
 		Imgcodecs.imwrite("$matchFilePath/pre-RESULT.png", cvImage)
