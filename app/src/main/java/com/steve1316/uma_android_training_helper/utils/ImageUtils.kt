@@ -27,6 +27,7 @@ class ImageUtils(context: Context, private val game: Game) {
 	
 	private val matchMethod: Int = Imgproc.TM_CCOEFF_NORMED
 	
+	private val tesseractLanguages = arrayListOf("jpn")
 	private val tessBaseAPI: TessBaseAPI
 	
 	private var firstTimeCheck: Boolean = true
@@ -54,6 +55,10 @@ class ImageUtils(context: Context, private val game: Game) {
 		// Initialize Tesseract with the jpn.traineddata model.
 		initTesseract()
 		tessBaseAPI = TessBaseAPI()
+		
+		// Start up Tesseract.
+		tessBaseAPI.init(myContext.getExternalFilesDir(null)?.absolutePath + "/tesseract/", "jpn")
+		game.printToLog("[INFO] Training file loaded.\n", tag = TAG)
 	}
 	
 	/**
@@ -177,10 +182,6 @@ class ImageUtils(context: Context, private val game: Game) {
 		val newY: Int = max(0, matchLocation.y.toInt() + 116)
 		var croppedBitmap: Bitmap = Bitmap.createBitmap(sourceBitmap, newX, newY, 645, 65)
 		
-		// Start up Tesseract.
-		tessBaseAPI.init(myContext.getExternalFilesDir(null)?.absolutePath + "/tesseract/", "jpn")
-		game.printToLog("[INFO] JPN Training file loaded.\n", tag = TAG)
-		
 		// Now see if it is necessary to shift the cropped region over by 70 pixels or not to account for certain events.
 		croppedBitmap = if (match(croppedBitmap, templateBitmap!!)) {
 			Log.d(TAG, "Shifting the region over by 70 pixels!")
@@ -247,27 +248,29 @@ class ImageUtils(context: Context, private val game: Game) {
 			game.printToLog("[INFO] /files/tesseract/tessdata/ folder already exists.", tag = TAG)
 		}
 		
-		// If the jpn.traineddata is not in the application folder, copy it there from assets.
-		val trainedDataPath = File(tempDirectory, "jpn.traineddata")
-		if (!trainedDataPath.exists()) {
-			try {
-				game.printToLog("[INFO] Starting Tesseract initialization.", tag = TAG)
-				val input = myContext.assets.open("jpn.traineddata")
-				
-				val output = FileOutputStream("$tempDirectory/jpn.traineddata")
-				
-				val buffer = ByteArray(1024)
-				var read: Int
-				while (input.read(buffer).also { read = it } != -1) {
-					output.write(buffer, 0, read)
+		// If the traineddata is not in the application folder, copy it there from assets.
+		tesseractLanguages.forEach { lang ->
+			val trainedDataPath = File(tempDirectory, "$lang.traineddata")
+			if (!trainedDataPath.exists()) {
+				try {
+					game.printToLog("[INFO] Starting Tesseract initialization.", tag = TAG)
+					val input = myContext.assets.open("$lang.traineddata")
+					
+					val output = FileOutputStream("$tempDirectory/$lang.traineddata")
+					
+					val buffer = ByteArray(1024)
+					var read: Int
+					while (input.read(buffer).also { read = it } != -1) {
+						output.write(buffer, 0, read)
+					}
+					
+					input.close()
+					output.flush()
+					output.close()
+					game.printToLog("[INFO] Finished Tesseract initialization.", tag = TAG)
+				} catch (e: IOException) {
+					game.printToLog("[ERROR] IO EXCEPTION: ${e.stackTraceToString()}", tag = TAG, isError = true)
 				}
-				
-				input.close()
-				output.flush()
-				output.close()
-				game.printToLog("[INFO] Finished Tesseract initialization.", tag = TAG)
-			} catch (e: IOException) {
-				game.printToLog("[ERROR] IO EXCEPTION: ${e.stackTraceToString()}", tag = TAG, isError = true)
 			}
 		}
 	}
