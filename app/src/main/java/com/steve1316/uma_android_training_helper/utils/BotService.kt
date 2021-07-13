@@ -104,7 +104,7 @@ class BotService : Service() {
 									
 									performCleanUp()
 								} catch (e: Exception) {
-									game.printToLog("$appName encountered an Exception: ${e.stackTraceToString()}", MESSAGE_TAG = TAG, isError = true)
+									game.printToLog("$appName encountered an Exception: ${e.stackTraceToString()}", tag = TAG, isError = true)
 									NotificationUtils.updateNotification(myContext, "Encountered an Exception", "Exception: $e.\nTap me to see more details.", 0.0)
 									performCleanUp()
 								}

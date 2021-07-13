@@ -153,7 +153,7 @@ class ImageUtils(context: Context, private val game: Game) {
 		return if (templateBitmap != null) {
 			Pair(sourceBitmap, templateBitmap)
 		} else {
-			game.printToLog("[ERROR] One or more of the Bitmaps are null.", MESSAGE_TAG = TAG, isError = true)
+			game.printToLog("[ERROR] One or more of the Bitmaps are null.", tag = TAG, isError = true)
 			
 			Pair(sourceBitmap, templateBitmap)
 		}
@@ -179,7 +179,7 @@ class ImageUtils(context: Context, private val game: Game) {
 		
 		// Start up Tesseract.
 		tessBaseAPI.init(myContext.getExternalFilesDir(null)?.absolutePath + "/tesseract/", "jpn")
-		game.printToLog("[INFO] JPN Training file loaded.\n", MESSAGE_TAG = TAG)
+		game.printToLog("[INFO] JPN Training file loaded.\n", tag = TAG)
 		
 		// Now see if it is necessary to shift the cropped region over by 70 pixels or not to account for certain events.
 		croppedBitmap = if (match(croppedBitmap, templateBitmap!!)) {
@@ -204,7 +204,7 @@ class ImageUtils(context: Context, private val game: Game) {
 		Imgproc.threshold(cvImage, bwImage, threshold.toDouble() + increment, 255.0, Imgproc.THRESH_BINARY)
 		Imgcodecs.imwrite("$matchFilePath/RESULT.png", bwImage)
 		
-		game.printToLog("[INFO] Saved result image successfully named RESULT.png to internal storage inside the /files/temp/ folder.", MESSAGE_TAG = TAG)
+		game.printToLog("[INFO] Saved result image successfully named RESULT.png to internal storage inside the /files/temp/ folder.", tag = TAG)
 		
 		val resultBitmap = BitmapFactory.decodeFile("$matchFilePath/RESULT.png")
 		tessBaseAPI.setImage(resultBitmap)
@@ -217,7 +217,7 @@ class ImageUtils(context: Context, private val game: Game) {
 			// Finally, detect text on the cropped region.
 			result = tessBaseAPI.utF8Text
 		} catch (e: Exception) {
-			game.printToLog("[ERROR] Cannot perform OCR: ${e.stackTraceToString()}", MESSAGE_TAG = TAG, isError = true)
+			game.printToLog("[ERROR] Cannot perform OCR: ${e.stackTraceToString()}", tag = TAG, isError = true)
 		}
 		
 		tessBaseAPI.end()
@@ -239,19 +239,19 @@ class ImageUtils(context: Context, private val game: Game) {
 			
 			// If the folder was not able to be created for some reason, log the error and stop the MediaProjection Service.
 			if (!successfullyCreated) {
-				game.printToLog("[ERROR] Failed to create the /files/tesseract/tessdata/ folder.", MESSAGE_TAG = TAG, isError = true)
+				game.printToLog("[ERROR] Failed to create the /files/tesseract/tessdata/ folder.", tag = TAG, isError = true)
 			} else {
-				game.printToLog("[INFO] Successfully created /files/tesseract/tessdata/ folder.", MESSAGE_TAG = TAG)
+				game.printToLog("[INFO] Successfully created /files/tesseract/tessdata/ folder.", tag = TAG)
 			}
 		} else {
-			game.printToLog("[INFO] /files/tesseract/tessdata/ folder already exists.", MESSAGE_TAG = TAG)
+			game.printToLog("[INFO] /files/tesseract/tessdata/ folder already exists.", tag = TAG)
 		}
 		
 		// If the jpn.traineddata is not in the application folder, copy it there from assets.
 		val trainedDataPath = File(tempDirectory, "jpn.traineddata")
 		if (!trainedDataPath.exists()) {
 			try {
-				game.printToLog("[INFO] Starting Tesseract initialization.", MESSAGE_TAG = TAG)
+				game.printToLog("[INFO] Starting Tesseract initialization.", tag = TAG)
 				val input = myContext.assets.open("jpn.traineddata")
 				
 				val output = FileOutputStream("$tempDirectory/jpn.traineddata")
@@ -265,9 +265,9 @@ class ImageUtils(context: Context, private val game: Game) {
 				input.close()
 				output.flush()
 				output.close()
-				game.printToLog("[INFO] Finished Tesseract initialization.", MESSAGE_TAG = TAG)
+				game.printToLog("[INFO] Finished Tesseract initialization.", tag = TAG)
 			} catch (e: IOException) {
-				game.printToLog("[ERROR] IO EXCEPTION: ${e.stackTraceToString()}", MESSAGE_TAG = TAG, isError = true)
+				game.printToLog("[ERROR] IO EXCEPTION: ${e.stackTraceToString()}", tag = TAG, isError = true)
 			}
 		}
 	}
