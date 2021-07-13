@@ -49,16 +49,28 @@ class SkillScraper:
         soup = self._get_page_content(url)
         skill_list = self._fetch_skill_list(soup)
         skill_list = self._format_skill_list(skill_list)
-
-        # Save a JSON version of the newly formatted skills list.
+        
+        # Now save a JSON version of the skill strings for SkillData.kt.
         with open("skills.json", "w", encoding = "utf-8") as file:
-            json.dump(skill_list, file, ensure_ascii = False, indent = 4)
-
-        # Now save a txt version of the strings of formatted Kotlin code for SkillData.kt.
-        with open("skills.txt", "w", encoding = "utf-8") as file:
+            file.write("{\n")
+            
+            first_time_check = True
+            
             for skill in skill_list:
-                file.write(f"\"{skill['jpname']}\" to mapOf(\n\t\"id\" to {int(skill['id'])},\n\t\"englishName\" to \"{skill['enname']}\",\n\t\"englishDescription\" to \"{skill['endesc']}\"),\n")
-
+                if first_time_check:
+                    file.write(f"\t\"{skill['jpname']}\": ")
+                else:
+                    file.write("\t},\n")
+                    file.write(f"\t\"{skill['jpname']}\": ")
+                
+                file.write("{\n")
+                file.write(f"\t\t\"id\": {int(skill['id'])},\n")
+                file.write(f"\t\t\"englishName\": \"{skill['enname']}\",\n")
+                file.write(f"\t\t\"englishDescription\": \"{skill['endesc']}\"\n")
+                first_time_check = False
+                
+            file.write("\t}\n}")
+            
         return None
 
 
