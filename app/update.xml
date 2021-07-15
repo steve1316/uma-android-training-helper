@@ -1,12 +1,16 @@
 <AppUpdater>
   <update>
-    <latestVersion>2.0.6</latestVersion>
+    <latestVersion>2.1.0</latestVersion>
     <url>https://github.com/steve1316/uma-android-training-helper/releases</url>
     <releaseNotes>
-v2.0.6 - Changelog
+v2.1.0 - Changelog
 
-- Added support for the following new Characters: Fuji Kiseki
-- Added support for the following new Support Cards: SSR Guts Mejiro Ryan and SR Intelligence Mejiro Ardan
+- Changed color of overlay button to distinctly show when the bot is running or not.
+- The application will now automatically check for new updates online.
+- The options of hiding comparison results and selecting all Support Cards are enabled by default.
+- Added a new option to select all Characters.
+- Updated the status display on the Home screen.
+- Fixed bug where Tesseract object was released and it was still being used later.
     </releaseNotes>
   </update>
 </AppUpdater>
