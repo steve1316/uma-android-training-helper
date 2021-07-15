@@ -34,6 +34,7 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 	private val character = SettingsFragment.getStringSharedPreference(myContext, "character")
 	private val supportCards: List<String> = SettingsFragment.getStringSharedPreference(myContext, "supportList").split("|")
 	private var hideResults: Boolean = SettingsFragment.getBooleanSharedPreference(myContext, "hideResults")
+	private val selectAllCharacters: Boolean = SettingsFragment.getBooleanSharedPreference(myContext, "selectAllCharacters")
 	private var selectAllSupportCards: Boolean = SettingsFragment.getBooleanSharedPreference(myContext, "selectAllSupportCards")
 	private var minimumConfidence = SettingsFragment.getIntSharedPreference(myContext, "confidence").toDouble() / 100.0
 	
@@ -65,17 +66,35 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 		val service = StringSimilarityServiceImpl(JaroWinklerStrategy())
 		
 		// Attempt to find the most similar string inside the data classes starting with the Character-specific events.
-		CharacterData.characters[character]?.forEach { (eventName, eventOptions) ->
-			val score = service.score(result, eventName)
-			if (!hideResults) {
-				game.printToLog("[CHARA] $character \"${result}\" vs. \"${eventName}\" confidence: $score", tag = TAG)
+		if (selectAllCharacters) {
+			CharacterData.characters.keys.forEach { character ->
+				CharacterData.characters[character]?.forEach { (eventName, eventOptions) ->
+					val score = service.score(result, eventName)
+					if (!hideResults) {
+						game.printToLog("[CHARA] $character \"${result}\" vs. \"${eventName}\" confidence: $score", tag = TAG)
+					}
+					
+					if (score >= confidence) {
+						confidence = score
+						eventTitle = eventName
+						eventOptionRewards = eventOptions
+						category = "character"
+					}
+				}
 			}
-			
-			if (score >= confidence) {
-				confidence = score
-				eventTitle = eventName
-				eventOptionRewards = eventOptions
-				category = "character"
+		} else {
+			CharacterData.characters[character]?.forEach { (eventName, eventOptions) ->
+				val score = service.score(result, eventName)
+				if (!hideResults) {
+					game.printToLog("[CHARA] $character \"${result}\" vs. \"${eventName}\" confidence: $score", tag = TAG)
+				}
+				
+				if (score >= confidence) {
+					confidence = score
+					eventTitle = eventName
+					eventOptionRewards = eventOptions
+					category = "character"
+				}
 			}
 		}
 		
@@ -341,7 +360,7 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 						game.printToLog("\n[RESULT] Character $character Event Name = $eventTitle with confidence = $confidence", tag = TAG)
 					}
 					"character-shared" -> {
-						game.printToLog("\n[RESULT] Character $character Shared Event Name = $eventTitle with confidence = $confidence", tag = TAG)
+						game.printToLog("\n[RESULT] Character Shared Event Name = $eventTitle with confidence = $confidence", tag = TAG)
 					}
 					"support" -> {
 						game.printToLog("\n[RESULT] Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence", tag = TAG)
