@@ -10,17 +10,19 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <!--Grants permission to read and write to external storage for Tesseract's traineddata file.-->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UmaAndroidTrainingHelper"
-        tools:ignore="AllowBackup" >
+        tools:ignore="AllowBackup">
 
         <!--Users will first be directed to MainActivity and then to HomeFragment.-->
         <activity
@@ -40,8 +42,7 @@
             android:foregroundServiceType="mediaProjection" />
 
         <!--Bot Service that will automate the specified workflow.-->
-        <service
-            android:name="com.steve1316.uma_android_training_helper.utils.BotService" />
+        <service android:name="com.steve1316.uma_android_training_helper.utils.BotService" />
 
         <!--Receiver that will send the "STOP" Intent to MediaProjection Service when the action button on the Notification is tapped.-->
         <receiver
