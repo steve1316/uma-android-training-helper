@@ -1,0 +1,12 @@
+<AppUpdater>
+  <update>
+    <latestVersion>2.0.6</latestVersion>
+    <url>https://github.com/steve1316/uma-android-training-helper/releases</url>
+    <releaseNotes>
+v2.0.6 - Changelog
+
+- Added support for the following new Characters: Fuji Kiseki
+- Added support for the following new Support Cards: SSR Guts Mejiro Ryan and SR Intelligence Mejiro Ardan
+    </releaseNotes>
+  </update>
+</AppUpdater>
