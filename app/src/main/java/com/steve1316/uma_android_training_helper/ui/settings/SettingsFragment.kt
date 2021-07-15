@@ -219,9 +219,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		
 		// Update the Preference's summary to reflect the order of options selected if the user did it before.
 		if (savedOptions.toList().isEmpty() || savedOptions.toList()[0] == "") {
-			multiplePreference.summary = "Covers all R, SR, and SSR variants into one."
+			multiplePreference.summary = "Covers all R, SR and SSR variants into one."
 		} else {
-			multiplePreference.summary = "Covers all R, SR, and SSR variants into one.\n\n${savedOptions.toList()}"
+			multiplePreference.summary = "Covers all R, SR and SSR variants into one.\n\n${savedOptions.toList()}"
 		}
 		
 		multiplePreference.setOnPreferenceClickListener {
@@ -290,9 +290,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
 				createSupportCardPicker()
 				
 				if (values.toList().isEmpty()) {
-					multiplePreference.summary = "Covers all R, SR, and SSR variants into one."
+					multiplePreference.summary = "Covers all R, SR and SSR variants into one."
 				} else {
-					multiplePreference.summary = "Covers all R, SR, and SSR variants into one.\n\n${values.toList()}"
+					multiplePreference.summary = "Covers all R, SR and SSR variants into one.\n\n${values.toList()}"
 				}
 			}
 			
@@ -315,7 +315,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 				
 				// Recreate the AlertDialog again to update it with the newly selected items and reset its summary.
 				createSupportCardPicker()
-				multiplePreference.summary = "Covers all R, SR, and SSR variants into one."
+				multiplePreference.summary = "Covers all R, SR and SSR variants into one."
 			}
 			
 			// Finally, show the AlertDialog to the user.
