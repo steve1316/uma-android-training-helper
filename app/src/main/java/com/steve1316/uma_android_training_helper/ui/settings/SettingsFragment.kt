@@ -167,8 +167,9 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		// Grab the saved preferences from the previous time the user used the app.
 		val character = sharedPreferences.getString("character", "")
 		val threshold = sharedPreferences.getInt("threshold", 230)
-		val hideResults = sharedPreferences.getBoolean("hideResults", false)
+		val hideResults = sharedPreferences.getBoolean("hideResults", true)
 		val selectAllCharacters = sharedPreferences.getBoolean("selectAllCharacters", true)
+		val selectAllSupportCards = sharedPreferences.getBoolean("selectAllSupportCards", true)
 		val enableIncrementalThreshold = sharedPreferences.getBoolean("enableIncrementalThreshold", false)
 		val confidence = sharedPreferences.getInt("confidence", 80)
 		

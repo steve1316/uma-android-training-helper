@@ -21,6 +21,7 @@
 
     <PreferenceCategory app:title="Support Card(s) Selection">
         <CheckBoxPreference
+            app:defaultValue="true"
             app:key="selectAllCheckBox"
             app:summary="Check this to select all Support Cards if you are too lazy to select them one-by-one."
             app:title="Select All Support Cards" />
@@ -61,6 +62,7 @@
 
     <PreferenceCategory app:title="Misc">
         <CheckBoxPreference
+            app:defaultValue="true"
             app:key="hideResultsCheckBox"
             app:summary="Hides the log messages regarding the string comparison process."
             app:title="Hide String Comparison Results" />
