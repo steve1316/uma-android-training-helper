@@ -5,6 +5,7 @@ import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.media.projection.MediaProjectionManager
 import android.net.Uri
 import android.os.Bundle
@@ -15,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.edit
 import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceManager
 import com.beust.klaxon.JsonReader
@@ -69,24 +71,71 @@ class HomeFragment : Fragment() {
 		val character = sharedPreferences.getString("character", "")
 		val supportList = sharedPreferences.getString("supportList", "")?.split("|")
 		val threshold = sharedPreferences.getInt("threshold", 230)
-		val hideResults = sharedPreferences.getBoolean("hideResults", false)
-		val selectAllSupportCards = sharedPreferences.getBoolean("selectAllSupportCards", false)
+		val hideResults = sharedPreferences.getBoolean("hideResults", true)
+		val selectAllCharacters = sharedPreferences.getBoolean("selectAllCharacters", true)
+		val selectAllSupportCards = sharedPreferences.getBoolean("selectAllSupportCards", true)
 		val enableIncrementalThreshold = sharedPreferences.getBoolean("enableIncrementalThreshold", false)
 		val confidence = sharedPreferences.getInt("confidence", 80)
 		
-		if (selectAllSupportCards) {
-			settingsStatusTextView.text =
-				"Character Selected: $character\n\nSupport(s) Selected: All Support Cards Selected\n\nMinimum Confidence Required: $confidence%\n\nThreshold Value: $threshold\n\nHide " +
-						"String Comparison Results: $hideResults\n\nEnabled Automatic Retry: $enableIncrementalThreshold"
-		} else {
-			settingsStatusTextView.text = "Character Selected: $character\n\nSupport(s) Selected: $supportList\n\nMinimum Confidence Required: $confidence%\n\nThreshold Value: $threshold\n\n" +
-					"Hide String Comparison Results: $hideResults\n\nEnabled Automatic Retry: $enableIncrementalThreshold"
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Set these values in SharedPreferences just in case these keys do not exist yet.
+		
+		sharedPreferences.edit {
+			putBoolean("selectAllCharacters", selectAllCharacters)
+			putBoolean("selectAllSupportCards", selectAllSupportCards)
+			putBoolean("enableIncrementalThreshold", enableIncrementalThreshold)
+			putBoolean("hideResults", hideResults)
+			commit()
 		}
 		
-		// Enable the start button if the required settings have been set.
-		if ((character != null && character.isNotEmpty())) {
-			startButton.isEnabled = true
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Now construct the strings to print them.
+		
+		val characterString: String? = if (selectAllCharacters) {
+			"All Characters Selected"
+		} else if (character == "" || character == "Please select one in the Settings") {
+			"Please select one in the Settings"
+		} else {
+			character
 		}
+		
+		val supportCardListString: String = if (selectAllSupportCards) {
+			"All Support Cards Selected"
+		} else {
+			supportList.toString()
+		}
+		
+		val enableAutomaticRetryString: String = if (enableIncrementalThreshold) {
+			"Enabled"
+		} else {
+			"Disabled"
+		}
+		
+		val hideComparisonResultsString: String = if (hideResults) {
+			"Enabled"
+		} else {
+			"Disabled"
+		}
+		
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		////////////////////////////////////////////////////////////////////////////////////////////////////
+		// Update the TextView here based on the information of the SharedPreferences.
+		
+		settingsStatusTextView.setTextColor(Color.WHITE)
+		settingsStatusTextView.text = "---------- Training Event Options ----------\n" +
+				"Character Selected: $characterString\n" +
+				"Support(s) Selected: $supportCardListString\n\n" +
+				"---------- Tesseract OCR Optimization ----------\n" +
+				"OCR Threshold: $threshold\n" +
+				"Enable Automatic OCR retry: $enableAutomaticRetryString\n" +
+				"Minimum OCR Confidence: $confidence\n\n" +
+				"---------- Misc Options ----------\n" +
+				"Hide String Comparison Results: $hideComparisonResultsString"
+		
+		// Enable the start button if the required settings have been set.
+		startButton.isEnabled = (characterString != "Please select one in the Settings" || characterString == "All Characters Selected")
 		
 		// Now construct the data files if this is the first time.
 		if (firstRun) {
