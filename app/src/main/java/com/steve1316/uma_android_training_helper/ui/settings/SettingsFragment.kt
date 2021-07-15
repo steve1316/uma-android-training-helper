@@ -64,6 +64,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		val characterPicker: ListPreference = findPreference("characterPicker")!!
 		val hideResultsCheckBox: CheckBoxPreference = findPreference("hideResultsCheckBox")!!
 		val thresholdSeekBar: SeekBarPreference = findPreference("thresholdSeekBar")!!
+		val selectAllCharactersCheckBox: CheckBoxPreference = findPreference("selectAllCharactersCheckBox")!!
 		val selectAllCheckBox: CheckBoxPreference = findPreference("selectAllCheckBox")!!
 		val enableIncrementalThresholdCheckBox: CheckBoxPreference = findPreference("enableIncrementalThresholdCheckBox")!!
 		val confidenceSeekBar: SeekBarPreference = findPreference("confidenceSeekBar")!!
@@ -126,6 +127,19 @@ class SettingsFragment : PreferenceFragmentCompat() {
 						putInt("confidence", confidenceSeekBar.value)
 					}
 				}
+				"selectAllCharactersCheckBox" -> {
+					sharedPreferences.edit {
+						putBoolean("selectAllCharacters", selectAllCharactersCheckBox.isChecked)
+					}
+					
+					characterPicker.isEnabled = !selectAllCharactersCheckBox.isChecked
+					characterPicker.value = ""
+					characterPicker.summary = "Covers all R, SR and SSR variants into one."
+					sharedPreferences.edit {
+						remove("character")
+						commit()
+					}
+				}
 			}
 		}
 	}
@@ -154,7 +168,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		val character = sharedPreferences.getString("character", "")
 		val threshold = sharedPreferences.getInt("threshold", 230)
 		val hideResults = sharedPreferences.getBoolean("hideResults", false)
-		val selectAllSupportCards = sharedPreferences.getBoolean("selectAllSupportCards", false)
+		val selectAllCharacters = sharedPreferences.getBoolean("selectAllCharacters", true)
 		val enableIncrementalThreshold = sharedPreferences.getBoolean("enableIncrementalThreshold", false)
 		val confidence = sharedPreferences.getInt("confidence", 80)
 		
@@ -163,6 +177,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		val multiplePreference: Preference = findPreference("supportPicker")!!
 		val thresholdSeekBar: SeekBarPreference = findPreference("thresholdSeekBar")!!
 		val hideResultsCheckBox: CheckBoxPreference = findPreference("hideResultsCheckBox")!!
+		val selectAllCharactersCheckBox: CheckBoxPreference = findPreference("selectAllCharactersCheckBox")!!
 		val selectAllCheckBox: CheckBoxPreference = findPreference("selectAllCheckBox")!!
 		val enableIncrementalThresholdCheckBox: CheckBoxPreference = findPreference("enableIncrementalThresholdCheckBox")!!
 		val confidenceSeekBar: SeekBarPreference = findPreference("confidenceSeekBar")!!
@@ -186,6 +201,8 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		hideResultsCheckBox.isChecked = hideResults
 		selectAllCheckBox.isChecked = selectAllSupportCards
 		enableIncrementalThresholdCheckBox.isChecked = enableIncrementalThreshold
+		selectAllCharactersCheckBox.isChecked = selectAllCharacters
+		characterPicker.isEnabled = !selectAllCharactersCheckBox.isChecked
 		confidenceSeekBar.value = confidence
 		
 		Log.d(TAG, "Preferences created successfully.")

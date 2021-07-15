@@ -4,6 +4,12 @@
     <PreferenceCategory
         app:summary="Options marked with * are required"
         app:title="Character Selection">
+        <CheckBoxPreference
+            app:defaultValue="true"
+            app:key="selectAllCharactersCheckBox"
+            app:summary="Check this to select all Characters if you are too lazy to select a character."
+            app:title="Select All Characters *" />
+
         <ListPreference
             app:entries="@array/character_list"
             app:entryValues="@array/character_list"
