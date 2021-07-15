@@ -83,7 +83,7 @@ class NotificationUtils {
 				setContentTitle(contentTitle)
 				setContentText("Awaiting user input...")
 				setContentIntent(contentPendingIntent)
-				addAction(R.drawable.ic_baseline_stop_circle_24, context.getString(R.string.stop_process), stopPendingIntent)
+				addAction(R.drawable.stop_circle_filled, context.getString(R.string.stop_process), stopPendingIntent)
 				priority = NotificationManager.IMPORTANCE_HIGH
 				setCategory(Notification.CATEGORY_SERVICE)
 				setOngoing(true)
@@ -117,7 +117,7 @@ class NotificationUtils {
 					setContentText(options)
 					setStyle(NotificationCompat.BigTextStyle().bigText(options))
 					setContentIntent(contentPendingIntent)
-					addAction(R.drawable.ic_baseline_stop_circle_24, context.getString(R.string.stop_process), stopPendingIntent)
+					addAction(R.drawable.stop_circle_filled, context.getString(R.string.stop_process), stopPendingIntent)
 					priority = NotificationManager.IMPORTANCE_HIGH
 					setCategory(Notification.CATEGORY_SERVICE)
 					setOngoing(true)
@@ -130,7 +130,7 @@ class NotificationUtils {
 					setContentText("To view event rewards, Swipe or Tap me to view in full!")
 					setStyle(NotificationCompat.BigTextStyle().bigText(options))
 					setContentIntent(contentPendingIntent)
-					addAction(R.drawable.ic_baseline_stop_circle_24, context.getString(R.string.stop_process), stopPendingIntent)
+					addAction(R.drawable.stop_circle_filled, context.getString(R.string.stop_process), stopPendingIntent)
 					priority = NotificationManager.IMPORTANCE_HIGH
 					setCategory(Notification.CATEGORY_SERVICE)
 					setOngoing(true)
