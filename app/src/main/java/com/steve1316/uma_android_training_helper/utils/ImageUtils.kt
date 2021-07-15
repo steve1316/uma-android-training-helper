@@ -221,7 +221,7 @@ class ImageUtils(context: Context, private val game: Game) {
 			game.printToLog("[ERROR] Cannot perform OCR: ${e.stackTraceToString()}", tag = TAG, isError = true)
 		}
 		
-		tessBaseAPI.end()
+		tessBaseAPI.clear()
 		
 		return result
 	}
