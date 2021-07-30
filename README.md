@@ -20,6 +20,7 @@ Due to the difficult nature of Kanji, mileage may vary when using this. I have a
 
 # Requirements
 - Android Device (Oreo 8.0+)
+   - Tablet needs to be a minimum width of 1600 pixels (like the Galaxy Tab S7 with its 2650x1600 pixel resolution).
 
 # Features
 - [x] Perform OCR text detection on the fly with a floating overlay button for Uma Musume's training events and then display the results as a Notification.
