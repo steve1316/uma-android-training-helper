@@ -21,6 +21,7 @@ class NotificationUtils {
 		private lateinit var notificationManager: NotificationManager
 		private const val NOTIFICATION_ID: Int = 1
 		private const val CHANNEL_ID: String = "STATUS"
+		private const val CONTENT_TITLE: String = "Status"
 		
 		/**
 		 * Creates the NotificationChannel and the Notification object.
@@ -66,8 +67,6 @@ class NotificationUtils {
 		 * @return A new Notification object.
 		 */
 		private fun createNewNotification(context: Context): Notification {
-			val contentTitle = context.getString(R.string.app_name)
-			
 			// Create a STOP Intent for the MediaProjection service.
 			val stopIntent = Intent(context, StopServiceReceiver::class.java)
 			
@@ -80,7 +79,7 @@ class NotificationUtils {
 			
 			return NotificationCompat.Builder(context, CHANNEL_ID).apply {
 				setSmallIcon(R.drawable.ic_baseline_control_camera_24)
-				setContentTitle(contentTitle)
+				setContentTitle(CONTENT_TITLE)
 				setContentText("Awaiting user input...")
 				setContentIntent(contentPendingIntent)
 				addAction(R.drawable.stop_circle_filled, context.getString(R.string.stop_process), stopPendingIntent)
