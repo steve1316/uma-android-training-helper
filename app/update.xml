@@ -1,12 +1,14 @@
 <AppUpdater>
   <update>
-    <latestVersion>2.1.1</latestVersion>
+    <latestVersion>2.2.0</latestVersion>
     <url>https://github.com/steve1316/uma-android-training-helper/releases</url>
     <releaseNotes>
-v2.1.1 - Changelog
+v2.2.0 - Changelog
 
-- Added support for the new Character: Gold City.
-- Added support for the new Support Card: SSR Speed Narita Brian
+- Enabled proper support for tablets of minimum width 1600 pixels (like the Galaxy Tab S7 with its 2650x1600 resolution).
+- Minor change to Notification title.
+- Added support for the new Characters: Special Week (Summer) and Maruzensky (Summer).
+- Added support for the new Support Card: SSR Speed Sweep Tosho and SSR Stamina Winning Ticket.
     </releaseNotes>
   </update>
 </AppUpdater>
