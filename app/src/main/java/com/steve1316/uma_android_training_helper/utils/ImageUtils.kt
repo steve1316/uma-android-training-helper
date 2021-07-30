@@ -25,6 +25,10 @@ class ImageUtils(context: Context, private val game: Game) {
 	private val TAG: String = "[${MainActivity.loggerTag}]ImageUtils"
 	private var myContext = context
 	
+	private val displayWidth: Int = MediaProjectionService.displayWidth
+	private val displayHeight: Int = MediaProjectionService.displayHeight
+	private val isTablet: Boolean = (displayWidth == 1600)
+	
 	private val matchMethod: Int = Imgproc.TM_CCOEFF_NORMED
 	
 	private val tesseractLanguages = arrayListOf("jpn")
@@ -69,62 +73,136 @@ class ImageUtils(context: Context, private val game: Game) {
 	 * @param useCannyAlgorithm Check whether or not to use Canny edge detection algorithm. Defaults to false.
 	 */
 	private fun match(sourceBitmap: Bitmap, templateBitmap: Bitmap, useCannyAlgorithm: Boolean = false): Boolean {
-		// Create the Mats of both source and template images.
-		val sourceMat = Mat()
-		val templateMat = Mat()
-		Utils.bitmapToMat(sourceBitmap, sourceMat)
-		Utils.bitmapToMat(templateBitmap, templateMat)
+		val tabletScales: MutableList<Double> = mutableListOf(1.28, 1.30, 1.32, 1.34)
 		
-		// Make the Mats grayscale for the source and the template.
-		Imgproc.cvtColor(sourceMat, sourceMat, Imgproc.COLOR_BGR2GRAY)
-		Imgproc.cvtColor(templateMat, templateMat, Imgproc.COLOR_BGR2GRAY)
-		
-		if (useCannyAlgorithm) {
-			// Blur the source and template.
-			Imgproc.blur(sourceMat, sourceMat, Size(3.0, 3.0))
-			Imgproc.blur(templateMat, templateMat, Size(3.0, 3.0))
+		if (!isTablet) {
+			// Create the Mats of both source and template images.
+			val sourceMat = Mat()
+			val templateMat = Mat()
+			Utils.bitmapToMat(sourceBitmap, sourceMat)
+			Utils.bitmapToMat(templateBitmap, templateMat)
 			
-			// Apply Canny edge detection algorithm in both source and template. Generally recommended for threshold2 to be 3 times threshold1.
-			Imgproc.Canny(sourceMat, sourceMat, 100.0, 300.0)
-			Imgproc.Canny(templateMat, templateMat, 100.0, 300.0)
-		}
-		
-		// Create the result matrix.
-		val resultColumns: Int = sourceMat.cols() - templateMat.cols() + 1
-		val resultRows: Int = sourceMat.rows() - templateMat.rows() + 1
-		val resultMat = Mat(resultRows, resultColumns, CvType.CV_32FC1)
-		
-		// Now perform the matching and localize the result.
-		Imgproc.matchTemplate(sourceMat, templateMat, resultMat, matchMethod)
-		val mmr: Core.MinMaxLocResult = Core.minMaxLoc(resultMat)
-		
-		matchLocation = Point()
-		var matchCheck = false
-		
-		// Depending on which matching method was used, the algorithms determine which location was the best.
-		if ((matchMethod == Imgproc.TM_SQDIFF || matchMethod == Imgproc.TM_SQDIFF_NORMED) && mmr.minVal <= 0.2) {
-			matchLocation = mmr.minLoc
-			matchCheck = true
-		} else if ((matchMethod != Imgproc.TM_SQDIFF && matchMethod != Imgproc.TM_SQDIFF_NORMED) && mmr.maxVal >= 0.8) {
-			matchLocation = mmr.maxLoc
-			matchCheck = true
-		}
-		
-		if (matchCheck) {
-			// Draw a rectangle around the supposed best matching location and then save the match into a file in /files/temp/ directory. This is for
-			// debugging purposes to see if this algorithm found the match accurately or not.
-			if (matchFilePath != "") {
-				Imgproc.rectangle(sourceMat, matchLocation, Point(matchLocation.x + templateMat.cols(), matchLocation.y + templateMat.rows()), Scalar(0.0, 128.0, 0.0), 5)
-				Imgcodecs.imwrite("$matchFilePath/match.png", sourceMat)
+			// Make the Mats grayscale for the source and the template.
+			Imgproc.cvtColor(sourceMat, sourceMat, Imgproc.COLOR_BGR2GRAY)
+			Imgproc.cvtColor(templateMat, templateMat, Imgproc.COLOR_BGR2GRAY)
+			
+			if (useCannyAlgorithm) {
+				// Blur the source and template.
+				Imgproc.blur(sourceMat, sourceMat, Size(3.0, 3.0))
+				Imgproc.blur(templateMat, templateMat, Size(3.0, 3.0))
+				
+				// Apply Canny edge detection algorithm in both source and template. Generally recommended for threshold2 to be 3 times threshold1.
+				Imgproc.Canny(sourceMat, sourceMat, 100.0, 300.0)
+				Imgproc.Canny(templateMat, templateMat, 100.0, 300.0)
 			}
 			
-			// Center the coordinates so that any tap gesture would be directed at the center of that match location instead of the default
-			// position of the top left corner of the match location.
-			matchLocation.x += (templateMat.cols() / 2)
-			matchLocation.y += (templateMat.rows() / 2)
+			// Create the result matrix.
+			val resultColumns: Int = sourceMat.cols() - templateMat.cols() + 1
+			val resultRows: Int = sourceMat.rows() - templateMat.rows() + 1
+			val resultMat = Mat(resultRows, resultColumns, CvType.CV_32FC1)
 			
-			return true
+			// Now perform the matching and localize the result.
+			Imgproc.matchTemplate(sourceMat, templateMat, resultMat, matchMethod)
+			val mmr: Core.MinMaxLocResult = Core.minMaxLoc(resultMat)
+			
+			matchLocation = Point()
+			var matchCheck = false
+			
+			// Depending on which matching method was used, the algorithms determine which location was the best.
+			if ((matchMethod == Imgproc.TM_SQDIFF || matchMethod == Imgproc.TM_SQDIFF_NORMED) && mmr.minVal <= 0.2) {
+				matchLocation = mmr.minLoc
+				matchCheck = true
+			} else if ((matchMethod != Imgproc.TM_SQDIFF && matchMethod != Imgproc.TM_SQDIFF_NORMED) && mmr.maxVal >= 0.8) {
+				matchLocation = mmr.maxLoc
+				matchCheck = true
+			}
+			
+			if (matchCheck) {
+				// Draw a rectangle around the supposed best matching location and then save the match into a file in /files/temp/ directory. This is for
+				// debugging purposes to see if this algorithm found the match accurately or not.
+				if (matchFilePath != "") {
+					Imgproc.rectangle(sourceMat, matchLocation, Point(matchLocation.x + templateMat.cols(), matchLocation.y + templateMat.rows()), Scalar(0.0, 128.0, 0.0), 5)
+					Imgcodecs.imwrite("$matchFilePath/match.png", sourceMat)
+				}
+				
+				// Center the coordinates so that any tap gesture would be directed at the center of that match location instead of the default
+				// position of the top left corner of the match location.
+				matchLocation.x += (templateMat.cols() / 2)
+				matchLocation.y += (templateMat.rows() / 2)
+				
+				return true
+			} else {
+				return false
+			}
 		} else {
+			var matchCheck = false
+			while (!matchCheck && tabletScales.isNotEmpty()) {
+				val newScale: Double = tabletScales.removeFirst()
+				val tmp: Bitmap = Bitmap.createScaledBitmap(templateBitmap, (templateBitmap.width * newScale).toInt(), (templateBitmap.height * newScale).toInt(), true)
+				
+				// Create the Mats of both source and template images.
+				val sourceMat = Mat()
+				val templateMat = Mat()
+				Utils.bitmapToMat(sourceBitmap, sourceMat)
+				Utils.bitmapToMat(tmp, templateMat)
+				
+				// Make the Mats grayscale for the source and the template.
+				Imgproc.cvtColor(sourceMat, sourceMat, Imgproc.COLOR_BGR2GRAY)
+				Imgproc.cvtColor(templateMat, templateMat, Imgproc.COLOR_BGR2GRAY)
+				
+				if (useCannyAlgorithm) {
+					// Blur the source and template.
+					Imgproc.blur(sourceMat, sourceMat, Size(3.0, 3.0))
+					Imgproc.blur(templateMat, templateMat, Size(3.0, 3.0))
+					
+					// Apply Canny edge detection algorithm in both source and template. Generally recommended for threshold2 to be 3 times threshold1.
+					Imgproc.Canny(sourceMat, sourceMat, 100.0, 300.0)
+					Imgproc.Canny(templateMat, templateMat, 100.0, 300.0)
+				}
+				
+				// Create the result matrix.
+				val resultColumns: Int = sourceMat.cols() - templateMat.cols() + 1
+				val resultRows: Int = sourceMat.rows() - templateMat.rows() + 1
+				if (resultColumns < 0 || resultRows < 0) {
+					break
+				}
+				
+				val resultMat = Mat(resultRows, resultColumns, CvType.CV_32FC1)
+				
+				// Now perform the matching and localize the result.
+				Imgproc.matchTemplate(sourceMat, templateMat, resultMat, matchMethod)
+				val mmr: Core.MinMaxLocResult = Core.minMaxLoc(resultMat)
+				
+				matchLocation = Point()
+				
+				// Depending on which matching method was used, the algorithms determine which location was the best.
+				if ((matchMethod == Imgproc.TM_SQDIFF || matchMethod == Imgproc.TM_SQDIFF_NORMED) && mmr.minVal <= 0.2) {
+					matchLocation = mmr.minLoc
+					matchCheck = true
+				} else if ((matchMethod != Imgproc.TM_SQDIFF && matchMethod != Imgproc.TM_SQDIFF_NORMED) && mmr.maxVal >= 0.8) {
+					matchLocation = mmr.maxLoc
+					matchCheck = true
+				}
+				
+				if (matchCheck) {
+					Log.d(TAG, "Found match at scale: $newScale")
+					
+					// Draw a rectangle around the supposed best matching location and then save the match into a file in /files/temp/ directory. This is for
+					// debugging purposes to see if this algorithm found the match accurately or not.
+					if (matchFilePath != "") {
+						Imgproc.rectangle(sourceMat, matchLocation, Point(matchLocation.x + templateMat.cols(), matchLocation.y + templateMat.rows()), Scalar(0.0, 128.0, 0.0), 5)
+						Imgcodecs.imwrite("$matchFilePath/match.png", sourceMat)
+					}
+					
+					// Center the coordinates so that any tap gesture would be directed at the center of that match location instead of the default
+					// position of the top left corner of the match location.
+					matchLocation.x += (templateMat.cols() / 2)
+					matchLocation.y += (templateMat.rows() / 2)
+					
+					return true
+				}
+			}
+			
 			return false
 		}
 	}
@@ -177,10 +255,19 @@ class ImageUtils(context: Context, private val game: Game) {
 		val (_, energyTemplateBitmap) = getBitmaps("energy", "images")
 		match(sourceBitmap!!, energyTemplateBitmap!!)
 		
-		// Acquire the (x, y) coordinates of the event title container right below the location of the energy text image.
-		val newX: Int = max(0, matchLocation.x.toInt() - 125)
-		val newY: Int = max(0, matchLocation.y.toInt() + 116)
-		var croppedBitmap: Bitmap = Bitmap.createBitmap(sourceBitmap, newX, newY, 645, 65)
+		// Use the match location acquired from finding the energy text image and acquire the (x, y) coordinates of the event title container right below the location of the energy text image.
+		Log.d(TAG, matchLocation.toString())
+		val newX: Int
+		val newY: Int
+		var croppedBitmap: Bitmap = if (isTablet) {
+			newX = max(0, matchLocation.x.toInt() - (250).toInt())
+			newY = max(0, matchLocation.y.toInt() + (154).toInt())
+			Bitmap.createBitmap(sourceBitmap, newX, newY, 746, 85)
+		} else {
+			newX = max(0, matchLocation.x.toInt() - 125)
+			newY = max(0, matchLocation.y.toInt() + 116)
+			Bitmap.createBitmap(sourceBitmap, newX, newY, 645, 65)
+		}
 		
 		// Now see if it is necessary to shift the cropped region over by 70 pixels or not to account for certain events.
 		croppedBitmap = if (match(croppedBitmap, templateBitmap!!)) {
