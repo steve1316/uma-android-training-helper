@@ -1,11 +1,14 @@
 <AppUpdater>
   <update>
-    <latestVersion>2.2.1</latestVersion>
+    <latestVersion>2.2.2</latestVersion>
     <url>https://github.com/steve1316/uma-android-training-helper/releases</url>
     <releaseNotes>
-v2.2.1 - Changelog
+v2.2.2 - Changelog
 
-- Added support for the new Character: Meisho Doto.
+New
+---
+- Added support for the new Character: Eishin Flash.
+- Added support for the new Support Card: SR Stamina Tosen Jordan.
     </releaseNotes>
   </update>
 </AppUpdater>
