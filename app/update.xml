@@ -1,14 +1,22 @@
 <AppUpdater>
   <update>
-    <latestVersion>2.2.2</latestVersion>
+    <latestVersion>2.3.0</latestVersion>
     <url>https://github.com/steve1316/uma-android-training-helper/releases</url>
     <releaseNotes>
-v2.2.2 - Changelog
+v2.3.0 - Changelog
 
 New
 ---
-- Added support for the new Character: Eishin Flash.
-- Added support for the new Support Card: SR Stamina Tosen Jordan.
+- Added proper 720p support.
+- Added a setting to enable Debug Mode.
+- Added support for the new Characters: Matikanefukukitaru (Full Armor), Hishi Akebono.
+- Added support for the new Support Cards: SSR Friendship Riko Kashimoto, SSR Power Rice Shower, SSR Stamina Mihono Bourbon, SSR Guts Twin Turbo, SSR Intelligence Biwa Hayahide, SSR Stamina Silence Suzuka.
+
+Changed
+---
+- Applied decimal formatting to the string comparison scores.
+- Prints out information about the device's display at the start.
+- Changed image asset for shifting.
     </releaseNotes>
   </update>
 </AppUpdater>
