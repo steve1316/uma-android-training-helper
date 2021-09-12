@@ -140,6 +140,13 @@ class SettingsFragment : PreferenceFragmentCompat() {
 						commit()
 					}
 				}
+				"debugModeCheckBox" -> {
+					val debugModeCheckBox: CheckBoxPreference = findPreference("debugModeCheckBox")!!
+					sharedPreferences.edit {
+						putBoolean("debugMode", debugModeCheckBox.isChecked)
+						commit()
+					}
+				}
 			}
 		}
 	}
@@ -172,6 +179,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		val selectAllSupportCards = sharedPreferences.getBoolean("selectAllSupportCards", true)
 		val enableIncrementalThreshold = sharedPreferences.getBoolean("enableIncrementalThreshold", false)
 		val confidence = sharedPreferences.getInt("confidence", 80)
+		val debugMode: Boolean = sharedPreferences.getBoolean("debugMode", false)
 		
 		// Get references to the Preference components.
 		val characterPicker: ListPreference = findPreference("characterPicker")!!
@@ -182,6 +190,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		val selectAllCheckBox: CheckBoxPreference = findPreference("selectAllCheckBox")!!
 		val enableIncrementalThresholdCheckBox: CheckBoxPreference = findPreference("enableIncrementalThresholdCheckBox")!!
 		val confidenceSeekBar: SeekBarPreference = findPreference("confidenceSeekBar")!!
+		val debugModeCheckBox: CheckBoxPreference = findPreference("debugModeCheckBox")!!
 		
 		// Now set the following values from the shared preferences.
 		
@@ -205,6 +214,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 		selectAllCharactersCheckBox.isChecked = selectAllCharacters
 		characterPicker.isEnabled = !selectAllCharactersCheckBox.isChecked
 		confidenceSeekBar.value = confidence
+		debugModeCheckBox.isChecked = debugMode
 		
 		Log.d(TAG, "Preferences created successfully.")
 	}

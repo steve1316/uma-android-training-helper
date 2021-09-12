@@ -76,6 +76,7 @@ class HomeFragment : Fragment() {
 		val selectAllSupportCards = sharedPreferences.getBoolean("selectAllSupportCards", true)
 		val enableIncrementalThreshold = sharedPreferences.getBoolean("enableIncrementalThreshold", false)
 		val confidence = sharedPreferences.getInt("confidence", 80)
+		val debugMode: Boolean = sharedPreferences.getBoolean("debugMode", false)
 		
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 		////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -119,6 +120,12 @@ class HomeFragment : Fragment() {
 			"Disabled"
 		}
 		
+		val enableDebugModeString: String = if (debugMode) {
+			"Enabled"
+		} else {
+			"Disabled"
+		}
+		
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 		////////////////////////////////////////////////////////////////////////////////////////////////////
 		// Update the TextView here based on the information of the SharedPreferences.
@@ -132,7 +139,8 @@ class HomeFragment : Fragment() {
 				"Enable Automatic OCR retry: $enableAutomaticRetryString\n" +
 				"Minimum OCR Confidence: $confidence\n\n" +
 				"---------- Misc Options ----------\n" +
-				"Hide String Comparison Results: $hideComparisonResultsString"
+				"Hide String Comparison Results: $hideComparisonResultsString\n" +
+				"Debug Mode: $enableDebugModeString"
 		
 		// Enable the start button if the required settings have been set.
 		startButton.isEnabled = (characterString != "Please select one in the Settings" || characterString == "All Characters Selected")
