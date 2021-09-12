@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.steve1316.uma_android_training_helper.MainActivity
 import com.steve1316.uma_android_training_helper.utils.ImageUtils
+import com.steve1316.uma_android_training_helper.utils.MediaProjectionService
 import com.steve1316.uma_android_training_helper.utils.MessageLog
 import java.util.concurrent.TimeUnit
 
@@ -70,6 +71,8 @@ class Game(private val myContext: Context) {
 	}
 	
 	fun start() {
+		printToLog("\n[INFO] Screen Width: ${MediaProjectionService.displayWidth}, Screen Height: ${MediaProjectionService.displayHeight}, Screen DPI: ${MediaProjectionService.displayDPI}")
+		
 		textDetection.start()
 	}
 }
