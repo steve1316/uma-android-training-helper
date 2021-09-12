@@ -12,6 +12,7 @@ import com.steve1316.uma_android_training_helper.utils.ImageUtils
 import com.steve1316.uma_android_training_helper.utils.NotificationUtils
 import net.ricecode.similarity.JaroWinklerStrategy
 import net.ricecode.similarity.StringSimilarityServiceImpl
+import java.text.DecimalFormat
 
 class TextDetection(private val myContext: Context, private val game: Game, private val imageUtils: ImageUtils) {
 	private val TAG: String = "[${MainActivity.loggerTag}]TextDetection"
@@ -37,6 +38,8 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 	private val selectAllCharacters: Boolean = SettingsFragment.getBooleanSharedPreference(myContext, "selectAllCharacters")
 	private var selectAllSupportCards: Boolean = SettingsFragment.getBooleanSharedPreference(myContext, "selectAllSupportCards")
 	private var minimumConfidence = SettingsFragment.getIntSharedPreference(myContext, "confidence").toDouble() / 100.0
+	
+	private val decimalFormat = DecimalFormat("#.###")
 	
 	/**
 	 * Fix incorrect characters determined by OCR by replacing them with their Japanese equivalents.
@@ -69,7 +72,7 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 		if (selectAllCharacters) {
 			CharacterData.characters.keys.forEach { character ->
 				CharacterData.characters[character]?.forEach { (eventName, eventOptions) ->
-					val score = service.score(result, eventName)
+					val score = decimalFormat.format(service.score(result, eventName)).toDouble()
 					if (!hideResults) {
 						game.printToLog("[CHARA] $character \"${result}\" vs. \"${eventName}\" confidence: $score", tag = TAG)
 					}
@@ -84,7 +87,7 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 			}
 		} else {
 			CharacterData.characters[character]?.forEach { (eventName, eventOptions) ->
-				val score = service.score(result, eventName)
+				val score = decimalFormat.format(service.score(result, eventName)).toDouble()
 				if (!hideResults) {
 					game.printToLog("[CHARA] $character \"${result}\" vs. \"${eventName}\" confidence: $score", tag = TAG)
 				}
@@ -100,7 +103,7 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 		
 		// Now move on to the Character-shared events.
 		CharacterData.characters["Shared"]?.forEach { (eventName, eventOptions) ->
-			val score = service.score(result, eventName)
+			val score = decimalFormat.format(service.score(result, eventName)).toDouble()
 			if (!hideResults) {
 				game.printToLog("[CHARA-SHARED] \"${result}\" vs. \"${eventName}\" confidence: $score", tag = TAG)
 			}
@@ -117,7 +120,7 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 		if (!selectAllSupportCards) {
 			supportCards.forEach { supportCardName ->
 				SupportData.supports[supportCardName]?.forEach { (eventName, eventOptions) ->
-					val score = service.score(result, eventName)
+					val score = decimalFormat.format(service.score(result, eventName)).toDouble()
 					if (!hideResults) {
 						game.printToLog("[SUPPORT] $supportCardName \"${result}\" vs. \"${eventName}\" confidence: $score", tag = TAG)
 					}
@@ -134,7 +137,7 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 		} else {
 			SupportData.supports.forEach { (supportName, support) ->
 				support.forEach { (eventName, eventOptions) ->
-					val score = service.score(result, eventName)
+					val score = decimalFormat.format(service.score(result, eventName)).toDouble()
 					if (!hideResults) {
 						game.printToLog("[SUPPORT] $supportName \"${result}\" vs. \"${eventName}\" confidence: $score", tag = TAG)
 					}
