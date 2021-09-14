@@ -1,22 +1,13 @@
 <AppUpdater>
   <update>
-    <latestVersion>2.3.0</latestVersion>
+    <latestVersion>2.4.0</latestVersion>
     <url>https://github.com/steve1316/uma-android-training-helper/releases</url>
     <releaseNotes>
-v2.3.0 - Changelog
-
-New
----
-- Added proper 720p support.
-- Added a setting to enable Debug Mode.
-- Added support for the new Characters: Matikanefukukitaru (Full Armor), Hishi Akebono.
-- Added support for the new Support Cards: SSR Friendship Riko Kashimoto, SSR Power Rice Shower, SSR Stamina Mihono Bourbon, SSR Guts Twin Turbo, SSR Intelligence Biwa Hayahide, SSR Stamina Silence Suzuka.
-
-Changed
----
-- Applied decimal formatting to the string comparison scores.
-- Prints out information about the device's display at the start.
-- Changed image asset for shifting.
+# v2.4.0 - Changelog 
+ 
+New 
+--- 
+- Dropped required API from 26 to 24, supporting emulators like Bluestacks and devices at least Android 7.0+ (Nougat). 
     </releaseNotes>
   </update>
 </AppUpdater>
