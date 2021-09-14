@@ -33,8 +33,8 @@ class ImageUtils(context: Context, private val game: Game) {
 	private val displayWidth: Int = MediaProjectionService.displayWidth
 	private val displayHeight: Int = MediaProjectionService.displayHeight
 	private val isDefault: Boolean = (displayWidth == 1080) // 1080p
-	val isLowerEnd: Boolean = (displayWidth == 720) // 720p
-	val isTablet: Boolean = (displayWidth == 1600 && displayHeight == 2560) || (displayWidth == 2560 && displayHeight == 1600) // Galaxy Tab S7 1600x2560 Portrait Mode
+	private val isLowerEnd: Boolean = (displayWidth == 720) // 720p
+	private val isTablet: Boolean = (displayWidth == 1600 && displayHeight == 2560) || (displayWidth == 2560 && displayHeight == 1600) // Galaxy Tab S7 1600x2560 Portrait Mode
 	
 	// 720 pixels in width.
 	private val lowerEndScales: MutableList<Double> = mutableListOf(0.60, 0.61, 0.62, 0.63, 0.64, 0.65, 0.67, 0.68, 0.69, 0.70)
@@ -93,7 +93,7 @@ class ImageUtils(context: Context, private val game: Game) {
 	 * @param region Specify the region consisting of (x, y, width, height) of the source screenshot to template match. Defaults to (0, 0, 0, 0) which is equivalent to searching the full image.
 	 * @return True if a match was found. False otherwise.
 	 */
-	private fun match(sourceBitmap: Bitmap, templateBitmap: Bitmap, region: IntArray = intArrayOf(0, 0, 0, 0), useSingleScale: Boolean = false): Boolean {
+	private fun match(sourceBitmap: Bitmap, templateBitmap: Bitmap, region: IntArray = intArrayOf(0, 0, 0, 0)): Boolean {
 		// If a custom region was specified, crop the source screenshot.
 		val srcBitmap = if (!region.contentEquals(intArrayOf(0, 0, 0, 0))) {
 			Bitmap.createBitmap(sourceBitmap, region[0], region[1], region[2], region[3])
@@ -207,10 +207,9 @@ class ImageUtils(context: Context, private val game: Game) {
 	 * Open the source and template image files and return Bitmaps for them.
 	 *
 	 * @param templateName File name of the template image.
-	 * @param templateFolderName Name of the subfolder in /assets/ that the template image is in.
 	 * @return A Pair of source and template Bitmaps.
 	 */
-	private fun getBitmaps(templateName: String, templateFolderName: String): Pair<Bitmap?, Bitmap?> {
+	private fun getBitmaps(templateName: String): Pair<Bitmap?, Bitmap?> {
 		// Keep the same source Bitmap on repeated tries to reduce processing time.
 		if (firstTimeCheck) {
 			// Keep swiping a little bit up and down to trigger a new image for ImageReader to grab.
@@ -224,7 +223,7 @@ class ImageUtils(context: Context, private val game: Game) {
 		var templateBitmap: Bitmap?
 		
 		// Get the Bitmap from the template image file inside the specified folder.
-		myContext.assets?.open("$templateFolderName/$templateName.webp").use { inputStream ->
+		myContext.assets?.open("images/$templateName.webp").use { inputStream ->
 			// Get the Bitmap from the template image file and then start matching.
 			templateBitmap = BitmapFactory.decodeStream(inputStream)
 		}
@@ -245,10 +244,10 @@ class ImageUtils(context: Context, private val game: Game) {
 	 * @return The detected String in the cropped region.
 	 */
 	fun findText(increment: Double = 0.0): String {
-		val (sourceBitmap, templateBitmap) = getBitmaps("shift", "images")
+		val (sourceBitmap, templateBitmap) = getBitmaps("shift")
 		
 		// Acquire the location of the energy text image.
-		val (_, energyTemplateBitmap) = getBitmaps("energy", "images")
+		val (_, energyTemplateBitmap) = getBitmaps("energy")
 		match(sourceBitmap!!, energyTemplateBitmap!!)
 		
 		// Use the match location acquired from finding the energy text image and acquire the (x, y) coordinates of the event title container right below the location of the energy text image.

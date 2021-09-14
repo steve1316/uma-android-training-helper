@@ -33,7 +33,6 @@ import java.io.StringReader
 
 class HomeFragment : Fragment() {
 	private val TAG: String = "[${MainActivity.loggerTag}]HomeFragment"
-	private val SCREENSHOT_PERMISSION_REQUEST_CODE: Int = 100
 	private var firstBoot = false
 	private var firstRun = true
 	
@@ -191,7 +190,7 @@ class HomeFragment : Fragment() {
 	}
 	
 	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-		if (requestCode == SCREENSHOT_PERMISSION_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+		if (requestCode == 100 && resultCode == Activity.RESULT_OK) {
 			// Start up the MediaProjection service after the user accepts the onscreen prompt.
 			myContext.startService(data?.let { MediaProjectionService.getStartIntent(myContext, resultCode, data) })
 		}
@@ -215,7 +214,7 @@ class HomeFragment : Fragment() {
 	 */
 	private fun startProjection() {
 		val mediaProjectionManager = context?.getSystemService(Context.MEDIA_PROJECTION_SERVICE) as MediaProjectionManager
-		startActivityForResult(mediaProjectionManager.createScreenCaptureIntent(), SCREENSHOT_PERMISSION_REQUEST_CODE)
+		startActivityForResult(mediaProjectionManager.createScreenCaptureIntent(), 100)
 	}
 	
 	/**

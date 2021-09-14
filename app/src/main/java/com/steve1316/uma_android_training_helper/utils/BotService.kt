@@ -30,7 +30,7 @@ import kotlin.math.roundToInt
  */
 class BotService : Service() {
 	private var appName = ""
-	private val TAG: String = "[${MainActivity.loggerTag}]BotService"
+	private val tag: String = "[${MainActivity.loggerTag}]BotService"
 	private lateinit var myContext: Context
 	private lateinit var overlayView: View
 	private lateinit var overlayButton: ImageButton
@@ -93,7 +93,7 @@ class BotService : Service() {
 					if (elapsedTime < 100L) {
 						// Update both the Notification and the overlay button to reflect the current bot status.
 						if (!isRunning) {
-							Log.d(TAG, "Service for $appName is now running.")
+							Log.d(tag, "Service for $appName is now running.")
 							Toast.makeText(myContext, "Service for $appName is now running.", Toast.LENGTH_SHORT).show()
 							isRunning = true
 							overlayButton.setImageResource(R.drawable.stop_circle_filled)
@@ -111,7 +111,7 @@ class BotService : Service() {
 									
 									performCleanUp()
 								} catch (e: Exception) {
-									game.printToLog("$appName encountered an Exception: ${e.stackTraceToString()}", tag = TAG, isError = true)
+									game.printToLog("$appName encountered an Exception: ${e.stackTraceToString()}", tag = tag, isError = true)
 									NotificationUtils.updateNotification(myContext, "Encountered an Exception", "Exception: $e.\nTap me to see more details.", 0.0)
 									performCleanUp()
 								}
@@ -165,7 +165,7 @@ class BotService : Service() {
 		// Save the message log.
 		MessageLog.saveLogToFile(myContext)
 		
-		Log.d(TAG, "Bot Service for $appName is now stopped.")
+		Log.d(tag, "Bot Service for $appName is now stopped.")
 		isRunning = false
 		
 		// Reset the overlay button's image on a separate UI thread.

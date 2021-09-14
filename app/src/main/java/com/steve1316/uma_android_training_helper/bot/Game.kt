@@ -11,8 +11,8 @@ import java.util.concurrent.TimeUnit
 /**
  * Main driver for bot activity and navigation.
  */
-class Game(private val myContext: Context) {
-	private val TAG: String = "[${MainActivity.loggerTag}]Game"
+class Game(myContext: Context) {
+	private val tag: String = "[${MainActivity.loggerTag}]Game"
 	
 	private val imageUtils: ImageUtils = ImageUtils(myContext, this)
 	
@@ -42,11 +42,11 @@ class Game(private val myContext: Context) {
 	 * Print the specified message to debug console and then saves the message to the log.
 	 *
 	 * @param message Message to be saved.
-	 * @param tag TAG to distinguish between messages for where they came from. Defaults to Game's TAG.
+	 * @param tag Distinguish between messages for where they came from. Defaults to Game's tag.
 	 * @param isError Flag to determine whether to display log message in console as debug or error.
 	 * @param isOption Flag to determine whether to append a newline right after the time in the string.
 	 */
-	fun printToLog(message: String, tag: String = TAG, isError: Boolean = false, isOption: Boolean = false) {
+	fun printToLog(message: String, tag: String = this.tag, isError: Boolean = false, isOption: Boolean = false) {
 		if (!isError) {
 			Log.d(tag, message)
 		} else {

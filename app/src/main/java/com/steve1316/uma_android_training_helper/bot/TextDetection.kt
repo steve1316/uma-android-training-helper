@@ -15,7 +15,7 @@ import net.ricecode.similarity.StringSimilarityServiceImpl
 import java.text.DecimalFormat
 
 class TextDetection(private val myContext: Context, private val game: Game, private val imageUtils: ImageUtils) {
-	private val TAG: String = "[${MainActivity.loggerTag}]TextDetection"
+	private val tag: String = "[${MainActivity.loggerTag}]TextDetection"
 	
 	private var result = ""
 	private var confidence = 0.0
@@ -45,14 +45,14 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 	 * Fix incorrect characters determined by OCR by replacing them with their Japanese equivalents.
 	 */
 	private fun fixIncorrectCharacters() {
-		game.printToLog("\n[INFO] Now attempting to fix incorrect characters in: $result", tag = TAG)
+		game.printToLog("\n[INFO] Now attempting to fix incorrect characters in: $result", tag = tag)
 		
 		if (result.last() == '/') {
 			result = result.replace("/", "！")
 		}
 		
 		result = result.replace("(", "（").replace(")", "）")
-		game.printToLog("[INFO] Finished attempting to fix incorrect characters: $result", tag = TAG)
+		game.printToLog("[INFO] Finished attempting to fix incorrect characters: $result", tag = tag)
 	}
 	
 	/**
@@ -60,9 +60,9 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 	 */
 	private fun findMostSimilarString() {
 		if (!hideResults) {
-			game.printToLog("\n[INFO] Now starting process to find most similar string to: $result\n", tag = TAG)
+			game.printToLog("\n[INFO] Now starting process to find most similar string to: $result\n", tag = tag)
 		} else {
-			game.printToLog("\n[INFO] Now starting process to find most similar string to: $result", tag = TAG)
+			game.printToLog("\n[INFO] Now starting process to find most similar string to: $result", tag = tag)
 		}
 		
 		// Use the Jaro Winkler algorithm to compare similarities the OCR detected string and the rest of the strings inside the data classes.
@@ -74,7 +74,7 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 				CharacterData.characters[character]?.forEach { (eventName, eventOptions) ->
 					val score = decimalFormat.format(service.score(result, eventName)).toDouble()
 					if (!hideResults) {
-						game.printToLog("[CHARA] $character \"${result}\" vs. \"${eventName}\" confidence: $score", tag = TAG)
+						game.printToLog("[CHARA] $character \"${result}\" vs. \"${eventName}\" confidence: $score", tag = tag)
 					}
 					
 					if (score >= confidence) {
@@ -89,7 +89,7 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 			CharacterData.characters[character]?.forEach { (eventName, eventOptions) ->
 				val score = decimalFormat.format(service.score(result, eventName)).toDouble()
 				if (!hideResults) {
-					game.printToLog("[CHARA] $character \"${result}\" vs. \"${eventName}\" confidence: $score", tag = TAG)
+					game.printToLog("[CHARA] $character \"${result}\" vs. \"${eventName}\" confidence: $score", tag = tag)
 				}
 				
 				if (score >= confidence) {
@@ -105,7 +105,7 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 		CharacterData.characters["Shared"]?.forEach { (eventName, eventOptions) ->
 			val score = decimalFormat.format(service.score(result, eventName)).toDouble()
 			if (!hideResults) {
-				game.printToLog("[CHARA-SHARED] \"${result}\" vs. \"${eventName}\" confidence: $score", tag = TAG)
+				game.printToLog("[CHARA-SHARED] \"${result}\" vs. \"${eventName}\" confidence: $score", tag = tag)
 			}
 			
 			if (score >= confidence) {
@@ -122,7 +122,7 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 				SupportData.supports[supportCardName]?.forEach { (eventName, eventOptions) ->
 					val score = decimalFormat.format(service.score(result, eventName)).toDouble()
 					if (!hideResults) {
-						game.printToLog("[SUPPORT] $supportCardName \"${result}\" vs. \"${eventName}\" confidence: $score", tag = TAG)
+						game.printToLog("[SUPPORT] $supportCardName \"${result}\" vs. \"${eventName}\" confidence: $score", tag = tag)
 					}
 					
 					if (score >= confidence) {
@@ -139,7 +139,7 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 				support.forEach { (eventName, eventOptions) ->
 					val score = decimalFormat.format(service.score(result, eventName)).toDouble()
 					if (!hideResults) {
-						game.printToLog("[SUPPORT] $supportName \"${result}\" vs. \"${eventName}\" confidence: $score", tag = TAG)
+						game.printToLog("[SUPPORT] $supportName \"${result}\" vs. \"${eventName}\" confidence: $score", tag = tag)
 					}
 					
 					if (score >= confidence) {
@@ -154,9 +154,9 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 		}
 		
 		if (!hideResults) {
-			game.printToLog("\n[INFO] Finished process to find similar string.", tag = TAG)
+			game.printToLog("\n[INFO] Finished process to find similar string.", tag = tag)
 		} else {
-			game.printToLog("[INFO] Finished process to find similar string.", tag = TAG)
+			game.printToLog("[INFO] Finished process to find similar string.", tag = tag)
 		}
 	}
 	
@@ -244,8 +244,8 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 	private fun constructNotification(): Boolean {
 		// Now construct the text body for the Notification.
 		if (confidence >= minimumConfidence) {
-			game.printToLog("\n####################", tag = TAG)
-			game.printToLog("####################", tag = TAG)
+			game.printToLog("\n####################", tag = tag)
+			game.printToLog("####################", tag = tag)
 			
 			// Process the resulting string from the acquired information.
 			eventOptionRewards.forEach { reward ->
@@ -267,7 +267,7 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 					// Begin appending to the reward string for english translations of skills and statuses if necessary.
 					val tempReward = formatResultForSkillsAndStatus(reward, isSingleOption = true)
 					
-					game.printToLog("\n\n$tempReward\n", isOption = true, tag = TAG)
+					game.printToLog("\n\n$tempReward\n", isOption = true, tag = tag)
 					eventOptionNumber += 1
 				} else {
 					if (notificationTextArray.size < 9) {
@@ -293,13 +293,13 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 					// Begin appending to the reward string for english translations of skills and statuses if necessary.
 					val tempReward = formatResultForSkillsAndStatus(reward)
 					
-					game.printToLog("\n[OPTION $eventOptionNumber] \n$tempReward\n", isOption = true, tag = TAG)
+					game.printToLog("\n[OPTION $eventOptionNumber] \n$tempReward\n", isOption = true, tag = tag)
 					eventOptionNumber += 1
 				}
 			}
 			
-			game.printToLog("####################", tag = TAG)
-			game.printToLog("####################\n", tag = TAG)
+			game.printToLog("####################", tag = tag)
+			game.printToLog("####################\n", tag = tag)
 			
 			// Append this last line to the Notification's text body if the rest of the text was going to be cut off as the Notification's expanded mode is set only at 256dp.
 			if (notificationTextArray.size >= 8) {
@@ -314,11 +314,11 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 			NotificationUtils.updateNotification(myContext, eventTitle, notificationTextBody, confidence)
 			return true
 		} else {
-			game.printToLog("\n####################", tag = TAG)
-			game.printToLog("####################", tag = TAG)
-			game.printToLog("[ERROR] Confidence of $confidence failed to be greater than or equal to the minimum of $minimumConfidence.", isError = true, tag = TAG)
-			game.printToLog("####################", tag = TAG)
-			game.printToLog("####################\n", tag = TAG)
+			game.printToLog("\n####################", tag = tag)
+			game.printToLog("####################", tag = tag)
+			game.printToLog("[ERROR] Confidence of $confidence failed to be greater than or equal to the minimum of $minimumConfidence.", isError = true, tag = tag)
+			game.printToLog("####################", tag = tag)
+			game.printToLog("####################\n", tag = tag)
 			return false
 		}
 	}
@@ -360,18 +360,18 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 				
 				when (category) {
 					"character" -> {
-						game.printToLog("\n[RESULT] Character $character Event Name = $eventTitle with confidence = $confidence", tag = TAG)
+						game.printToLog("\n[RESULT] Character $character Event Name = $eventTitle with confidence = $confidence", tag = tag)
 					}
 					"character-shared" -> {
-						game.printToLog("\n[RESULT] Character Shared Event Name = $eventTitle with confidence = $confidence", tag = TAG)
+						game.printToLog("\n[RESULT] Character Shared Event Name = $eventTitle with confidence = $confidence", tag = tag)
 					}
 					"support" -> {
-						game.printToLog("\n[RESULT] Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence", tag = TAG)
+						game.printToLog("\n[RESULT] Support $supportCardTitle Event Name = $eventTitle with confidence = $confidence", tag = tag)
 					}
 				}
 				
 				if (enableIncrementalThreshold) {
-					game.printToLog("\n[RESULT] Threshold incremented by $increment", tag = TAG)
+					game.printToLog("\n[RESULT] Threshold incremented by $increment", tag = tag)
 				}
 				
 				// Now construct and display the Notification containing the results from OCR, whether it was successful or not.
@@ -394,7 +394,7 @@ class TextDetection(private val myContext: Context, private val game: Game, priv
 		
 		val endTime: Long = System.currentTimeMillis()
 		
-		Log.d(TAG, "Total Runtime: ${endTime - startTime}ms")
+		Log.d(tag, "Total Runtime: ${endTime - startTime}ms")
 		
 		return true
 	}
