@@ -5,7 +5,10 @@ import android.app.Service
 import android.content.Context
 import android.content.Intent
 import android.graphics.PixelFormat
+import android.os.Build
+import android.os.Handler
 import android.os.IBinder
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -38,7 +41,11 @@ class BotService : Service() {
 		
 		// Create the LayoutParams for the floating overlay START/STOP button.
 		private val overlayLayoutParams = WindowManager.LayoutParams().apply {
-			type = WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+			type = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+				WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
+			} else {
+				WindowManager.LayoutParams.TYPE_SYSTEM_ALERT
+			}
 			flags = WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
 			format = PixelFormat.TRANSLUCENT
 			width = WindowManager.LayoutParams.WRAP_CONTENT
@@ -161,7 +168,9 @@ class BotService : Service() {
 		Log.d(TAG, "Bot Service for $appName is now stopped.")
 		isRunning = false
 		
-		// Reset the overlay button's image.
-		overlayButton.setImageResource(R.drawable.play_circle_filled)
+		// Reset the overlay button's image on a separate UI thread.
+		Handler(Looper.getMainLooper()).post {
+			overlayButton.setImageResource(R.drawable.play_circle_filled)
+		}
 	}
 }
