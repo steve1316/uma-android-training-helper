@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="character_list">
+        <item>Agnes Digital</item>
         <item>Agnes Tachyon</item>
         <item>Air Groove</item>
         <item>Biwa Hayahide</item>
