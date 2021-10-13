@@ -1,18 +1,17 @@
 <AppUpdater>
   <update>
-    <latestVersion>2.5.0</latestVersion>
+    <latestVersion>2.6.0</latestVersion>
     <url>https://github.com/steve1316/uma-android-training-helper/releases</url>
     <releaseNotes>
-v2.5.0 - Changelog 
+v2.6.0 - Changelog 
  
 New 
 --- 
-- Added support for the new Characters: Agnes Digital, Rice Shower (Halloween) and Super Creek (Halloween).
-- Added support for the new Support Cards: SR Power Fine Motion, SSR Guts Ikuno Dictus, SSR Intelligence Mihono Bourbon, SSR Speed Zenno Rob Roy and SSR Power Tamamo Cross.
+- Added support for the new Character: Kawakami Princess
 
-Fixes
+Changed
 ---
-- Set application's default locale to "en" to prevent cases where user's country uses commas instead of dots for decimal numbers.
+- Creation of the source.png inside the /temp/ folder is now tied to Debug Mode being on.
     </releaseNotes>
   </update>
 </AppUpdater>
