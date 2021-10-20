@@ -11,8 +11,8 @@ android {
         applicationId "com.steve1316.uma_android_training_helper"
         minSdkVersion 24
         targetSdkVersion 30
-        versionCode 27
-        versionName "2.6.0"
+        versionCode 28
+        versionName "2.6.1"
     }
 
     buildTypes {

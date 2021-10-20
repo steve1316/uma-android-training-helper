@@ -1,17 +1,14 @@
 <AppUpdater>
   <update>
-    <latestVersion>2.6.0</latestVersion>
+    <latestVersion>2.6.1</latestVersion>
     <url>https://github.com/steve1316/uma-android-training-helper/releases</url>
     <releaseNotes>
-v2.6.0 - Changelog 
+v2.6.1 - Changelog 
  
 New 
 --- 
-- Added support for the new Character: Kawakami Princess
-
-Changed
----
-- Creation of the source.png inside the /temp/ folder is now tied to Debug Mode being on.
+- Added support for the new Character: Manhattan Cafe.
+- Added support for the new Support Cards: SSR and R Stamina Nakayama Festa, SR and R Guts Sirius Symboli.
     </releaseNotes>
   </update>
 </AppUpdater>
