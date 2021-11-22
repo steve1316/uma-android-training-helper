@@ -1,14 +1,14 @@
 <AppUpdater>
   <update>
-    <latestVersion>2.6.2</latestVersion>
+    <latestVersion>2.6.3</latestVersion>
     <url>https://github.com/steve1316/uma-android-training-helper/releases</url>
     <releaseNotes>
-v2.6.2 - Changelog 
+v2.6.3 - Changelog 
  
 New 
 --- 
-- Added support for the new Characters: Gold City (Festival), Symboli Rudolf (Festival) and Tosen Jordan.
-- Added support for the new Support Cards: SSR Stamina Narita Brian, R/SSR Intelligence Curren Chan and SSR Guts Yukino Bijin.
+- Added support for the new Character: Mejiro Dober.
+- Added support for the new Support Cards: SR Speed Vodka and SSR Power Daitaku Helios.
     </releaseNotes>
   </update>
 </AppUpdater>
