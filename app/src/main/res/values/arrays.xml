@@ -9,6 +9,7 @@
         <item>Daiwa Scarlet</item>
         <item>Eishin Flash</item>
         <item>El Condor Pasa</item>
+        <item>Fine Motion</item>
         <item>Fuji Kiseki</item>
         <item>Gold City</item>
         <item>Gold Ship</item>
@@ -39,8 +40,9 @@
         <item>Special Week</item>
         <item>Super Creek</item>
         <item>Symboli Rudolf</item>
-        <item>TM Opera O</item>
         <item>Taiki Shuttle</item>
+        <item>Tamamo Cross</item>
+        <item>TM Opera O</item>
         <item>Tokai Teio</item>
         <item>Tosen Jordan</item>
         <item>Vodka</item>
@@ -48,6 +50,7 @@
     </string-array>
 
     <string-array name="support_list">
+        <item>Admire Vega</item>
         <item>Agnes Digital</item>
         <item>Agnes Tachyon</item>
         <item>Air Groove</item>
@@ -70,6 +73,7 @@
         <item>Hishi Akebono</item>
         <item>Hishi Amazon</item>
         <item>Ikuno Dictus</item>
+        <item>Inari One</item>
         <item>Ines Fujin</item>
         <item>Kawakami Princess</item>
         <item>King Halo</item>
@@ -108,10 +112,10 @@
         <item>Super Creek</item>
         <item>Sweep Tosho</item>
         <item>Symboli Rudolf</item>
-        <item>TM Opera O</item>
         <item>Taiki Shuttle</item>
         <item>Tamamo Cross</item>
         <item>Tazuna Hayakawa</item>
+        <item>TM Opera O</item>
         <item>Tokai Teio</item>
         <item>Tosen Jordan</item>
         <item>Twin Turbo</item>
